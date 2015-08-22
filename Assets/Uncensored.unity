@@ -97,12 +97,12 @@ GameObject:
   - 4: {fileID: 220402492}
   - 114: {fileID: 220402491}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Foreground Clouds 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &220402491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e63799d605b424eb8bb72fd47e656e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 113514, guid: ac86e26d3ae53467f88aa137729bbfce, type: 2}
+  Prefabs:
+  - {fileID: 113514, guid: ac86e26d3ae53467f88aa137729bbfce, type: 2}
+  - {fileID: 113514, guid: 3ecbd623540da45b4aaf3843e42e51b4, type: 2}
+  - {fileID: 113514, guid: a20931f1ad9e64ae187025005e82ab40, type: 2}
   LayerDepth: 20
   SpawnThreshold: .5
   NoiseResolution: .0350000001
@@ -123,7 +126,8 @@ MonoBehaviour:
   HasMinY: 1
   MaxY: 1
   HasMaxY: 0
-  RandomizedPos: 1
+  RandomizeX: 0
+  RandomizeY: 0
 --- !u!4 &220402492
 Transform:
   m_ObjectHideFlags: 0
@@ -135,7 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &431808603
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +150,7 @@ GameObject:
   - 4: {fileID: 431808605}
   - 114: {fileID: 431808604}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: BGBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e63799d605b424eb8bb72fd47e656e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 124070, guid: 6a95a147842144a239b5d25f10c6adb0, type: 2}
+  Prefabs:
+  - {fileID: 124070, guid: 6a95a147842144a239b5d25f10c6adb0, type: 2}
+  - {fileID: 124070, guid: 5237dabed89ce4f919006468c885162f, type: 2}
+  - {fileID: 124070, guid: ce255b89232204ee0a72e64e8724bd4d, type: 2}
   LayerDepth: 40
   SpawnThreshold: .800000012
   NoiseResolution: .0350000001
@@ -172,7 +179,8 @@ MonoBehaviour:
   HasMinY: 1
   MaxY: 1
   HasMaxY: 0
-  RandomizedPos: 0
+  RandomizeX: 1
+  RandomizeY: 1
 --- !u!4 &431808605
 Transform:
   m_ObjectHideFlags: 0
@@ -184,7 +192,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &644792794
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +283,57 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &675562218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 675562220}
+  - 114: {fileID: 675562219}
+  m_Layer: 0
+  m_Name: Sea Bubblle Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &675562219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675562218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e63799d605b424eb8bb72fd47e656e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefabs:
+  - {fileID: 181488, guid: 6f457885c02ed4fa690b6ca09fa5e56d, type: 2}
+  LayerDepth: 10
+  SpawnThreshold: .699999988
+  NoiseResolution: .0350000001
+  GridSize: .400000006
+  MinY: -1
+  HasMinY: 0
+  MaxY: 1
+  HasMaxY: 1
+  RandomizeX: 1
+  RandomizeY: 1
+--- !u!4 &675562220
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675562218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3, y: 11, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &834642035
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +344,7 @@ GameObject:
   - 4: {fileID: 834642037}
   - 114: {fileID: 834642036}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Godrays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e63799d605b424eb8bb72fd47e656e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 113514, guid: 7d8f89932e5b84cbc82a4054e64df64e, type: 2}
+  Prefabs:
+  - {fileID: 113514, guid: 7d8f89932e5b84cbc82a4054e64df64e, type: 2}
   LayerDepth: 10
   SpawnThreshold: .300000012
   NoiseResolution: .0350000001
@@ -311,7 +371,8 @@ MonoBehaviour:
   HasMinY: 1
   MaxY: .00999999978
   HasMaxY: 1
-  RandomizedPos: 0
+  RandomizeX: 1
+  RandomizeY: 0
 --- !u!4 &834642037
 Transform:
   m_ObjectHideFlags: 0
@@ -323,7 +384,61 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
+--- !u!1 &891466246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 891466248}
+  - 212: {fileID: 891466247}
+  m_Layer: 0
+  m_Name: New Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &891466247
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 891466246}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e8a4b7430e9c6416abefac87ff1530eb, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 07c656a96b6e1495f84fd232df10adcb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &891466248
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 891466246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 12.3400002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1168660567
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +449,7 @@ GameObject:
   - 4: {fileID: 1168660569}
   - 114: {fileID: 1168660568}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: Foreground Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,16 +466,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e63799d605b424eb8bb72fd47e656e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 124070, guid: 6a95a147842144a239b5d25f10c6adb0, type: 2}
+  Prefabs:
+  - {fileID: 113514, guid: ac86e26d3ae53467f88aa137729bbfce, type: 2}
+  - {fileID: 113514, guid: 3ecbd623540da45b4aaf3843e42e51b4, type: 2}
+  - {fileID: 113514, guid: a20931f1ad9e64ae187025005e82ab40, type: 2}
   LayerDepth: 15
-  SpawnThreshold: .800000012
+  SpawnThreshold: .699999988
   NoiseResolution: .0350000001
-  GridSize: .0199999996
-  MinY: 0
+  GridSize: .400000006
+  MinY: -10
   HasMinY: 1
   MaxY: 1
   HasMaxY: 0
-  RandomizedPos: 0
+  RandomizeX: 1
+  RandomizeY: 1
 --- !u!4 &1168660569
 Transform:
   m_ObjectHideFlags: 0
@@ -372,7 +491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1524952990
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +565,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1919618194
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +600,7 @@ Camera:
     height: 1
   near clip plane: .949999988
   far clip plane: 150
-  field of view: 45
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -503,12 +622,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1919618194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.60999966, z: 0}
+  m_LocalPosition: {x: 0, y: -11.5699997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 644792798}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &2067284997
 GameObject:
   m_ObjectHideFlags: 0

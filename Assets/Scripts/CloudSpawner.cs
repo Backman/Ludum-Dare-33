@@ -20,8 +20,8 @@ public class CloudSpawner : MonoBehaviour
 
     IntRect _VisibleRect;
 
+    public GameObject[] Prefabs;
 
-    public GameObject Prefab;
     public float LayerDepth;
     public float SpawnThreshold;
     public float NoiseResolution = 100f;
@@ -30,7 +30,8 @@ public class CloudSpawner : MonoBehaviour
     public bool HasMinY;
     public float MaxY = 1;
     public bool HasMaxY;
-    public bool RandomizedPos;
+    public bool RandomizeX;
+    public bool RandomizeY;
     List<CloudState> _Clouds = new List<CloudState>();
     static Dictionary<GameObject, Stack<GameObject>> _Pool = new Dictionary<GameObject, Stack<GameObject>>();
 
@@ -45,7 +46,7 @@ public class CloudSpawner : MonoBehaviour
         float maxX = centerPoint.x + frustumWidth;
         float minY = centerPoint.y - frustumHeight;
         float maxY = centerPoint.y + frustumHeight;
-//        Debug.Log(frustumWidth + " h " + frustumHeight);
+        //        Debug.Log(frustumWidth + " h " + frustumHeight);
         //Debug.Log("minX" + minX + "maxX" + maxX + "minY" + minY + " maxY" + maxY);
         //Debug.Log(centerPoint);
 
@@ -63,7 +64,7 @@ public class CloudSpawner : MonoBehaviour
             {
                 for (int y = newVisible.MinY; y < newVisible.MaxY; y++)
                 {
-   //                 Debug.Log("new min x coords " + x + "," + y);
+                    //                 Debug.Log("new min x coords " + x + "," + y);
                     CoordVisible(x, y);
                 }
             }
@@ -72,7 +73,7 @@ public class CloudSpawner : MonoBehaviour
             {
                 for (int y = newVisible.MinY; y < newVisible.MaxY; y++)
                 {
-  //                  Debug.Log("new max x coords " + x + " , " + y);
+                    //                  Debug.Log("new max x coords " + x + " , " + y);
                     CoordVisible(x, y);
                 }
             }
@@ -87,7 +88,7 @@ public class CloudSpawner : MonoBehaviour
             {
                 for (int x = newVisible.MinX; x < newVisible.MaxX; x++)
                 {
- //                   Debug.Log("new min y coords " + y + " , " + x);
+                    //                   Debug.Log("new min y coords " + y + " , " + x);
                     CoordVisible(x, y);
                 }
             }
@@ -96,7 +97,7 @@ public class CloudSpawner : MonoBehaviour
             {
                 for (int x = newVisible.MinX; x < newVisible.MaxX; x++)
                 {
-//                    Debug.Log("new max y coords" + y + " , " + x);
+                    //                    Debug.Log("new max y coords" + y + " , " + x);
                     CoordVisible(x, y);
                 }
             }
@@ -112,9 +113,10 @@ public class CloudSpawner : MonoBehaviour
                 || cloud.Y < _VisibleRect.MinY)
             {
                 cloud.Obj.SetActive(false);
+                GameObject prefab = Prefabs[System.Math.Abs(cloud.X + cloud.Y) % Prefabs.Length];
                 Stack<GameObject> objects;
-                if (_Pool.TryGetValue(Prefab, out objects) == false)
-                    objects = _Pool[Prefab] = new Stack<GameObject>();
+                if (_Pool.TryGetValue(prefab, out objects) == false)
+                    objects = _Pool[prefab] = new Stack<GameObject>();
                 objects.Push(cloud.Obj);
                 _Clouds.RemoveAt(i);
             }
@@ -128,17 +130,21 @@ public class CloudSpawner : MonoBehaviour
         if (t > SpawnThreshold)
         {
             Vector3 pos = new Vector3(x / GridSize, y / GridSize, LayerDepth);
-            if (RandomizedPos)
+            if (RandomizeX)
             {
                 pos.x += (Mathf.PerlinNoise(pos.y, pos.x) - 0.5f) / GridSize;
+            }
+            if (RandomizeY)
+            {
                 pos.y += (Mathf.PerlinNoise(pos.x, pos.y) - 0.5f) / GridSize;
             }
             if ((HasMinY == false || pos.y > MinY) && (HasMaxY == false || pos.y < MaxY))
             {
+                GameObject prefab = Prefabs[System.Math.Abs(x + y) % Prefabs.Length];
                 Stack<GameObject> objects;
                 GameObject go;
-                if (_Pool.TryGetValue(Prefab, out objects) == false || objects.Count == 0)
-                    go = GameObject.Instantiate(Prefab) as GameObject;
+                if (_Pool.TryGetValue(prefab, out objects) == false || objects.Count == 0)
+                    go = GameObject.Instantiate(prefab) as GameObject;
                 else
                     go = objects.Pop();
                 go.SetActive(true);
