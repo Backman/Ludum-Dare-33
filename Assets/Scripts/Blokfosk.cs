@@ -34,6 +34,9 @@ public class Blokfosk : MonoBehaviour
 	private const string LeftStickVertical = "LeftStickY";
 
 	private const string HypeButton = "Hype";
+
+	private const string LeftRotationButton = "LeftRotation";
+	private const string RightRotationButton = "RightRotation";
 	#elif UNITY_STANDALONE_WIN
 	private const string RightStickHorizontal = "RightStickX_WIN";
 	private const string RightStickVertical = "RightStickY_WIN";
@@ -42,14 +45,18 @@ public class Blokfosk : MonoBehaviour
 	private const string LeftStickVertical = "LeftStickX_WIN";
 
 	private const string HypeButton = "Fire1";
+
+	private const string LeftRotationButton = "LeftRotation_WIN";
+	private const string RightRotationButton = "RightRotation_WIN";
 	#endif
 
 	public TentacleData TentacleSettings;
 	public Tentacle LeftTentacle;
 	public Tentacle RightTentacle;
 
-	public CircleCollider2D LeftTentacleBounds;
-	public CircleCollider2D RightTentacleBounds;
+	public ShakeSettings HypeShake;
+
+	public CircleCollider2D TargetBounds;
 
 	public float MaxHype = 5f;
 	public float HypeBuildUp = 1f;
@@ -62,6 +69,9 @@ public class Blokfosk : MonoBehaviour
 	[SerializeField]
 	private float _currentHype;
 
+	private FollowCamera _followCamera;
+	private FollowCamera.ShakeID _hypeShakeID;
+
 	private void Awake ()
 	{
 		_rb = GetComponent<Rigidbody2D> ();
@@ -69,7 +79,8 @@ public class Blokfosk : MonoBehaviour
 
 	private void Start ()
 	{
-
+		_followCamera = Camera.main.GetComponent<FollowCamera> ();
+		_hypeShakeID = _followCamera.AddShake (HypeShake, 0f, Vector2.zero);
 	}
 
 	private void Update ()
@@ -83,18 +94,26 @@ public class Blokfosk : MonoBehaviour
 		TentacleInput (LeftTentacle, leftStick);
 		TentacleInput (RightTentacle, rightStick);
 
-		ApplyTentacleConstraint (LeftTentacle, LeftTentacleBounds);
-		ApplyTentacleConstraint (RightTentacle, RightTentacleBounds);
+		ApplyTentacleConstraint (LeftTentacle);
+		ApplyTentacleConstraint (RightTentacle);
 
 //		ApplyRotation ();
 
 		HypeInput ();
+
+		_followCamera.SetTarget (_rb.position, _rb.velocity);
+
+		if (_isHyping) {
+			_followCamera.UpdateShake (_hypeShakeID, _currentHype, Vector2.zero);
+		} else {
+			_followCamera.UpdateShake (_hypeShakeID, 0f, Vector2.zero);
+		}
 	}
 
 	private void FixedUpdate ()
 	{
 		if (_isHyping) {
-			_rb.MovePosition (_rb.position + Vector2.down * Time.deltaTime);
+			_rb.MovePosition (_rb.position + Vector2.down * 2f * Time.deltaTime);
 		}
 	}
 
@@ -110,10 +129,10 @@ public class Blokfosk : MonoBehaviour
 		tentacle.MoveTarget (input * tentacleSpeed * Time.deltaTime);
 	}
 
-	private void ApplyTentacleConstraint (Tentacle tentacle, CircleCollider2D collider)
+	private void ApplyTentacleConstraint (Tentacle tentacle)
 	{
-		var center = collider.bounds.center;
-		var radius = collider.radius;
+		var center = TargetBounds.bounds.center;
+		var radius = TargetBounds.radius;
 
 		var delta = tentacle.Target.position - center;
 		if (delta.sqrMagnitude >= radius * radius) {
@@ -156,15 +175,35 @@ public class Blokfosk : MonoBehaviour
 	private void BuildHype ()
 	{
 		Debug.Log ("HYPE BUILDUP");
+		RotationInput ();
 		_currentHype += HypeBuildUp * Time.deltaTime;
+	}
+
+	private void RotationInput ()
+	{
+		var leftRot = Input.GetButton (LeftRotationButton);
+		var rightRot = Input.GetButton (RightRotationButton);
+
+		var rot = InAir ? TentacleSettings.InAir.RotationSpeed : TentacleSettings.UnderWater.RotationSpeed;
+		rot *= Time.deltaTime;
+
+		if (leftRot) {
+			_rb.rotation += rot;
+		} else if (rightRot) {
+			_rb.rotation -= rot;
+		}
+
+		_rb.rotation = Mathf.Clamp (_rb.rotation, -50f, 50f);
+		Debug.LogFormat ("Rotation {0}", _rb.rotation);
 	}
 
 	private void MLGHype ()
 	{
 		// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
 		Debug.LogFormat ("HYPEEEE: {0}/{1}", _currentHype, MaxHype);
-		_rb.AddForce (transform.up * _currentHype * 1000f);
+		_rb.AddForce (transform.up * _currentHype * 100f);
 		_currentHype = 0f;
+		_rb.gravityScale = 1f;
 	}
 
 	private Vector2 GetJoystickAxis (string horizontal, string vertical)
