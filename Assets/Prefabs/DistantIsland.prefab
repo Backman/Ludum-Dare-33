@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 428078}
   - 212: {fileID: 21201142}
   m_Layer: 0
-  m_Name: WaterGodray
+  m_Name: DistantIsland
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81b35c869bf714c21b06cda6da2c8473, type: 2}
+  - {fileID: 2100000, guid: e8a4b7430e9c6416abefac87ff1530eb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -52,8 +52,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 38213f55ff4e541f9aeeee54864f29d7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: .615999997}
+  m_Sprite: {fileID: 21300000, guid: 88bc5348566f5483392c0e606037ec39, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -76,7 +76,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 38213f55ff4e541f9aeeee54864f29d7,
+      objectReference: {fileID: 21300000, guid: 88bc5348566f5483392c0e606037ec39,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
@@ -93,11 +93,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 81b35c869bf714c21b06cda6da2c8473, type: 2}
-    - target: {fileID: 0}
-      propertyPath: m_Color.a
-      value: .615999997
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: e8a4b7430e9c6416abefac87ff1530eb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113514}

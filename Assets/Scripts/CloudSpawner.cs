@@ -36,9 +36,22 @@ public class CloudSpawner : MonoBehaviour
     static Dictionary<GameObject, Stack<GameObject>> _Pool = new Dictionary<GameObject, Stack<GameObject>>();
 
 
-
-    void Update()
+    void Awake()
     {
+        _VisibleRect = GetCurrentRect();
+        for (int x = _VisibleRect.MinX; x < _VisibleRect.MaxX; x++)
+        {
+            for (int y = _VisibleRect.MinY; y < _VisibleRect.MaxY; y++)
+            {
+                CoordVisible(x, y);
+            }
+        }
+    }
+
+
+    IntRect GetCurrentRect()
+    {
+
         Vector3 centerPoint = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)).GetPoint(LayerDepth);
         float frustumHeight = 2.0f * LayerDepth * Mathf.Tan((float)(Camera.main.fieldOfView * 0.5 * Mathf.Deg2Rad));
         float frustumWidth = frustumHeight * Camera.main.aspect;
@@ -56,6 +69,13 @@ public class CloudSpawner : MonoBehaviour
         newVisible.MinY = Mathf.RoundToInt(GridSize * minY - 0.5f);
         newVisible.MaxX = Mathf.RoundToInt(GridSize * maxX + 0.5f);
         newVisible.MaxY = Mathf.RoundToInt(GridSize * maxY + 0.5f);
+
+        return newVisible;
+    }
+
+    void Update()
+    {
+        IntRect newVisible = GetCurrentRect();
 
         int xDeltaSign = Mathf.Abs(newVisible.MinX - _VisibleRect.MinX);
         if (xDeltaSign != 0)
