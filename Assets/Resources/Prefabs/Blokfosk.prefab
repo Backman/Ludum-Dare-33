@@ -1056,9 +1056,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -2.77296495, y: .386480302}
+  m_Offset: {x: -2.77296495, y: -.504090309}
   serializedVersion: 2
-  m_Size: {x: 4.54113579, y: 6.17831182}
+  m_Size: {x: 4.54113579, y: 10.334301}
 --- !u!61 &6180232
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1069,9 +1069,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 2.77296495, y: .386480331}
+  m_Offset: {x: 2.77296495, y: -.459560394}
   serializedVersion: 2
-  m_Size: {x: 4.54113579, y: 6.1783123}
+  m_Size: {x: 4.54113579, y: 10.4233532}
 --- !u!114 &11403280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 162304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d98d77a25c614a94b25ff3c91b6fafc, type: 3}
+  m_Script: {fileID: 11500000, guid: a9998666a4743417db94a11056aebbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TentacleSettings:
