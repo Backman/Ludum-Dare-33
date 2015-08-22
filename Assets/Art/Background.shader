@@ -40,7 +40,7 @@
             }
             fixed4 frag(fragmentInput i) : SV_Target {
 
-//float wave = pow(2,sin(i.pos.x )) + sin(i.pos.y )* 2;
+//float wave = pow(2,sin(i.pos.x + _Time.y )) + sin(i.pos.y )* 2;
 float wave = 0;
             
             float2 skyCoords = float2(i.pos.x, i.pos.y + wave);
