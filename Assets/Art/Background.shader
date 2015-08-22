@@ -50,12 +50,44 @@ float wave = 0;
             float4 sky = tex2D(_SkyTex, TRANSFORM_TEX(skyCoords, _SkyTex));
             float4 c = lerp(bg, sky, (i.pos.y + wave)> 0 ? 1 : 0);
             float sealine = 1 - abs(i.pos.y + wave) * _SealineSize;
-            c.rgb = lerp(c.rgb, sealine, saturate(sealine));
+            c.rgb = lerp(c.rgb, float3(0.8,0.8,0.9), saturate(sealine));
             //c.rgb += sealine.xxx;
             //return float4(i.pos.xy, 0, 1);
                 return float4(c.rgb, 1);
             }
             ENDCG
         }
+        Pass {
+            Stencil {
+                Ref 2
+                Comp always
+                Pass replace
+            }
+            ZWrite Off
+            ColorMask 0
+        
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            struct appdata {
+                float4 vertex : POSITION;
+            };
+            struct v2f {
+                float4 pos : SV_POSITION;
+                float4 position : TEXCOORD0;
+            };
+            v2f vert(appdata v) {
+                v2f o;
+                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.position = mul(_Object2World, v.vertex);
+                return o;
+            }
+            half4 frag(v2f i) : SV_Target {
+                  clip(i.position.y );
+                return half4(1,0,0,1);
+            }
+            ENDCG
+        }
+        
     }
 }
