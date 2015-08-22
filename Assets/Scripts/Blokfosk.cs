@@ -2,11 +2,26 @@
 using System.Collections;
 
 [System.Serializable]
-public class TentacleData
+public class UnderWaterData
 {
 	public float TentacleSpeed = 20f;
-	public float WaterSinkSpeed = 15f;
-	public float AirSinkSpeed = 25f;
+	public float TentacleSinkSpeed = 15f;
+	public float RotationSpeed = 2f;
+}
+
+[System.Serializable]
+public class AirData
+{
+	public float TentacleSpeed = 20f;
+	public float TentacleFallSpeed = 25f;
+	public float RotationSpeed = 2f;
+}
+
+[System.Serializable]
+public class TentacleData
+{
+	public UnderWaterData UnderWater;
+	public AirData InAir;
 }
 
 public class Blokfosk : MonoBehaviour
@@ -18,17 +33,18 @@ public class Blokfosk : MonoBehaviour
 	private const string LeftStickVertical = "LeftStickY";
 
 	public TentacleData TentacleSettings;
+	public GameObject Body;
 	public Tentacle LeftTentacle;
 	public Tentacle RightTentacle;
 
-	public BoxCollider2D LeftTentacleBounds;
-	public BoxCollider2D RightTentacleBounds;
+	public CircleCollider2D LeftTentacleBounds;
+	public CircleCollider2D RightTentacleBounds;
 
-	private Rigidbody2D _rb;
+	public bool InAir { get; set; }
 
 	private void Awake ()
 	{
-		_rb = GetComponent<Rigidbody2D> ();
+		
 	}
 
 	private void Start ()
@@ -41,49 +57,48 @@ public class Blokfosk : MonoBehaviour
 		var rightStick = GetJoystickAxis (RightStickHorizontal, RightStickVertical);
 		var leftStick = GetJoystickAxis (LeftStickHorizontal, LeftStickVertical);
 
-		MoveTentacle (LeftTentacle, leftStick);
-		MoveTentacle (RightTentacle, rightStick);
+//		rightStick = Body.transform.InverseTransformDirection (new Vector3 (rightStick.x, rightStick.y));
+//		leftStick = Body.transform.InverseTransformDirection (new Vector3 (leftStick.x, leftStick.y));
 
+		TentacleInput (LeftTentacle, leftStick);
+		TentacleInput (RightTentacle, rightStick);
 
-		ConstraintTargetPositions ();
+		ApplyTentacleConstraint (LeftTentacle, LeftTentacleBounds);
+		ApplyTentacleConstraint (RightTentacle, RightTentacleBounds);
+
+		var diff = LeftTentacle.Target.position - RightTentacle.Target.position;
+		
+
+		var angle = Vector3.Angle (LeftTentacle.Target.position, RightTentacle.Target.position);
+
+		var leftDiff = Body.transform.position - LeftTentacle.Target.position;
+		var rightDiff = Body.transform.position - RightTentacle.Target.position;
+
+		var speed = InAir ? TentacleSettings.InAir.RotationSpeed : TentacleSettings.UnderWater.RotationSpeed;
+		Body.transform.Rotate (0f, 0f, angle * speed * Time.deltaTime);
 	}
 
-	private void MoveTentacle (Tentacle tentacle, Vector2 axis)
+	private void TentacleInput (Tentacle tentacle, Vector2 input)
 	{
-		var move = axis;
+		var tentacleSpeed = InAir ? TentacleSettings.InAir.TentacleSpeed : TentacleSettings.UnderWater.TentacleSpeed;
 
-		var tentacleSpeed = TentacleSettings.TentacleSpeed;
-
-		if (move.sqrMagnitude <= 0f) {
-			move = Vector2.down;
-			tentacleSpeed = TentacleSettings.WaterSinkSpeed;
+		if (input.sqrMagnitude <= 0f) {
+			input = Vector2.down;
+			tentacleSpeed = InAir ? TentacleSettings.InAir.TentacleFallSpeed : TentacleSettings.UnderWater.TentacleSinkSpeed;
 		}
 
-		tentacle.MoveTarget (move * tentacleSpeed * Time.deltaTime);
+		tentacle.MoveTarget (input * tentacleSpeed * Time.deltaTime);
 	}
 
-	private void ConstraintTargetPositions ()
+	private void ApplyTentacleConstraint (Tentacle tentacle, CircleCollider2D collider)
 	{
-		var leftBounds = LeftTentacleBounds.bounds;
-		var rightBounds = RightTentacleBounds.bounds;
+		var center = collider.bounds.center;
+		var radius = collider.radius;
 
-		if (!leftBounds.Contains (LeftTentacle.Target.position)) {
-			var closestPoint = leftBounds.ClosestPoint (LeftTentacle.Target.position);
-			LeftTentacle.SetTarget (closestPoint);
-
-			//			_rb.AddTorque (10f, ForceMode2D.Impulse);
-
-		}
-
-		if (!rightBounds.Contains (RightTentacle.Target.position)) {
-			var closestPoint = rightBounds.ClosestPoint (RightTentacle.Target.position);
-
-			var delta = RightTentacle.Target.position - rightBounds.min;
-			if (delta.x < 0f) {
-				_rb.AddTorque (-3f, ForceMode2D.Force);
-			}
-
-			RightTentacle.SetTarget (closestPoint);
+		var delta = tentacle.Target.position - center;
+		if (delta.sqrMagnitude >= radius * radius) {
+			
+			tentacle.SetTarget (center + delta.normalized * radius);
 		}
 	}
 
