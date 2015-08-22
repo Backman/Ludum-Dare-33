@@ -6,7 +6,7 @@ public class UnderWaterData
 {
 	public float TentacleSpeed = 20f;
 	public float TentacleSinkSpeed = 15f;
-	public float RotationSpeed = 2f;
+	public float RotationSpeed = 45f;
 }
 
 [System.Serializable]
@@ -14,7 +14,7 @@ public class AirData
 {
 	public float TentacleSpeed = 20f;
 	public float TentacleFallSpeed = 25f;
-	public float RotationSpeed = 2f;
+	public float RotationSpeed = 50f;
 }
 
 [System.Serializable]
@@ -22,6 +22,15 @@ public class TentacleData
 {
 	public UnderWaterData UnderWater;
 	public AirData InAir;
+}
+
+[System.Serializable]
+public class VelocitySettings
+{
+	public float Tolerence = 0.5f;
+	public float DecaySpeed = 2f;
+	[Range (0.0f, 1.0f)]
+	public float SplashDecay = 0.5f;
 }
 
 public class Blokfosk : MonoBehaviour
@@ -49,24 +58,32 @@ public class Blokfosk : MonoBehaviour
 	private const string LeftRotationButton = "LeftRotation_WIN";
 	private const string RightRotationButton = "RightRotation_WIN";
 	#endif
+	public ShakeSettings HypeShake;
 
 	public TentacleData TentacleSettings;
+	public VelocitySettings VelocitySettings;
+
+
 	public Tentacle LeftTentacle;
 	public Tentacle RightTentacle;
 
-	public ShakeSettings HypeShake;
 
 	public CircleCollider2D TargetBounds;
 
+	public AnimationCurve HypeCurve;
 	public float MaxHype = 5f;
 	public float HypeBuildUp = 1f;
+
 
 	public bool InAir { get; set; }
 
 	private Rigidbody2D _rb;
 
 	private bool _isHyping;
-	[SerializeField]
+	private bool _inAir;
+	private bool _decayVelocity;
+	private bool _prevInAir;
+	private bool _hypeMode;
 	private float _currentHype;
 
 	private FollowCamera _followCamera;
@@ -88,26 +105,52 @@ public class Blokfosk : MonoBehaviour
 		var rightStick = GetJoystickAxis (RightStickHorizontal, RightStickVertical);
 		var leftStick = GetJoystickAxis (LeftStickHorizontal, LeftStickVertical);
 
-//		rightStick = Body.transform.InverseTransformDirection (new Vector3 (rightStick.x, rightStick.y));
-//		leftStick = Body.transform.InverseTransformDirection (new Vector3 (leftStick.x, leftStick.y));
-
 		TentacleInput (LeftTentacle, leftStick);
 		TentacleInput (RightTentacle, rightStick);
 
 		ApplyTentacleConstraint (LeftTentacle);
 		ApplyTentacleConstraint (RightTentacle);
 
-//		ApplyRotation ();
-
 		HypeInput ();
 
 		_followCamera.SetTarget (_rb.position, _rb.velocity);
 
 		if (_isHyping) {
-			_followCamera.UpdateShake (_hypeShakeID, _currentHype, Vector2.zero);
+			_currentHype = Mathf.Clamp (_currentHype, 0f, MaxHype);
+			_followCamera.UpdateShake (_hypeShakeID, HypeCurve.Evaluate (_currentHype / MaxHype), Vector2.zero);
 		} else {
 			_followCamera.UpdateShake (_hypeShakeID, 0f, Vector2.zero);
 		}
+
+		InAir = transform.position.y > 0f;
+
+		if (InAir) {
+			AirRotation ();
+		}
+
+		if (_hypeMode && InAir) {
+			_rb.gravityScale = 1f;
+		} else if (_hypeMode && !InAir && _prevInAir) {
+			_rb.velocity *= VelocitySettings.SplashDecay;
+			_decayVelocity = true;
+		}
+
+		if (_decayVelocity) {
+			var xVel = _rb.velocity.x;
+			var yVel = _rb.velocity.y;
+
+			_rb.velocity = Vector2.Lerp (_rb.velocity, Vector2.zero, VelocitySettings.DecaySpeed * Time.deltaTime);
+
+			_rb.gravityScale = 0f;
+
+			if (_rb.velocity.magnitude <= VelocitySettings.Tolerence) {
+				_rb.velocity = Vector2.zero;
+				_hypeMode = false;
+				_decayVelocity = false;
+			}
+		}
+
+		_prevInAir = InAir;
 	}
 
 	private void FixedUpdate ()
@@ -115,6 +158,13 @@ public class Blokfosk : MonoBehaviour
 		if (_isHyping) {
 			_rb.MovePosition (_rb.position + Vector2.down * 2f * Time.deltaTime);
 		}
+
+//		if (_inAir) {
+//			var dir = _rb.velocity;
+//			var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
+//			var q = Quaternion.AngleAxis (angle, Vector3.forward);
+//			transform.rotation = q;
+//		}
 	}
 
 	private void TentacleInput (Tentacle tentacle, Vector2 input)
@@ -141,22 +191,12 @@ public class Blokfosk : MonoBehaviour
 		}
 	}
 
-	private void ApplyRotation ()
-	{
-		var diff = LeftTentacle.Target.position - RightTentacle.Target.position;
-
-
-		var angle = Vector3.Angle (LeftTentacle.Target.position, RightTentacle.Target.position);
-
-		var leftDiff = transform.position - LeftTentacle.Target.position;
-		var rightDiff = transform.position - RightTentacle.Target.position;
-
-		var speed = InAir ? TentacleSettings.InAir.RotationSpeed : TentacleSettings.UnderWater.RotationSpeed;
-		transform.Rotate (0f, 0f, angle * speed * Time.deltaTime);
-	}
-
 	private void HypeInput ()
 	{
+		if (_hypeMode) {
+			return;
+		}
+
 		var hypeDown = Input.GetButton (HypeButton);
 		if (hypeDown) {
 			_isHyping = true;
@@ -174,18 +214,52 @@ public class Blokfosk : MonoBehaviour
 
 	private void BuildHype ()
 	{
-		Debug.Log ("HYPE BUILDUP");
-		RotationInput ();
+		if (_currentHype <= 0f) {
+			StartCoroutine (RotateUp ());
+		}
+
+		HypeRotation ();
 		_currentHype += HypeBuildUp * Time.deltaTime;
 	}
 
-	private void RotationInput ()
+	private IEnumerator RotateUp ()
 	{
-		var leftRot = Input.GetButton (LeftRotationButton);
-		var rightRot = Input.GetButton (RightRotationButton);
+		var t = 0f;
+		var totalT = 1f;
+		while (t <= totalT) {
+			_rb.rotation = Mathf.LerpAngle (_rb.rotation, 0f, t / totalT);
 
-		var rot = InAir ? TentacleSettings.InAir.RotationSpeed : TentacleSettings.UnderWater.RotationSpeed;
-		rot *= Time.deltaTime;
+			t += Time.deltaTime;
+			yield return null;
+		}
+	}
+
+	private void RotationInput (out bool leftRot, out bool rightRot)
+	{
+		leftRot = Input.GetButton (LeftRotationButton);
+		rightRot = Input.GetButton (RightRotationButton);
+	}
+
+	private void AirRotation ()
+	{
+		bool leftRot, rightRot;
+		RotationInput (out leftRot, out rightRot);
+
+		var rot = TentacleSettings.InAir.RotationSpeed * Time.deltaTime;
+
+		if (leftRot) {
+			_rb.rotation += rot;
+		} else if (rightRot) {
+			_rb.rotation -= rot;
+		}
+	}
+
+	private void HypeRotation ()
+	{
+		bool leftRot, rightRot;
+		RotationInput (out leftRot, out rightRot);
+
+		var rot = TentacleSettings.UnderWater.RotationSpeed * Time.deltaTime;
 
 		if (leftRot) {
 			_rb.rotation += rot;
@@ -194,16 +268,14 @@ public class Blokfosk : MonoBehaviour
 		}
 
 		_rb.rotation = Mathf.Clamp (_rb.rotation, -50f, 50f);
-		Debug.LogFormat ("Rotation {0}", _rb.rotation);
 	}
 
 	private void MLGHype ()
 	{
 		// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
-		Debug.LogFormat ("HYPEEEE: {0}/{1}", _currentHype, MaxHype);
-		_rb.AddForce (transform.up * _currentHype * 100f);
+		_rb.velocity = transform.up * (_currentHype / MaxHype) * 25f;
 		_currentHype = 0f;
-		_rb.gravityScale = 1f;
+		_hypeMode = true;
 	}
 
 	private Vector2 GetJoystickAxis (string horizontal, string vertical)

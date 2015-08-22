@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41483a0dab78a46dfb06c9d6329aea11, type: 3}
-  m_Name: New Shake Settings
+  m_Script: {fileID: 11500000, guid: 023d61f61a64a4ac28f4c1dbd87f5d78, type: 3}
+  m_Name: Hyper Shake Settings
   m_EditorClassIdentifier:
   X:
     serializedVersion: 2
@@ -19,20 +19,20 @@ MonoBehaviour:
       inSlope: -11.8672256
       outSlope: -11.8672256
       tangentMode: 0
-    - time: .099999994
+    - time: .049999997
       value: -1
       inSlope: 1.07750297
       outSlope: 1.07750297
       tangentMode: 0
-    - time: .209999993
-      value: 1
+    - time: .099999994
+      value: .949999988
       inSlope: 2
       outSlope: 2
       tangentMode: 0
-    - time: .299999982
+    - time: .149999991
       value: 0
-      inSlope: -8.89037323
-      outSlope: -8.89037323
+      inSlope: -25.7373238
+      outSlope: -25.7373238
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 1
@@ -44,45 +44,40 @@ MonoBehaviour:
       inSlope: -11.8672256
       outSlope: -11.8672256
       tangentMode: 0
-    - time: .0486340299
-      value: -1.57193291
-      inSlope: 5.63897228
-      outSlope: 5.63897228
-      tangentMode: 0
-    - time: .099999994
-      value: 1
-      inSlope: 1.07750297
-      outSlope: 1.07750297
-      tangentMode: 0
-    - time: .125
-      value: -1.0999999
+    - time: .0242828317
+      value: .900959551
       inSlope: 2
       outSlope: 2
       tangentMode: 0
-    - time: .158306807
-      value: 1.25654984
-      inSlope: 11.6011505
-      outSlope: 11.6011505
+    - time: .0542626642
+      value: -.947690189
+      inSlope: 1.07750297
+      outSlope: 1.07750297
       tangentMode: 0
-    - time: .182843119
-      value: -.99955678
+    - time: .0644410774
+      value: .882827282
+      inSlope: 6.69270754
+      outSlope: 6.69270754
+      tangentMode: 0
+    - time: .086434342
+      value: -.664037049
       inSlope: -8.89037323
       outSlope: -8.89037323
+      tangentMode: 0
+    - time: .0978709459
+      value: .474682212
+      inSlope: -1.87426805
+      outSlope: -1.87426805
+      tangentMode: 0
+    - time: .121631593
+      value: -.218980998
+      inSlope: 5.55023575
+      outSlope: 5.55023575
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 1
   Lifetime:
     serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
