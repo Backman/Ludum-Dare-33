@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FGCreatures
-  m_Shader: {fileID: 4800000, guid: bc9ce2b6108f84180a5f47ef0dbb89cf, type: 3}
+  m_Name: block_2
+  m_Shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: e027ed3fd2ae8d049924b9ba5c2c59c4, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -140,11 +140,3 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _BlinkColor
-        second: {r: .963235319, g: .927822232, b: .927822232, a: 0}
-      data:
-        first:
-          name: _SeaTint
-        second: {r: .329779416, g: .549861014, b: .897000015, a: 1}

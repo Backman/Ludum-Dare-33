@@ -156,6 +156,23 @@ public class EnemySpawner : MonoBehaviour
         _SpawnAccumulator -= spawn.SpawnValue;
     }
 
+    public void ReturnSpawnValue(GameObject obj)
+    {
+        for (int i = 0; i < Settings.Spawns.Length; i++)
+        {
+            var spawn = Settings.Spawns[i];
+            for (int j = 0; j < spawn.Variations.Length; j++)
+            {
+                var variation = spawn.Variations[j];
+                if (variation == obj)
+                {
+                    _SpawnAccumulator += spawn.SpawnValue;
+                    break;
+                }
+            }
+        }
+    }
+
     public void Despawn(GameObject obj)
     {
         var enemy = obj.GetComponent<Enemy>();
