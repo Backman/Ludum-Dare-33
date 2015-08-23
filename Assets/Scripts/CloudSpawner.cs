@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+
+public struct IntRect
+{
+    public int MinX;
+    public int MinY;
+    public int MaxX;
+    public int MaxY;
+}
+
 public class CloudSpawner : MonoBehaviour
 {
     struct CloudState
@@ -8,14 +17,6 @@ public class CloudSpawner : MonoBehaviour
         public GameObject Obj;
         public int X;
         public int Y;
-    }
-
-    struct IntRect
-    {
-        public int MinX;
-        public int MinY;
-        public int MaxX;
-        public int MaxY;
     }
 
     IntRect _VisibleRect;
@@ -38,7 +39,7 @@ public class CloudSpawner : MonoBehaviour
 
     void Awake()
     {
-        _VisibleRect = GetCurrentRect();
+        _VisibleRect = GetCurrentRect(LayerDepth, GridSize);
         for (int x = _VisibleRect.MinX; x < _VisibleRect.MaxX; x++)
         {
             for (int y = _VisibleRect.MinY; y < _VisibleRect.MaxY; y++)
@@ -49,32 +50,29 @@ public class CloudSpawner : MonoBehaviour
     }
 
 
-    IntRect GetCurrentRect()
+    public static IntRect GetCurrentRect(float layerDepth, float gridSize)
     {
-        Vector3 centerPoint = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)).GetPoint(LayerDepth);
-        float frustumHeight = 2.0f * (LayerDepth - Camera.main.transform.position.z) * Mathf.Tan((float)(Camera.main.fieldOfView * 0.5 * Mathf.Deg2Rad));
+        Vector3 centerPoint = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)).GetPoint(layerDepth);
+        float frustumHeight = 2.0f * (layerDepth - Camera.main.transform.position.z) * Mathf.Tan((float)(Camera.main.fieldOfView * 0.5 * Mathf.Deg2Rad));
         float frustumWidth = frustumHeight * Camera.main.aspect;
         float minX = centerPoint.x - frustumWidth;
         float maxX = centerPoint.x + frustumWidth;
         float minY = centerPoint.y - frustumHeight;
         float maxY = centerPoint.y + frustumHeight;
-        //        Debug.Log(frustumWidth + " h " + frustumHeight);
-        //Debug.Log("minX" + minX + "maxX" + maxX + "minY" + minY + " maxY" + maxY);
-        //Debug.Log(centerPoint);
 
 
         IntRect newVisible;
-        newVisible.MinX = Mathf.RoundToInt(GridSize * minX - 0.5f);
-        newVisible.MinY = Mathf.RoundToInt(GridSize * minY - 0.5f);
-        newVisible.MaxX = Mathf.RoundToInt(GridSize * maxX + 0.5f);
-        newVisible.MaxY = Mathf.RoundToInt(GridSize * maxY + 0.5f);
+        newVisible.MinX = Mathf.RoundToInt(gridSize * minX - 0.5f);
+        newVisible.MinY = Mathf.RoundToInt(gridSize * minY - 0.5f);
+        newVisible.MaxX = Mathf.RoundToInt(gridSize * maxX + 0.5f);
+        newVisible.MaxY = Mathf.RoundToInt(gridSize * maxY + 0.5f);
 
         return newVisible;
     }
 
     void Update()
     {
-        IntRect newVisible = GetCurrentRect();
+        IntRect newVisible = GetCurrentRect(LayerDepth, GridSize);
 
         int xDeltaSign = Mathf.Abs(newVisible.MinX - _VisibleRect.MinX);
         if (xDeltaSign != 0)
