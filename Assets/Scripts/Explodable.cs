@@ -4,9 +4,10 @@ using System.Collections;
 
 public class Explodable : MonoBehaviour
 {
-	public GameObject Explosion;
+	public GameObject[] Explosions;
+
 	public AudioClip ExplodeClip;
-    public EnemySpawner Spawner;
+	public EnemySpawner Spawner;
 
 	public void Explode (Transform t)
 	{
@@ -24,10 +25,13 @@ public class Explodable : MonoBehaviour
 			Music.PlayClipAtPoint (ExplodeClip, pos, Music.instance.sfxv);
 		}
 
-		Instantiate (Explosion, pos, rotation);
-        if (Spawner != null)
-            Spawner.Despawn (gameObject);
-        else
-            Destroy(gameObject);
+		for (int i = 0; i < Explosions.Length; i++) {
+			Instantiate (Explosions [i], pos, rotation);
+		}
+
+		if (Spawner != null)
+			Spawner.Despawn (gameObject);
+		else
+			Destroy (gameObject);
 	}
 }

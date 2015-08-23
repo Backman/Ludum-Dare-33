@@ -41,6 +41,10 @@ public class Projectile : MonoBehaviour
 
 	private void TryDoDamage (Collider2D collider)
 	{
+		if (collider == null) {
+			return;
+		}
+
 		var blok = collider.GetComponent<Blokfosk> ();
 		if (blok) {
 			blok.TakeDamage (Damage);

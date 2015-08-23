@@ -172,6 +172,8 @@ public class Blokfosk : MonoBehaviour
 
 	public Hype Hype;
 
+	public GameObject InkParticle;
+
 	public TentacleData TentacleSettings;
 	public VelocitySettings VelocitySettings;
 
@@ -226,7 +228,7 @@ public class Blokfosk : MonoBehaviour
 
 		Health = Mathf.Clamp (Health, 0, MaxHealth);
 
-		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 25f - _rb.velocity.magnitude / 3F , 0);
+		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 20f - _rb.velocity.magnitude / 3f, 0);
 
 		HypeInput ();
 		Hype.Update ();
@@ -340,6 +342,9 @@ public class Blokfosk : MonoBehaviour
 			var rot = new Vector2 (forward.x, forward.y);
 			_rb.velocity += rot.normalized * InkBoost;
 			_usedInkBoost = true;
+			if (InkParticle) {
+				Instantiate (InkParticle, transform.position, transform.rotation);
+			}
 		}
 	}
 
@@ -411,6 +416,7 @@ public class Blokfosk : MonoBehaviour
 		Hype.ResetHype ();
 		Hype.InHypeMode = true;
 		_animator.SetBool ("HypeMode", Hype.InHypeMode);
+		Instantiate (InkParticle, transform.position, transform.rotation);
 	}
 
 	private Vector2 GetJoystickAxis (string horizontal, string vertical)
@@ -421,13 +427,12 @@ public class Blokfosk : MonoBehaviour
 		return new Vector2 (x, y);
 	}
 
-    void WaterSurfaceEnter(object obj)
-    {
-        var velocity = _rb.velocity;
-        if(velocity.magnitude > 1f)
-        {
-            WaterSurface surface = obj as WaterSurface;
-            surface.DoSplash(gameObject, transform.position);
-        }
-    }
+	void WaterSurfaceEnter (object obj)
+	{
+		var velocity = _rb.velocity;
+		if (velocity.magnitude > 1f) {
+			WaterSurface surface = obj as WaterSurface;
+			surface.DoSplash (gameObject, transform.position);
+		}
+	}
 }

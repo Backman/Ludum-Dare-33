@@ -10,6 +10,8 @@ public abstract class Enemy : MonoBehaviour
 	public float MovementSpeed = 2f;
 	public int Score = 5;
 
+	public GameObject Explosion;
+
 	public Vector2 AttackIntervall;
 
 	public AudioClip OnHitClip;
