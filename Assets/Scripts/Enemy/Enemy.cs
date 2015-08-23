@@ -66,7 +66,7 @@ public abstract class Enemy : MonoBehaviour
 			if (_LastVisibleTime + 5f < Time.time || distance > 30f) {
 				var explode = GetComponent<Explodable> ();
 				if (explode) {
-					explode.Spawner.ReturnSpawnValue (gameObject);
+					explode.Spawner.ReturnSpawnValue (FromPrefab);
 					explode.Spawner.Despawn (gameObject);
 				}
 			}

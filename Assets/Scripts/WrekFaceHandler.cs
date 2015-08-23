@@ -22,7 +22,6 @@ public class WrekFaceHandler : MonoBehaviour
 	void Awake ()
 	{
 		GameLogic.Instance.OnRekFace += OnRekFace;
-
 	}
 
 	void OnRekFace (GameObject obj)
