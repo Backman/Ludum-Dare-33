@@ -102,7 +102,7 @@ public class Hype
 	}
 }
 
-public class Blokfosk : MonoBehaviour
+public static class InputManager
 {
 	#if UNITY_STANDALONE_OSX
 	private const string RightStickHorizontal = "RightStickX";
@@ -113,8 +113,8 @@ public class Blokfosk : MonoBehaviour
 
 	private const string HypeButton = "Hype";
 
-	private const string LeftRotationButton = "LeftRotation";
-	private const string RightRotationButton = "RightRotation";
+	private const string LeftTriggerButton = "LeftTrigger";
+	private const string RightTriggerButton = "RightTrigger";
 	#elif UNITY_STANDALONE_WIN
 	private const string RightStickHorizontal = "RightStickX_WIN";
 	private const string RightStickVertical = "RightStickY_WIN";
@@ -124,9 +124,48 @@ public class Blokfosk : MonoBehaviour
 
 	private const string HypeButton = "Hype_WIN";
 
-	private const string LeftRotationButton = "LeftRotation_WIN";
-	private const string RightRotationButton = "RightRotation_WIN";
+	private const string LeftTriggerButton = "LeftTrigger_WIN";
+	private const string RightTriggerButton = "RightTrigger_WIN";
 	#endif
+
+	public static Vector2 GetLeftJoystick ()
+	{
+		var x = Input.GetAxisRaw (LeftStickHorizontal);
+		var y = Input.GetAxisRaw (LeftStickVertical);
+
+		return new Vector2 (x, y);
+	}
+
+	public static Vector2 GetRightJoystick ()
+	{
+
+		var x = Input.GetAxisRaw (RightStickHorizontal);
+		var y = Input.GetAxisRaw (RightStickVertical);
+
+		return new Vector2 (x, y);
+	}
+
+	public static bool LeftRotation ()
+	{
+		return Input.GetButton (LeftTriggerButton);
+	}
+
+	public static bool RightRotation ()
+	{
+		return Input.GetButton (RightTriggerButton);
+	}
+
+	public static bool GetTriggers ()
+	{
+		var left = Input.GetButton (LeftTriggerButton);
+		var right = Input.GetButton (RightTriggerButton);
+		return left && right;
+	}
+}
+
+public class Blokfosk : MonoBehaviour
+{
+
 
 	public static Blokfosk Instance;
 	public int MaxHealth = 100;
@@ -176,8 +215,8 @@ public class Blokfosk : MonoBehaviour
 
 	private void Update ()
 	{
-		var rightStick = GetJoystickAxis (RightStickHorizontal, RightStickVertical);
-		var leftStick = GetJoystickAxis (LeftStickHorizontal, LeftStickVertical);
+		var rightStick = InputManager.GetRightJoystick ();
+		var leftStick = InputManager.GetLeftJoystick ();
 
 		TentacleInput (LeftTentacle, leftStick);
 		TentacleInput (RightTentacle, rightStick);
@@ -218,15 +257,29 @@ public class Blokfosk : MonoBehaviour
 
 	public void TakeDamage (int amount)
 	{
+		StartCoroutine (PlayDamageAnimation ());
+
 		Health -= amount;
 		Health = Mathf.Min (0, MaxHealth);
 		GameLogic.Instance.OnBlokDamage.Invoke ();
 	}
 
+
 	public void Heal (int amount)
 	{
 		Health -= amount;
 		Health = Mathf.Min (0, MaxHealth);
+	}
+
+	private IEnumerator PlayDamageAnimation ()
+	{
+		if (_animator.GetBool ("TakeDamage")) {
+			yield break;
+		}
+
+		_animator.SetBool ("TakeDamage", true);
+		yield return new WaitForSeconds (0.2f);
+		_animator.SetBool ("TakeDamage", false);
 	}
 
 	private void HolyShitballs ()
@@ -280,8 +333,9 @@ public class Blokfosk : MonoBehaviour
 			return;
 		}
 
-		var button = Input.GetButtonDown (HypeButton);
-		if (button) {
+		var boost = InputManager.GetTriggers ();
+
+		if (boost) {
 			var forward = transform.up;
 			var rot = new Vector2 (forward.x, forward.y);
 			_rb.velocity += rot.normalized * InkBoost;
@@ -307,7 +361,7 @@ public class Blokfosk : MonoBehaviour
 			return;
 		}
 
-		var hypeDown = Input.GetButton (HypeButton);
+		var hypeDown = InputManager.GetTriggers ();
 
 		if (!Hype.IsHyping && hypeDown) {
 			_animator.SetTrigger ("Hyping");
@@ -322,8 +376,12 @@ public class Blokfosk : MonoBehaviour
 
 	private void ApplyRotation ()
 	{
-		var leftRot = Input.GetButton (LeftRotationButton);
-		var rightRot = Input.GetButton (RightRotationButton);
+		if (Hype.IsHyping) {
+			return;
+		}
+
+		var leftRot = InputManager.LeftRotation ();
+		var rightRot = InputManager.RightRotation ();
 
 		var air = TentacleSettings.InAir;
 		var water = TentacleSettings.UnderWater;

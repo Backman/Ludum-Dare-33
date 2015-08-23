@@ -80,11 +80,11 @@ public abstract class Enemy : MonoBehaviour
 			if (!IsHit) {
 				GameLogic.Instance.AddScore (Score);
 			}
+			var tentaclePos = new Vector2 (collider.transform.position.x, collider.transform.position.y);
+			TentacleHit (_rb.position - tentaclePos);
 
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			IsHit = true;
-			var tentaclePos = new Vector2 (collider.transform.position.x, collider.transform.position.y);
-			TentacleHit (_rb.position - tentaclePos);
 		}
 	}
 
