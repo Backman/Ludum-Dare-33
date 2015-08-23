@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 	public float TimeAlive = 2f;
 	public float MovementSpeed = 1f;
 	public float ExplosionRadius = 1f;
+	public float Damage = 5f;
 
 	public Vector2 Direction { get; set; }
 

@@ -4,7 +4,7 @@ using System.Collections;
 [CreateAssetMenu]
 public class EnemySet : ScriptableObject
 {
-	public EnemyFlying AirEnemy;
-	public EnemyBoat ShipEnemy;
-	public EnemySubmarine SubmarineEnemy;
+	public EnemyFlying[] AirEnemies;
+	public EnemyBoat[] ShipEnemies;
+	public EnemySubmarine[] SubmarineEnemies;
 }

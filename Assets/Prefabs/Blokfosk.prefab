@@ -290,6 +290,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 483586}
+  - 95: {fileID: 9569102}
   - 212: {fileID: 21292464}
   m_Layer: 0
   m_Name: Body
@@ -1175,7 +1176,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117850}
-  m_LocalRotation: {x: 0, y: 0, z: -.235887855, w: .9717803}
+  m_LocalRotation: {x: 0, y: 0, z: .00152434059, w: .999998927}
   m_LocalPosition: {x: .550000012, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1213,7 +1214,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173704}
-  m_LocalRotation: {x: 0, y: 0, z: .00228163786, w: .999997437}
+  m_LocalRotation: {x: 0, y: 0, z: .00314502441, w: .999995053}
   m_LocalPosition: {x: -.5, y: -.600000024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1251,7 +1252,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148300}
-  m_LocalRotation: {x: 0, y: 0, z: -.181913868, w: .983314514}
+  m_LocalRotation: {x: 0, y: 0, z: -.000128849962, w: 1}
   m_LocalPosition: {x: .550000012, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1370,7 +1371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160930}
   m_LocalRotation: {x: 0, y: 0, z: -.0356042162, w: .999365985}
-  m_LocalPosition: {x: -2.91000009, y: 2.1400001, z: 0}
+  m_LocalPosition: {x: -4.86000013, y: .0500000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 402950}
@@ -1436,7 +1437,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130052}
-  m_LocalRotation: {x: 0, y: 0, z: -.758526802, w: .651641905}
+  m_LocalRotation: {x: 0, y: 0, z: -.999526262, w: -.0307774972}
   m_LocalPosition: {x: 1.20000005, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1484,7 +1485,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183002}
-  m_LocalRotation: {x: 0, y: 0, z: .982619882, w: -.185629383}
+  m_LocalRotation: {x: 0, y: 0, z: .999761045, w: -.0218606424}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1510,7 +1511,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199880}
-  m_LocalRotation: {x: 0, y: 0, z: -.142690197, w: .989767432}
+  m_LocalRotation: {x: 0, y: 0, z: -.00116085622, w: .999999344}
   m_LocalPosition: {x: .550000012, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1757,7 +1758,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114640}
-  m_LocalRotation: {x: 0, y: 0, z: -.161208764, w: .986920357}
+  m_LocalRotation: {x: 0, y: 0, z: -.0705425814, w: .997508824}
   m_LocalPosition: {x: .550000012, y: -.100000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1783,7 +1784,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185692}
-  m_LocalRotation: {x: 0, y: 0, z: -.111441277, w: .993771017}
+  m_LocalRotation: {x: 0, y: 0, z: -.0185972527, w: .999827027}
   m_LocalPosition: {x: .550000012, y: -.0199999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1855,7 +1856,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108186}
-  m_LocalRotation: {x: 0, y: 0, z: -.0940995812, w: .995562851}
+  m_LocalRotation: {x: 0, y: 0, z: .0622329004, w: .998061717}
   m_LocalPosition: {x: .550000012, y: -.0299999993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2996,6 +2997,23 @@ BoxCollider2D:
   m_Offset: {x: 2.38418579e-07, y: -5.96046448e-07}
   serializedVersion: 2
   m_Size: {x: .700000346, y: .710000336}
+--- !u!95 &9569102
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125686}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01a96b66786c94702a624076c248f141, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage:
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11403280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3007,6 +3025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9829f1ae2ae542f2b3bbeed6ba0f3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 100
   Hype:
     HypeShake: {fileID: 11400000, guid: c583e3edc88a24966aa10eef23518069, type: 2}
     Curve:
@@ -3017,8 +3036,8 @@ MonoBehaviour:
         inSlope: 2
         outSlope: 2
         tangentMode: 0
-      - time: 1
-        value: 1
+      - time: 1.001634
+        value: .501672268
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3027,7 +3046,8 @@ MonoBehaviour:
     BaseVelocity: 10
     MaxHype: 100
     HypeBuildUpSpeed: 25
-    HypeBoost: 50
+    HypeBoost: 30
+    PushDown: 6
   TentacleSettings:
     UnderWater:
       TentacleSpeed: 50
@@ -3038,23 +3058,18 @@ MonoBehaviour:
       TentacleFallSpeed: 30
       RotationSpeed: 270
   VelocitySettings:
+    MaxVelocity: 30
     Tolerence: 10
     DecaySpeed: 2
+    BobThreshold: -2
     SplashDecay: .5
+    ApplySplashDecayThreshold: 10
   LeftTentacle: {fileID: 11473830}
   RightTentacle: {fileID: 11435872}
   ResetRotationSpeed: 180
+  InkBoost: 20
   TargetBounds: {fileID: 5896236}
-  OnLand:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnHypeReleased:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  RotationThreshold: {x: -45, y: 45}
 --- !u!114 &11435872
 MonoBehaviour:
   m_ObjectHideFlags: 1
