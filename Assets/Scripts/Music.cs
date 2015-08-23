@@ -23,16 +23,23 @@ public class Music : MonoBehaviour {
 	void Update () {
 		Songs [1].volume = transition * Musicvolume;
 		Songs [0].volume =(1- transition) * Musicvolume;
+		Songs [2].volume = transition * Musicvolume;
+
 
 
 		if (Player.Hype.IsHyping) {
+			if(!Songs[2].isPlaying){
+			Songs[2].Play();
+			}
 			//Songs[0].volume = (1 - Player.Hype.NormalizedHype) * Musicvolume;
 			//Songs[1].volume = Player.Hype.NormalizedHype * Musicvolume;
 			transition += fadespeed *Time.deltaTime;
 	
 		}
 		if (!Player.Hype.IsHyping) {
-
+			if(Songs[2].isPlaying && Songs[2].volume == 0f){
+				Songs[2].Stop();
+			}
 			transition -= 10*fadespeed *Time.deltaTime;
 			//Songs[0].volume = Musicvolume;
 			//Songs[1].volume = 0;
