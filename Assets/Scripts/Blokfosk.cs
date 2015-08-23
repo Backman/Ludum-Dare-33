@@ -33,6 +33,64 @@ public class VelocitySettings
 	public float SplashDecay = 0.5f;
 }
 
+[System.Serializable]
+public class Hype
+{
+	public ShakeSettings HypeShake;
+	public AnimationCurve Curve;
+	public float BaseVelocity = 25f;
+	public float MaxHype = 100f;
+	public float HypeBuildUpSpeed = 25f;
+	public float HypeBoost = 100f;
+
+	[HideInInspector]
+	public bool CanHype = true;
+
+	private FollowCamera.ShakeID _hypeShakeID;
+
+	public FollowCamera HypeCamera { get; set; }
+
+	public float CurrentHype { get; set; }
+
+	public bool IsHyping { get; set; }
+
+	public bool InHypeMode { get; set; }
+
+	public float NormalizedHype {
+		get { return CurrentHype / MaxHype; }
+	}
+
+	public void Update ()
+	{
+		if (IsHyping) {
+			CurrentHype = Mathf.Clamp (CurrentHype, 0f, MaxHype);
+			HypeCamera.UpdateShake (_hypeShakeID, Curve.Evaluate (NormalizedHype), Vector2.zero);
+		} else {
+			HypeCamera.UpdateShake (_hypeShakeID, 0f, Vector2.zero);
+		}
+
+		if (IsHyping) {
+			DoBuildUp ();
+		}
+	}
+
+	public void AddShakeCamera (FollowCamera followCamera)
+	{
+		HypeCamera = followCamera;
+		_hypeShakeID = HypeCamera.AddShake (HypeShake, 0f, Vector2.zero);
+	}
+
+	public void DoBuildUp ()
+	{
+		CurrentHype += HypeBuildUpSpeed * Time.deltaTime;
+	}
+
+	public void ResetHype ()
+	{
+		CurrentHype = 0f;
+	}
+}
+
 public class Blokfosk : MonoBehaviour
 {
 	#if UNITY_STANDALONE_OSX
@@ -53,41 +111,32 @@ public class Blokfosk : MonoBehaviour
 	private const string LeftStickHorizontal = "LeftStickX_WIN";
 	private const string LeftStickVertical = "LeftStickX_WIN";
 
-	private const string HypeButton = "Fire1";
+	private const string HypeButton = "Hype_WIN";
 
 	private const string LeftRotationButton = "LeftRotation_WIN";
 	private const string RightRotationButton = "RightRotation_WIN";
 	#endif
-	public ShakeSettings HypeShake;
+
+	public Hype Hype;
 
 	public TentacleData TentacleSettings;
 	public VelocitySettings VelocitySettings;
 
-
 	public Tentacle LeftTentacle;
 	public Tentacle RightTentacle;
 
+	public float ResetRotationSpeed = 10f;
 
 	public CircleCollider2D TargetBounds;
-
-	public AnimationCurve HypeCurve;
-	public float MaxHype = 5f;
-	public float HypeBuildUp = 1f;
-
 
 	public bool InAir { get; set; }
 
 	private Rigidbody2D _rb;
 
-	private bool _isHyping;
-	private bool _inAir;
-	private bool _decayVelocity;
-	private bool _prevInAir;
-	private bool _hypeMode;
-	private float _currentHype;
-
 	private FollowCamera _followCamera;
-	private FollowCamera.ShakeID _hypeShakeID;
+	
+	private bool _inAir;
+	private bool _prevInAir;
 
 	private void Awake ()
 	{
@@ -97,7 +146,7 @@ public class Blokfosk : MonoBehaviour
 	private void Start ()
 	{
 		_followCamera = Camera.main.GetComponent<FollowCamera> ();
-		_hypeShakeID = _followCamera.AddShake (HypeShake, 0f, Vector2.zero);
+		Hype.AddShakeCamera (_followCamera);
 	}
 
 	private void Update ()
@@ -111,43 +160,29 @@ public class Blokfosk : MonoBehaviour
 		ApplyTentacleConstraint (LeftTentacle);
 		ApplyTentacleConstraint (RightTentacle);
 
-		HypeInput ();
+		InAir = transform.position.y > 0f;
 
 		_followCamera.SetTarget (_rb.position, _rb.velocity);
 
-		if (_isHyping) {
-			_currentHype = Mathf.Clamp (_currentHype, 0f, MaxHype);
-			_followCamera.UpdateShake (_hypeShakeID, HypeCurve.Evaluate (_currentHype / MaxHype), Vector2.zero);
-		} else {
-			_followCamera.UpdateShake (_hypeShakeID, 0f, Vector2.zero);
+		HypeInput ();
+		Hype.Update ();
+
+		if (!InAir && !Hype.IsHyping && Hype.InHypeMode) {
+			if (_rb.velocity.magnitude <= VelocitySettings.Tolerence) {
+				Hype.CanHype = true;
+			}
 		}
 
-		InAir = transform.position.y > 0f;
+		ApplyRotation ();
 
-		if (InAir) {
-			AirRotation ();
-		}
-
-		if (_hypeMode && InAir) {
+		if (Hype.InHypeMode && InAir) {
 			_rb.gravityScale = 1f;
-		} else if (_hypeMode && !InAir && _prevInAir) {
+		} else if (Hype.InHypeMode && !InAir && _prevInAir) {
 			_rb.velocity *= VelocitySettings.SplashDecay;
-			_decayVelocity = true;
-		}
-
-		if (_decayVelocity) {
-			var xVel = _rb.velocity.x;
-			var yVel = _rb.velocity.y;
-
+			_rb.gravityScale = 0.1f;
+		} else if (!InAir) {
 			_rb.velocity = Vector2.Lerp (_rb.velocity, Vector2.zero, VelocitySettings.DecaySpeed * Time.deltaTime);
 
-			_rb.gravityScale = 0f;
-
-			if (_rb.velocity.magnitude <= VelocitySettings.Tolerence) {
-				_rb.velocity = Vector2.zero;
-				_hypeMode = false;
-				_decayVelocity = false;
-			}
 		}
 
 		_prevInAir = InAir;
@@ -155,7 +190,7 @@ public class Blokfosk : MonoBehaviour
 
 	private void FixedUpdate ()
 	{
-		if (_isHyping) {
+		if (Hype.IsHyping) {
 			_rb.MovePosition (_rb.position + Vector2.down * 2f * Time.deltaTime);
 		}
 
@@ -193,89 +228,54 @@ public class Blokfosk : MonoBehaviour
 
 	private void HypeInput ()
 	{
-		if (_hypeMode) {
+		if (!Hype.CanHype) {
 			return;
 		}
 
-		var hypeDown = Input.GetButton (HypeButton);
+		var hypeDown = Input.GetAxisRaw (HypeButton) > 0.1f;
 		if (hypeDown) {
-			_isHyping = true;
+			Hype.IsHyping = true;
 		}
 
-		if (!hypeDown && _isHyping) {
-			_isHyping = false;
+		if (!hypeDown && Hype.IsHyping) {
+			Hype.CanHype = false;
+			Hype.IsHyping = false;
 			MLGHype ();
 		}
-
-		if (_isHyping) {
-			BuildHype ();
-		}
 	}
 
-	private void BuildHype ()
+	private void ApplyRotation ()
 	{
-		if (_currentHype <= 0f) {
-			StartCoroutine (RotateUp ());
-		}
+		var leftRot = Input.GetButton (LeftRotationButton);
+		var rightRot = Input.GetButton (RightRotationButton);
+	
+		var air = TentacleSettings.InAir;
+		var water = TentacleSettings.UnderWater;
 
-		HypeRotation ();
-		_currentHype += HypeBuildUp * Time.deltaTime;
-	}
-
-	private IEnumerator RotateUp ()
-	{
-		var t = 0f;
-		var totalT = 1f;
-		while (t <= totalT) {
-			_rb.rotation = Mathf.LerpAngle (_rb.rotation, 0f, t / totalT);
-
-			t += Time.deltaTime;
-			yield return null;
-		}
-	}
-
-	private void RotationInput (out bool leftRot, out bool rightRot)
-	{
-		leftRot = Input.GetButton (LeftRotationButton);
-		rightRot = Input.GetButton (RightRotationButton);
-	}
-
-	private void AirRotation ()
-	{
-		bool leftRot, rightRot;
-		RotationInput (out leftRot, out rightRot);
-
-		var rot = TentacleSettings.InAir.RotationSpeed * Time.deltaTime;
+		var rot = InAir ? air.RotationSpeed : water.RotationSpeed;
+		rot *= Time.deltaTime;
 
 		if (leftRot) {
 			_rb.rotation += rot;
 		} else if (rightRot) {
 			_rb.rotation -= rot;
-		}
-	}
-
-	private void HypeRotation ()
-	{
-		bool leftRot, rightRot;
-		RotationInput (out leftRot, out rightRot);
-
-		var rot = TentacleSettings.UnderWater.RotationSpeed * Time.deltaTime;
-
-		if (leftRot) {
-			_rb.rotation += rot;
-		} else if (rightRot) {
-			_rb.rotation -= rot;
+		} else if (!InAir && !Hype.IsHyping && !Hype.InHypeMode) {
+			_rb.rotation = Mathf.MoveTowardsAngle (_rb.rotation, 0f, ResetRotationSpeed * Time.deltaTime);
 		}
 
-		_rb.rotation = Mathf.Clamp (_rb.rotation, -50f, 50f);
+		if (!InAir && (leftRot || rightRot)) {
+			_rb.rotation = Mathf.Clamp (_rb.rotation, -80f, 80f);
+		}
 	}
 
 	private void MLGHype ()
 	{
 		// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
-		_rb.velocity = transform.up * (_currentHype / MaxHype) * 25f;
-		_currentHype = 0f;
-		_hypeMode = true;
+		var hype = Hype.BaseVelocity + (Hype.NormalizedHype * Hype.HypeBoost);
+
+		_rb.velocity = transform.up * hype;
+		Hype.ResetHype ();
+		Hype.InHypeMode = true;
 	}
 
 	private Vector2 GetJoystickAxis (string horizontal, string vertical)
