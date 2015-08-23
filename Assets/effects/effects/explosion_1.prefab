@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 450692}
   - 198: {fileID: 19856868}
   - 199: {fileID: 19929894}
+  - 114: {fileID: 11404830}
   m_Layer: 0
   m_Name: explosion_1
   m_TagString: Untagged
@@ -59,6 +60,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 450692}
   m_RootOrder: 0
+--- !u!114 &11404830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0324fd5da1289461e861e6abc27d41fe, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!198 &19856868
 ParticleSystem:
   m_ObjectHideFlags: 1

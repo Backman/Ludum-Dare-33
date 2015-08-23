@@ -55,7 +55,7 @@ MonoBehaviour:
     HasMinY: 0
     MovementSpeedRange: {x: .5, y: 1.20000005}
     ScaleRange: {x: 2, y: 2}
-  SpawnSpeed: 3
+  SpawnSpeed: 5
   IntensityCurve:
     serializedVersion: 2
     m_Curve:

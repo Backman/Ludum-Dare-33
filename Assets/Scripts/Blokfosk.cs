@@ -90,10 +90,6 @@ public class Hype
 	{
 		CurrentHype += HypeBuildUpSpeed * Time.deltaTime;
 		CurrentHype = Mathf.Min (CurrentHype, MaxHype);
-
-		if (CurrentHype >= MaxHype) {
-			Debug.Log ("MAX HAJP!!!");
-		}
 	}
 
 	public void ResetHype ()
