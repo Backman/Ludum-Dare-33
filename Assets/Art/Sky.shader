@@ -46,9 +46,11 @@
 float wave = 0;
             
 
-            float2 skyCoords = float2(fmod(i.pos.x, 1), i.pos.y + wave);
+            float2 skyCoords = float2(i.pos.x, i.pos.y + wave);
+            skyCoords = TRANSFORM_TEX(skyCoords, _SkyTex);
+            skyCoords.x = frac(skyCoords.x);
 
-            float4 sky = tex2D(_SkyTex, TRANSFORM_TEX(skyCoords, _SkyTex));
+            float4 sky = tex2D(_SkyTex, skyCoords);
             float4 c = sky;
             //c.rgb = lerp(c.rgb, float3(0.8,0.8,0.9), sealine > 0 ? 1 : 0);
                 return float4(c.rgb, 1);
