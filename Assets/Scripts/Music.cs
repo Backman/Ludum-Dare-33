@@ -40,6 +40,7 @@ public class Music : MonoBehaviour {
 			if(Songs[2].isPlaying && Songs[2].volume == 0f){
 				Songs[2].Stop();
 			}
+		
 			transition -= 10*fadespeed *Time.deltaTime;
 			//Songs[0].volume = Musicvolume;
 			//Songs[1].volume = 0;
