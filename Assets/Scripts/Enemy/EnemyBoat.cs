@@ -8,23 +8,33 @@ public class EnemyBoat : Enemy
 		base.Update ();
 		if (IsHit && transform.position.y < -0.1f) {
 			Explode ();
-        }
+		}
 	}
 
-    void WaterSurfaceEnter(object obj)
-    {
-        WaterSurface surface = obj as WaterSurface;
+	protected override void OnTriggerEnter2D (Collider2D collider)
+	{
+		base.OnTriggerEnter2D (collider);
+
+		var flying = collider.GetComponent<EnemyFlying> ();
+		if (flying && flying.IsHit) {
+			GameLogic.Instance.OnRekFace.Invoke (gameObject);
+			var dir = flying.transform.position - transform.position;
+			Hit (dir);
+		}
+	}
+
+	void WaterSurfaceEnter (object obj)
+	{
+		WaterSurface surface = obj as WaterSurface;
 		if (IsHit) {
 			Explode ();
-            surface.DoSplash(gameObject, transform.position);
+			surface.DoSplash (gameObject, transform.position);
 		}
-    }
+	}
 
 	protected override void TentacleHit (Vector2 dir)
 	{
-		_rb.AddForce (dir.normalized * 5f, ForceMode2D.Impulse);
-		_rb.AddTorque (360f, ForceMode2D.Impulse);
-		_rb.gravityScale = 1f;
+		Hit (dir);
 	}
 
 	public override void FireAlternative ()

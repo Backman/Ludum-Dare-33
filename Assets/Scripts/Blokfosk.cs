@@ -259,7 +259,10 @@ public class Blokfosk : MonoBehaviour
 
 		Health -= amount;
 		Health = Mathf.Min (0, MaxHealth);
-		GameLogic.Instance.OnBlokDamage.Invoke ();
+		var onDamage = GameLogic.Instance.OnBlokDamage;
+		if (onDamage != null) {
+			onDamage.Invoke ();
+		}
 	}
 
 

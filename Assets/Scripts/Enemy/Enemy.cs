@@ -62,7 +62,8 @@ public abstract class Enemy : MonoBehaviour
 		if (renderer.isVisible) {
 			_LastVisibleTime = Time.time;
 		} else {
-			if (_LastVisibleTime + 10f < Time.time) {
+			float distance = Vector2.Distance (transform.position, Blokfosk.Instance.transform.position);
+			if (_LastVisibleTime + 5f < Time.time || distance > 30f) {
 				var explode = GetComponent<Explodable> ();
 				if (explode) {
 					explode.Spawner.ReturnSpawnValue (gameObject);
@@ -72,22 +73,31 @@ public abstract class Enemy : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter2D (Collider2D collider)
+	protected virtual void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.tag == "Blokfosk_Tentacle") {
 			if (OnHitClip) {
-				Music.PlayClipAtPoint (OnHitClip, transform.position,  Music.instance.sfxv);
+				Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv);
 			}
 
 			if (!IsHit) {
 				GameLogic.Instance.AddScore (Score);
 			}
+
 			var tentaclePos = new Vector2 (collider.transform.position.x, collider.transform.position.y);
 			TentacleHit (_rb.position - tentaclePos);
 
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			IsHit = true;
 		}
+	}
+
+	protected virtual void Hit (Vector2 dir)
+	{
+		IsHit = true;
+		_rb.AddForce (dir.normalized * 5f, ForceMode2D.Impulse);
+		_rb.AddTorque (360f, ForceMode2D.Impulse);
+		_rb.gravityScale = 1f;
 	}
 
 	protected virtual void TentacleHit (Vector2 dir)

@@ -31,8 +31,8 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
-	public UnityEvent OnScoreChanged = new UnityEvent();
-	public UnityEvent OnBlokDamage = new UnityEvent();
+	public System.Action OnScoreChanged;
+	public System.Action OnBlokDamage;
 	public System.Action<GameObject> OnRekFace;
 
 	private int _score;
@@ -59,7 +59,9 @@ public class GameLogic : MonoBehaviour
 		}
 
 		_score = newScore;
-		OnScoreChanged.Invoke ();
+		if (OnScoreChanged != null) {
+			OnScoreChanged.Invoke ();
+		}
 	}
 
 	public void AddScore (int value)

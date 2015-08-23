@@ -55,35 +55,45 @@ MonoBehaviour:
     HasMinY: 0
     MovementSpeedRange: {x: .5, y: 1.20000005}
     ScaleRange: {x: 2, y: 2}
-  SpawnSpeed: 5
+  SpawnSpeed: 8
   IntensityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: -.00107642589
-      value: .567839146
+    - time: 0
+      value: 2.9000001
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: .135633647
-      value: .00486779213
+    - time: .0600000024
+      value: 1
       inSlope: -.00298023224
       outSlope: -.00298023224
       tangentMode: 0
-    - time: .29907161
-      value: .87670958
+    - time: .209999993
+      value: .300000012
       inSlope: 1.63093209
       outSlope: 1.63093209
       tangentMode: 0
-    - time: .427392602
-      value: .190630496
+    - time: .399999976
+      value: .900000036
       inSlope: 1.13099813
       outSlope: 1.13099813
       tangentMode: 0
-    - time: 1
-      value: 1.00502515
+    - time: .607162297
+      value: .125504911
+      inSlope: .336766243
+      outSlope: .336766243
+      tangentMode: 0
+    - time: .779999971
+      value: .900000036
+      inSlope: 3.27646732
+      outSlope: 3.27646732
+      tangentMode: 0
+    - time: .959999979
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 1
   IntensityPeriod: 20
