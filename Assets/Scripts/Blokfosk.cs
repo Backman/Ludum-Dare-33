@@ -128,7 +128,7 @@ public class Blokfosk : MonoBehaviour
 	private const string RightRotationButton = "RightRotation_WIN";
 	#endif
 
-  public static Blokfosk Instance;
+	public static Blokfosk Instance;
 	public int MaxHealth = 100;
 
 	public Hype Hype;
@@ -164,7 +164,7 @@ public class Blokfosk : MonoBehaviour
 	private void Awake ()
 	{
 		_rb = GetComponent<Rigidbody2D> ();
-    Instance = this;
+		Instance = this;
 		_animator = GetComponentInChildren<Animator> ();
 	}
 
@@ -220,6 +220,7 @@ public class Blokfosk : MonoBehaviour
 	{
 		Health -= amount;
 		Health = Mathf.Min (0, MaxHealth);
+		GameLogic.Instance.OnBlokDamage.Invoke ();
 	}
 
 	public void Heal (int amount)
@@ -362,16 +363,15 @@ public class Blokfosk : MonoBehaviour
 		return new Vector2 (x, y);
 	}
 
-    void WaterSurfaceEnter(object obj)
-    {
-        var velocity = _rb.velocity;
-        if(velocity.y > 0 && velocity.magnitude > 1f)
-        {
+	void WaterSurfaceEnter (object obj)
+	{
+		var velocity = _rb.velocity;
+		if (velocity.y > 0 && velocity.magnitude > 1f) {
 
 
-            WaterSurface surface = obj as WaterSurface;
-            surface.DoSplash(gameObject, transform.position);
+			WaterSurface surface = obj as WaterSurface;
+			surface.DoSplash (gameObject, transform.position);
 
-        }
-    }
+		}
+	}
 }

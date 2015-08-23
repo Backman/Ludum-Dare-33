@@ -31,8 +31,16 @@ public class Projectile : MonoBehaviour
 		_rb.position += Direction * MovementSpeed * Time.deltaTime;
 	}
 
-    void WaterSurfaceEnter()
-    {
-        GetComponent<Explodable> ().Explode (transform.position);
-    }
+	private void OnTriggerEnter2D (Collider2D other)
+	{
+		var blok = other.GetComponent<Blokfosk> ();
+		if (blok) {
+			blok.TakeDamage (Damage);
+		}
+	}
+
+	void WaterSurfaceEnter ()
+	{
+		GetComponent<Explodable> ().Explode (transform.position);
+	}
 }
