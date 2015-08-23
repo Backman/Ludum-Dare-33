@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 [System.Serializable]
@@ -42,9 +43,6 @@ public class Hype
 	public float MaxHype = 100f;
 	public float HypeBuildUpSpeed = 25f;
 	public float HypeBoost = 100f;
-
-	[HideInInspector]
-	public bool CanHype = true;
 
 	private FollowCamera.ShakeID _hypeShakeID;
 
@@ -129,6 +127,10 @@ public class Blokfosk : MonoBehaviour
 
 	public CircleCollider2D TargetBounds;
 
+	public UnityEvent OnLand;
+	public UnityEvent OnHypeReleased;
+
+
 	public bool InAir { get; set; }
 
 	private Rigidbody2D _rb;
@@ -167,23 +169,24 @@ public class Blokfosk : MonoBehaviour
 		HypeInput ();
 		Hype.Update ();
 
+		ApplyRotation ();
+
+		if (InAir) {
+			_rb.gravityScale = 1f;
+		} else if (Hype.InHypeMode && !InAir && _prevInAir) {
+			OnLand.Invoke ();
+			_rb.velocity *= VelocitySettings.SplashDecay;
+		} else if (!InAir) {
+			_rb.velocity = Vector2.Lerp (_rb.velocity, Vector2.zero, VelocitySettings.DecaySpeed * Time.deltaTime);
+			_rb.gravityScale = 0.1f;
+		}
+
 		if (!InAir && !Hype.IsHyping && Hype.InHypeMode) {
 			if (_rb.velocity.magnitude <= VelocitySettings.Tolerence) {
-				Hype.CanHype = true;
+				Hype.InHypeMode = false;
 			}
 		}
 
-		ApplyRotation ();
-
-		if (Hype.InHypeMode && InAir) {
-			_rb.gravityScale = 1f;
-		} else if (Hype.InHypeMode && !InAir && _prevInAir) {
-			_rb.velocity *= VelocitySettings.SplashDecay;
-			_rb.gravityScale = 0.1f;
-		} else if (!InAir) {
-			_rb.velocity = Vector2.Lerp (_rb.velocity, Vector2.zero, VelocitySettings.DecaySpeed * Time.deltaTime);
-
-		}
 
 		_prevInAir = InAir;
 	}
@@ -228,7 +231,7 @@ public class Blokfosk : MonoBehaviour
 
 	private void HypeInput ()
 	{
-		if (!Hype.CanHype) {
+		if (Hype.InHypeMode) {
 			return;
 		}
 
@@ -238,7 +241,6 @@ public class Blokfosk : MonoBehaviour
 		}
 
 		if (!hypeDown && Hype.IsHyping) {
-			Hype.CanHype = false;
 			Hype.IsHyping = false;
 			MLGHype ();
 		}
@@ -272,6 +274,7 @@ public class Blokfosk : MonoBehaviour
 	{
 		// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
 		var hype = Hype.BaseVelocity + (Hype.NormalizedHype * Hype.HypeBoost);
+		OnHypeReleased.Invoke ();
 
 		_rb.velocity = transform.up * hype;
 		Hype.ResetHype ();
