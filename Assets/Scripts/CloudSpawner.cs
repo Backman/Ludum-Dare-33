@@ -33,6 +33,7 @@ public class CloudSpawner : MonoBehaviour
     public bool HasMaxY;
     public bool RandomizeX;
     public bool RandomizeY;
+    public Vector2 ScaleRange;
     List<CloudState> _Clouds = new List<CloudState>();
     static Dictionary<GameObject, Stack<GameObject>> _Pool = new Dictionary<GameObject, Stack<GameObject>>();
 
@@ -171,6 +172,8 @@ public class CloudSpawner : MonoBehaviour
                 go.transform.parent = this.transform;
                 go.SetActive(true);
                 go.transform.position = pos;
+                float scale = Mathf.Lerp(ScaleRange.x, ScaleRange.y, Mathf.PerlinNoise(pos.x, pos.y));
+                go.transform.localScale = Vector3.one * scale;
 
                 _Clouds.Add(new CloudState()
                 {

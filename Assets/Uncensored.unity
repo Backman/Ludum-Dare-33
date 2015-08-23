@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: 0a87a8dfa9fde4bf29339207e6b3882c, type: 2}
   LayerDepth: 30
-  GridSize: 1
+  GridSize: 4
 --- !u!4 &101355366
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +285,7 @@ MonoBehaviour:
   HasMaxY: 0
   RandomizeX: 0
   RandomizeY: 0
+  ScaleRange: {x: 0, y: 0}
 --- !u!4 &220402492
 Transform:
   m_ObjectHideFlags: 0
@@ -338,6 +339,7 @@ MonoBehaviour:
   HasMaxY: 0
   RandomizeX: 1
   RandomizeY: 1
+  ScaleRange: {x: 1, y: 1}
 --- !u!4 &431808605
 Transform:
   m_ObjectHideFlags: 0
@@ -426,15 +428,16 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 181488, guid: 6f457885c02ed4fa690b6ca09fa5e56d, type: 2}
   LayerDepth: 30
-  SpawnThreshold: .699999988
+  SpawnThreshold: .800000012
   NoiseResolution: .0350000001
-  GridSize: .400000006
+  GridSize: 3
   MinY: -1
   HasMinY: 0
   MaxY: 1
   HasMaxY: 1
   RandomizeX: 1
   RandomizeY: 1
+  ScaleRange: {x: 1, y: 1}
 --- !u!4 &675562220
 Transform:
   m_ObjectHideFlags: 0
@@ -486,6 +489,7 @@ MonoBehaviour:
   HasMaxY: 1
   RandomizeX: 1
   RandomizeY: 0
+  ScaleRange: {x: 0, y: 0}
 --- !u!4 &834642037
 Transform:
   m_ObjectHideFlags: 0
@@ -589,16 +593,17 @@ MonoBehaviour:
   - {fileID: 113514, guid: ac86e26d3ae53467f88aa137729bbfce, type: 2}
   - {fileID: 113514, guid: 3ecbd623540da45b4aaf3843e42e51b4, type: 2}
   - {fileID: 113514, guid: a20931f1ad9e64ae187025005e82ab40, type: 2}
-  LayerDepth: 55
+  LayerDepth: 35
   SpawnThreshold: .850000024
   NoiseResolution: .0350000001
-  GridSize: .5
+  GridSize: .699999988
   MinY: -10
   HasMinY: 1
   MaxY: 1
   HasMaxY: 0
   RandomizeX: 1
   RandomizeY: 1
+  ScaleRange: {x: 1, y: 2}
 --- !u!4 &1168660569
 Transform:
   m_ObjectHideFlags: 0
@@ -606,7 +611,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1168660567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 11, z: -3}
+  m_LocalPosition: {x: -3, y: 11, z: 31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -652,6 +657,7 @@ MonoBehaviour:
   HasMaxY: 0
   RandomizeX: 1
   RandomizeY: 1
+  ScaleRange: {x: 1, y: 1}
 --- !u!4 &1330205196
 Transform:
   m_ObjectHideFlags: 0
@@ -807,6 +813,7 @@ MonoBehaviour:
   HasMaxY: 0
   RandomizeX: 1
   RandomizeY: 1
+  ScaleRange: {x: 1, y: 2}
 --- !u!4 &1474182822
 Transform:
   m_ObjectHideFlags: 0

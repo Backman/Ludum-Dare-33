@@ -78,8 +78,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (x != rect.MinX
                     && x != rect.MaxX - 1
-                    && y != minY
-                    && y != maxY - 1)
+                    && y != rect.MinY
+                    && y != rect.MaxY - 1)
                     continue;
                 if (IsSpawnValid(spawn, x, y) == false)
                     continue;
@@ -139,6 +139,7 @@ public class EnemySpawner : MonoBehaviour
         dir.y = 0f;
         enemy.Direction = dir.normalized;
         var scale = enemy.transform.localScale;
+        scale = Vector3.one * Random.Range(spawn.ScaleRange.x, spawn.ScaleRange.y);
         if (dir.x > 0)
         {
             scale.x = Mathf.Abs(scale.x);

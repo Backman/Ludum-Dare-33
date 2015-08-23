@@ -27,6 +27,7 @@ MonoBehaviour:
     MinY: 0
     HasMinY: 1
     MovementSpeedRange: {x: .800000012, y: 1.5}
+    ScaleRange: {x: 2, y: 2}
   - SpawnChance: 2
     SpawnValue: .699999988
     MinLevel: 0
@@ -40,6 +41,7 @@ MonoBehaviour:
     MinY: 6
     HasMinY: 1
     MovementSpeedRange: {x: 1.29999995, y: 3}
+    ScaleRange: {x: 2, y: 2}
   - SpawnChance: .200000003
     SpawnValue: 4
     MinLevel: 0
@@ -52,6 +54,7 @@ MonoBehaviour:
     MinY: 0
     HasMinY: 0
     MovementSpeedRange: {x: .5, y: 1.20000005}
+    ScaleRange: {x: 2, y: 2}
   SpawnSpeed: 1
   IntensityCurve:
     serializedVersion: 2

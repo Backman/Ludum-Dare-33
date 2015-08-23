@@ -19,6 +19,7 @@ public class EnemySpawnSettings : ScriptableObject
         public bool HasMinY;
 
         public Vector2 MovementSpeedRange;
+        public Vector2 ScaleRange;
     }
 
     public EnemySpawn[] Spawns;
