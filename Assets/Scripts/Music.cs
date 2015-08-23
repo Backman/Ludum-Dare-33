@@ -29,8 +29,9 @@ public class Music : MonoBehaviour {
 		Songs [2].volume = transition * Musicvolume;
 
 
+		float threshold = Player.VelocitySettings.BobThreshold;
 
-		if (Player.Hype.IsHyping) {
+		if (Player.transform.position.y < threshold -0.75f) {
 			if(!Songs[2].isPlaying){
 			Songs[2].Play();
 			}
@@ -39,7 +40,7 @@ public class Music : MonoBehaviour {
 			transition += fadespeed *Time.deltaTime;
 	
 		}
-		if (!Player.Hype.IsHyping) {
+		if (Player.transform.position.y > threshold -0.75f) {
 			if(Songs[2].isPlaying && Songs[2].volume == 0f){
 				Songs[2].Stop();
 			}
