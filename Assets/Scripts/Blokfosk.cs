@@ -43,9 +43,6 @@ public class Hype
 	public float HypeBuildUpSpeed = 25f;
 	public float HypeBoost = 100f;
 
-	[HideInInspector]
-	public bool CanHype = true;
-
 	private FollowCamera.ShakeID _hypeShakeID;
 
 	public FollowCamera HypeCamera { get; set; }
@@ -167,23 +164,23 @@ public class Blokfosk : MonoBehaviour
 		HypeInput ();
 		Hype.Update ();
 
-		if (!InAir && !Hype.IsHyping && Hype.InHypeMode) {
-			if (_rb.velocity.magnitude <= VelocitySettings.Tolerence) {
-				Hype.CanHype = true;
-			}
-		}
-
 		ApplyRotation ();
 
-		if (Hype.InHypeMode && InAir) {
+		if (InAir) {
 			_rb.gravityScale = 1f;
 		} else if (Hype.InHypeMode && !InAir && _prevInAir) {
 			_rb.velocity *= VelocitySettings.SplashDecay;
-			_rb.gravityScale = 0.1f;
 		} else if (!InAir) {
 			_rb.velocity = Vector2.Lerp (_rb.velocity, Vector2.zero, VelocitySettings.DecaySpeed * Time.deltaTime);
-
+			_rb.gravityScale = 0.1f;
 		}
+
+		if (!InAir && !Hype.IsHyping && Hype.InHypeMode) {
+			if (_rb.velocity.magnitude <= VelocitySettings.Tolerence) {
+				Hype.InHypeMode = false;
+			}
+		}
+
 
 		_prevInAir = InAir;
 	}
@@ -228,7 +225,7 @@ public class Blokfosk : MonoBehaviour
 
 	private void HypeInput ()
 	{
-		if (!Hype.CanHype) {
+		if (Hype.InHypeMode) {
 			return;
 		}
 
@@ -238,7 +235,6 @@ public class Blokfosk : MonoBehaviour
 		}
 
 		if (!hypeDown && Hype.IsHyping) {
-			Hype.CanHype = false;
 			Hype.IsHyping = false;
 			MLGHype ();
 		}

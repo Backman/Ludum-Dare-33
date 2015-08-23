@@ -2790,7 +2790,6 @@ MonoBehaviour:
     MaxHype: 100
     HypeBuildUpSpeed: 25
     HypeBoost: 50
-    CanHype: 1
   TentacleSettings:
     UnderWater:
       TentacleSpeed: 50
