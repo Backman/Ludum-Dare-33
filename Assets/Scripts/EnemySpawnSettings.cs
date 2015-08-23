@@ -22,4 +22,5 @@ public class EnemySpawnSettings : ScriptableObject
     public EnemySpawn[] Spawns;
     public float SpawnSpeed;
     public AnimationCurve IntensityCurve;
+    public float IntensityPeriod;
 }

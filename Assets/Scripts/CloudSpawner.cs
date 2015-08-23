@@ -161,9 +161,14 @@ public class CloudSpawner : MonoBehaviour
                 Stack<GameObject> objects;
                 GameObject go;
                 if (_Pool.TryGetValue(prefab, out objects) == false || objects.Count == 0)
+                {
                     go = GameObject.Instantiate(prefab) as GameObject;
+                }
                 else
+                {
                     go = objects.Pop();
+                }
+                go.transform.parent = this.transform;
                 go.SetActive(true);
                 go.transform.position = pos;
 

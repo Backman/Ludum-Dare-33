@@ -9,16 +9,16 @@ public class EnemySpawner : MonoBehaviour
 
 
     float _SpawnAccumulator;
-    List<EnemySpawnData> _SpawnedEnemies;
+    List<EnemySpawnData> _SpawnedEnemies = new List<EnemySpawnData>();
 
-    Dictionary<GameObject, Queue<GameObject>> _EnemyPool;
+    Dictionary<GameObject, Queue<GameObject>> _EnemyPool = new Dictionary<GameObject, Queue<GameObject>>();
 
     void Update()
     {
         IntRect currentRect = CloudSpawner.GetCurrentRect(LayerDepth, GridSize);
 
 
-        _SpawnAccumulator += Settings.SpawnSpeed * Settings.IntensityCurve.Evaluate(Time.time) * Time.deltaTime;
+        _SpawnAccumulator += Settings.SpawnSpeed * Settings.IntensityCurve.Evaluate(Time.time / Settings.IntensityPeriod) * Time.deltaTime;
         if (_SpawnAccumulator > 0)
         {
             float totalSpawnChance = 0;
@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
         //if(spawn.MinLevel >= _CurrentLevel && spawn.MaxLevel <= _CurrentLevel)
 
-        return (spawn.HasMinY == false || spawn.MinY >= rect.MinY) && (spawn.HasMaxY == false || spawn.MaxY <= rect.MaxY);
+        return (spawn.HasMinY == false || spawn.MinY <= rect.MaxY) && (spawn.HasMaxY == false || spawn.MaxY > rect.MinY);
     }
     struct SpawnCoords
     {
@@ -69,17 +69,17 @@ public class EnemySpawner : MonoBehaviour
         int minY = rect.MinY;
         if (spawn.HasMinY)
             minY = Mathf.Max(minY, spawn.MinY);
-        int maxY = rect.MinY;
+        int maxY = rect.MaxY;
         if (spawn.HasMaxY)
-            maxY = Mathf.Min(maxY, spawn.MaxY);
+            maxY = Mathf.Min(maxY, spawn.MaxY + 1);
         for (int x = rect.MinX; x < rect.MaxX; x++)
         {
             for (int y = minY; y < maxY; y++)
             {
                 if (x != rect.MinX
-                    && x != rect.MaxX
+                    && x != rect.MaxX - 1
                     && y != minY
-                    && y != maxY)
+                    && y != maxY - 1)
                     continue;
                 if (IsSpawnValid(x, y) == false)
                     continue;
@@ -128,6 +128,7 @@ public class EnemySpawner : MonoBehaviour
             transform.position = position;
             transform.rotation = Quaternion.identity;
         }
+        _SpawnAccumulator -= spawn.SpawnValue;
     }
 
     bool IsSpawnValid(int x, int y)

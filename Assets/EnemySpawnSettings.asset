@@ -8,22 +8,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: afe3cdf1a813b4b2fb78b997cde476e7, type: 3}
   m_Name: EnemySpawnSettings
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnSettings
   Spawns:
-  - SpawnChance: 0
-    SpawnValue: 0
+  - SpawnChance: 1
+    SpawnValue: 1
     MinLevel: 0
-    MaxLevel: 0
-    Variations: []
+    MaxLevel: 1
+    Variations:
+    - {fileID: 113514, guid: ecbc8cbcc511f4519a9eff87cac7d8fe, type: 2}
     MaxY: 0
-    HasMaxY: 0
+    HasMaxY: 1
     MinY: 0
-    HasMinY: 0
-  SpawnSpeed: 0
+    HasMinY: 1
+  SpawnSpeed: .200000003
   IntensityCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+  IntensityPeriod: 20
