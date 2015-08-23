@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 
@@ -53,6 +53,18 @@ public abstract class Enemy : MonoBehaviour
     {
         _LastVisibleTime = Time.time;
     }
+	private void OnTriggerEnter2D (Collider2D collider)
+	{
+		if (collider.tag == "Blokfosk_Tentacle") {
+			if (OnHitClip) {
+				AudioSource.PlayClipAtPoint (OnHitClip, transform.position, 0.5f * Music.instance.sfxv);
+
+			}
+			IsHit = true;
+			var tentaclePos = new Vector2 (collider.transform.position.x, collider.transform.position.y);
+			TentacleHit (_rb.position - tentaclePos);
+		}
+	}
 
     private void FixedUpdate()
     {

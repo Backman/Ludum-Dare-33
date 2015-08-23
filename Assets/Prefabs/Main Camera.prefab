@@ -336,6 +336,7 @@ MonoBehaviour:
   transition: 0
   Musicvolume: .330000013
   fadespeed: 2
+  sfxv: .529999971
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
