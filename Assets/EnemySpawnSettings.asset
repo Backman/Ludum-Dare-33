@@ -17,22 +17,67 @@ MonoBehaviour:
     MinLevel: 0
     MaxLevel: 1
     Variations:
-    - {fileID: 113514, guid: ecbc8cbcc511f4519a9eff87cac7d8fe, type: 2}
+    - {fileID: 137212, guid: 05320d3612c054533a954e04aa30ce4f, type: 2}
+    - {fileID: 137212, guid: 210e8af1238a14ad9bbd9ba885dab0a3, type: 2}
+    - {fileID: 137212, guid: 7901e946ce57943bc8961be3483e3902, type: 2}
+    - {fileID: 137212, guid: b5865d312f1f442a58aac7a93a94839f, type: 2}
+    - {fileID: 137212, guid: cb8e9ad12fca941bf8a6d19c9fa1552d, type: 2}
     MaxY: 0
     HasMaxY: 1
     MinY: 0
     HasMinY: 1
-  SpawnSpeed: .200000003
+    MovementSpeedRange: {x: .800000012, y: 1.5}
+  - SpawnChance: 2
+    SpawnValue: .699999988
+    MinLevel: 0
+    MaxLevel: 1
+    Variations:
+    - {fileID: 164296, guid: 94fea59312f4a4a5dace2400d2847df5, type: 2}
+    - {fileID: 168226, guid: 99276c0eed54741df839bda00cfc7007, type: 2}
+    - {fileID: 146268, guid: d0ea69c5ae0084208a08cb0b8ed1e35f, type: 2}
+    MaxY: 0
+    HasMaxY: 0
+    MinY: 2
+    HasMinY: 1
+    MovementSpeedRange: {x: 1.29999995, y: 3}
+  - SpawnChance: .200000003
+    SpawnValue: 4
+    MinLevel: 0
+    MaxLevel: 1
+    Variations:
+    - {fileID: 137212, guid: 2e619a3d977564862ad2c937a7ca141d, type: 2}
+    - {fileID: 137212, guid: 5b8124d00e9de4b4cb56f6caeb0e17f4, type: 2}
+    MaxY: -2
+    HasMaxY: 1
+    MinY: 0
+    HasMinY: 0
+    MovementSpeedRange: {x: .5, y: 1.20000005}
+  SpawnSpeed: 1
   IntensityCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
-      value: 0
+    - time: -.00107642589
+      value: .567839146
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+    - time: .135633647
+      value: .00486779213
+      inSlope: -.00298023224
+      outSlope: -.00298023224
+      tangentMode: 0
+    - time: .29907161
+      value: .87670958
+      inSlope: 1.63093209
+      outSlope: 1.63093209
+      tangentMode: 0
+    - time: .427392602
+      value: .190630496
+      inSlope: 1.13099813
+      outSlope: 1.13099813
+      tangentMode: 0
     - time: 1
-      value: 1
+      value: 1.00502515
       inSlope: 0
       outSlope: 0
       tangentMode: 0

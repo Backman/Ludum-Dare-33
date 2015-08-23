@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     float _SpawnAccumulator;
-    List<EnemySpawnData> _SpawnedEnemies = new List<EnemySpawnData>();
+    List<Enemy> _SpawnedEnemies = new List<Enemy>();
 
     Dictionary<GameObject, Queue<GameObject>> _EnemyPool = new Dictionary<GameObject, Queue<GameObject>>();
 
@@ -81,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
                     && y != minY
                     && y != maxY - 1)
                     continue;
-                if (IsSpawnValid(x, y) == false)
+                if (IsSpawnValid(spawn, x, y) == false)
                     continue;
                 validCoords.Add(new SpawnCoords()
                 {
@@ -123,16 +123,56 @@ public class EnemySpawner : MonoBehaviour
             rb.position = position;
             rb.rotation = 0f;
         }
-        else
+        if (transform != null)
         {
             transform.position = position;
             transform.rotation = Quaternion.identity;
         }
+        var enemy = obj.GetComponent<Enemy>();
+        enemy.FromPrefab = prefab;
+        var explodable = obj.GetComponent<Explodable>();
+        explodable.Spawner = this;
+        var foskPos = Blokfosk.Instance.transform.position;
+
+        var dir = (foskPos - position);
+        dir.z = 0f;
+        dir.y = 0f;
+        enemy.Direction = dir.normalized;
+        var scale = enemy.transform.localScale;
+        if (dir.x > 0)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+        else
+        {
+            scale.x = -Mathf.Abs(scale.x);
+        }
+        enemy.transform.localScale = scale;
+
+        enemy.MovementSpeed = Random.Range(spawn.MovementSpeedRange.x, spawn.MovementSpeedRange.y);
+
+        _SpawnedEnemies.Add(enemy);
         _SpawnAccumulator -= spawn.SpawnValue;
     }
 
-    bool IsSpawnValid(int x, int y)
+    public void Despawn(GameObject obj)
     {
+        var enemy = obj.GetComponent<Enemy>();
+
+        _SpawnedEnemies.RemoveAll(x => x == enemy);
+        Queue<GameObject> pool;
+        if (_EnemyPool.TryGetValue(enemy.FromPrefab, out pool) == false)
+            pool = _EnemyPool[enemy.FromPrefab] = new Queue<GameObject>();
+        pool.Enqueue(obj);
+        obj.SetActive(false);
+    }
+
+    bool IsSpawnValid(EnemySpawnSettings.EnemySpawn spawn, int x, int y)
+    {
+        if ((spawn.HasMinY && spawn.MinY < y) || (spawn.HasMaxY && spawn.MaxY > spawn.MaxY))
+        {
+            return false;
+        }
         for (int i = 0; i < _SpawnedEnemies.Count; i++)
         {
             var enemy = _SpawnedEnemies[i];

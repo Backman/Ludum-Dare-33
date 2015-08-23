@@ -6,6 +6,7 @@ public class Explodable : MonoBehaviour
 {
 	public GameObject Explosion;
 	public AudioClip ExplodeClip;
+    public EnemySpawner Spawner;
 
 	public void Explode (Transform t)
 	{
@@ -24,6 +25,9 @@ public class Explodable : MonoBehaviour
 		}
 
 		Instantiate (Explosion, pos, rotation);
-		Destroy (gameObject);
+        if (Spawner != null)
+            Spawner.Despawn (gameObject);
+        else
+            Destroy(gameObject);
 	}
 }

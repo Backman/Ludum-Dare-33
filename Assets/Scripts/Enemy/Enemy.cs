@@ -4,6 +4,8 @@ using System.Collections;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [System.NonSerialized]
+    public GameObject FromPrefab;
 	public GameObject ProjectilePrefab;
 	public float MovementSpeed = 2f;
 
@@ -27,7 +29,7 @@ public abstract class Enemy : MonoBehaviour
 		_rb = GetComponent<Rigidbody2D> ();
 		Direction = transform.right;
 		ResetAttackTimer ();
-		Blokfosk = FindObjectOfType<Blokfosk> ();
+		Blokfosk = Blokfosk.Instance;
 	}
 
 	protected virtual void Update ()

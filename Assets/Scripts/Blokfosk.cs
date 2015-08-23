@@ -115,6 +115,8 @@ public class Blokfosk : MonoBehaviour
 	private const string RightRotationButton = "RightRotation_WIN";
 	#endif
 
+    public static Blokfosk Instance;
+
 	public Hype Hype;
 
 	public TentacleData TentacleSettings;
@@ -143,6 +145,7 @@ public class Blokfosk : MonoBehaviour
 	private void Awake ()
 	{
 		_rb = GetComponent<Rigidbody2D> ();
+        Instance = this;
 	}
 
 	private void Start ()
