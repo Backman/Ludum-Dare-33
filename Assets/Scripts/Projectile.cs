@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
 	{
 		var blok = other.GetComponent<Blokfosk> ();
 		if (blok) {
-			blok.TakeDamage (Damage);
+			blok.TakeDamage ((int)Damage);
 		}
 	}
 

@@ -6,6 +6,9 @@ public class EnemyBoat : Enemy
 	protected override void Update ()
 	{
 		base.Update ();
+		if (IsHit && transform.position.y < -0.1f) {
+			Explode ();
+        }
 	}
 
     void WaterSurfaceEnter(object obj)
@@ -13,6 +16,7 @@ public class EnemyBoat : Enemy
         WaterSurface surface = obj as WaterSurface;
 		if (IsHit) {
 			Explode ();
+            surface.DoSplash(gameObject, transform.position);
 		}
     }
 

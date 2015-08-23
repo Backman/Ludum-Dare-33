@@ -31,9 +31,9 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
-	public UnityEvent OnScoreChanged;
-	public UnityEvent OnBlokDamage;
-	public UnityEvent OnRekFace;
+	public UnityEvent OnScoreChanged = new UnityEvent();
+	public UnityEvent OnBlokDamage = new UnityEvent();
+	public System.Action<GameObject> OnRekFace;
 
 	private int _score;
 	private Blokfosk _player;

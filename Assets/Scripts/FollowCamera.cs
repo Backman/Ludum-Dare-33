@@ -15,15 +15,25 @@ public class FollowCamera : MonoBehaviour
 	public float LerpModifier;
 
 	Vector2 _CurrentPos;
-	Vector2 _TargetPos;
-	Vector2 _TargetVelocity;
+	float _CurrentZ;
 	int _ShakeID;
 
+    struct TargetData
+    {
+        public Vector2 Pos;
+        public Vector2 Velocity;
+        public float Z;
+        public int Priority;
+    }
 	List<ActiveShakeData> _ActiveShakes = new List<ActiveShakeData> ();
+    List<TargetData> _Targets = new List<TargetData>();
 
 	void Update ()
 	{
-		Vector2 targetLookpos = _TargetPos + _TargetVelocity * Time.deltaTime;
+        _Targets.Sort((x, y) => -x.Priority.CompareTo(y.Priority));
+        TargetData target = _Targets.Count > 0 ? _Targets[0] : default(TargetData);
+        _Targets.Clear();
+		Vector2 targetLookpos = target.Pos + target.Velocity.normalized * Mathf.Min(1.5f, target.Velocity.magnitude / 3f);
 
 		Vector2 shakeAdd = Vector2.zero;
 
@@ -45,15 +55,22 @@ public class FollowCamera : MonoBehaviour
 			shakeAdd.x += settings.X.Evaluate (normalizedT) * shake.Strength;
 			shakeAdd.y += settings.Y.Evaluate (normalizedT) * shake.Strength;
 		}
-		_CurrentPos = Vector2.Lerp (_CurrentPos, targetLookpos, LerpModifier * Time.deltaTime);
+		_CurrentPos = Vector2.Lerp (_CurrentPos, targetLookpos, LerpModifier * Time.unscaledDeltaTime);
+        _CurrentZ = Mathf.Lerp(_CurrentZ, target.Z, LerpModifier * Time.unscaledDeltaTime);
 
-		transform.position = _CurrentPos + shakeAdd;
+        var finalPos = _CurrentPos + shakeAdd;
+		transform.position = new Vector3(finalPos.x, finalPos.y, _CurrentZ);
 	}
 
-	public void SetTarget (Vector2 position, Vector2 velocity)
+	public void SetTarget (Vector2 position, Vector2 velocity, float z, int priority)
 	{
-		_TargetPos = position;
-		_TargetVelocity = velocity;
+        _Targets.Add(new TargetData()
+                     {
+                         Pos = position,
+                             Velocity = velocity,
+                             Priority = priority,
+                             Z = z,
+                             });
 	}
 
 	public struct ShakeID

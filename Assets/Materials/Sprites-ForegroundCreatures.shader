@@ -87,13 +87,13 @@ float4 Overlay (float4 cBase, float4 cBlend)
 			fixed4 frag(v2f IN) : SV_Target
 			{
 				fixed4 c = tex2D(_MainTex, IN.texcoord) * IN.color;
-        c.rgb = lerp(c.rgb, _BlinkColor.rgb, _BlinkColor.a);
         if (IN.pos.y < 0)
         {
             float sealine = abs(IN.pos.y) * 5;
           c.rgb = lerp(c.rgb, lerp(c.rgb, Overlay(c.rgb,_SeaTint.rgb), _SeaTint.a), saturate(sealine + IN.pos.y));
           c.rgb = lerp(c.rgb, float3(0.8, 0.8, 0.9), (1 - sealine) > 0 ? sealine * 0.7 : 0);
         }
+        c.rgb = lerp(c.rgb, _BlinkColor.rgb, _BlinkColor.a);
 				c.rgb *= c.a;
 				return c;
 			}
