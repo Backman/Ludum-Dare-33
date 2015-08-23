@@ -169,7 +169,7 @@ public class EnemySpawner : MonoBehaviour
 
     bool IsSpawnValid(EnemySpawnSettings.EnemySpawn spawn, int x, int y)
     {
-        if ((spawn.HasMinY && spawn.MinY < y) || (spawn.HasMaxY && spawn.MaxY > spawn.MaxY))
+        if ((spawn.HasMinY && spawn.MinY > y) || (spawn.HasMaxY && spawn.MaxY < y))
         {
             return false;
         }

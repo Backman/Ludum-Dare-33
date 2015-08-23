@@ -37,7 +37,7 @@ MonoBehaviour:
     - {fileID: 146268, guid: d0ea69c5ae0084208a08cb0b8ed1e35f, type: 2}
     MaxY: 0
     HasMaxY: 0
-    MinY: 2
+    MinY: 6
     HasMinY: 1
     MovementSpeedRange: {x: 1.29999995, y: 3}
   - SpawnChance: .200000003
@@ -47,7 +47,7 @@ MonoBehaviour:
     Variations:
     - {fileID: 137212, guid: 2e619a3d977564862ad2c937a7ca141d, type: 2}
     - {fileID: 137212, guid: 5b8124d00e9de4b4cb56f6caeb0e17f4, type: 2}
-    MaxY: -2
+    MaxY: -6
     HasMaxY: 1
     MinY: 0
     HasMinY: 0
