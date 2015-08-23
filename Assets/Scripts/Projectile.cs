@@ -27,6 +27,6 @@ public class Projectile : MonoBehaviour
 
 	private void FixedUpdate ()
 	{
-		_rb.velocity = Direction * MovementSpeed * Time.deltaTime;
+		_rb.position += Direction * MovementSpeed * Time.deltaTime;
 	}
 }

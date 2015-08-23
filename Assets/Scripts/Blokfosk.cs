@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 [System.Serializable]
@@ -126,6 +127,10 @@ public class Blokfosk : MonoBehaviour
 
 	public CircleCollider2D TargetBounds;
 
+	public UnityEvent OnLand;
+	public UnityEvent OnHypeReleased;
+
+
 	public bool InAir { get; set; }
 
 	private Rigidbody2D _rb;
@@ -169,6 +174,7 @@ public class Blokfosk : MonoBehaviour
 		if (InAir) {
 			_rb.gravityScale = 1f;
 		} else if (Hype.InHypeMode && !InAir && _prevInAir) {
+			OnLand.Invoke ();
 			_rb.velocity *= VelocitySettings.SplashDecay;
 		} else if (!InAir) {
 			_rb.velocity = Vector2.Lerp (_rb.velocity, Vector2.zero, VelocitySettings.DecaySpeed * Time.deltaTime);
@@ -268,6 +274,7 @@ public class Blokfosk : MonoBehaviour
 	{
 		// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
 		var hype = Hype.BaseVelocity + (Hype.NormalizedHype * Hype.HypeBoost);
+		OnHypeReleased.Invoke ();
 
 		_rb.velocity = transform.up * hype;
 		Hype.ResetHype ();

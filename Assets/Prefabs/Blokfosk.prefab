@@ -110,9 +110,10 @@ GameObject:
   - 4: {fileID: 413872}
   - 212: {fileID: 21235696}
   - 61: {fileID: 6165230}
+  - 50: {fileID: 5026822}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,9 +238,10 @@ GameObject:
   - 4: {fileID: 490650}
   - 212: {fileID: 21258270}
   - 61: {fileID: 6111740}
+  - 50: {fileID: 5077190}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -339,9 +341,10 @@ GameObject:
   - 4: {fileID: 414906}
   - 212: {fileID: 21208700}
   - 61: {fileID: 6163048}
+  - 50: {fileID: 5071336}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,9 +406,10 @@ GameObject:
   - 4: {fileID: 418590}
   - 212: {fileID: 21213002}
   - 61: {fileID: 6136042}
+  - 50: {fileID: 5070582}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,9 +660,10 @@ GameObject:
   - 4: {fileID: 413854}
   - 212: {fileID: 21260854}
   - 61: {fileID: 6149796}
+  - 50: {fileID: 5048034}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -690,9 +695,10 @@ GameObject:
   - 4: {fileID: 469968}
   - 212: {fileID: 21203406}
   - 61: {fileID: 6107786}
+  - 50: {fileID: 5091156}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -757,9 +763,10 @@ GameObject:
   - 4: {fileID: 449350}
   - 212: {fileID: 21290008}
   - 61: {fileID: 6198266}
+  - 50: {fileID: 5093616}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,9 +815,10 @@ GameObject:
   - 4: {fileID: 489512}
   - 212: {fileID: 21208200}
   - 61: {fileID: 6175188}
+  - 50: {fileID: 5078620}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,9 +833,10 @@ GameObject:
   - 4: {fileID: 442202}
   - 212: {fileID: 21292068}
   - 61: {fileID: 6134516}
+  - 50: {fileID: 5044130}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -927,9 +936,10 @@ GameObject:
   - 4: {fileID: 455330}
   - 212: {fileID: 21241262}
   - 61: {fileID: 6185526}
+  - 50: {fileID: 5036740}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -959,9 +969,10 @@ GameObject:
   - 4: {fileID: 418920}
   - 212: {fileID: 21216300}
   - 61: {fileID: 6198816}
+  - 50: {fileID: 5005876}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1012,9 +1023,10 @@ GameObject:
   - 4: {fileID: 491102}
   - 212: {fileID: 21233174}
   - 61: {fileID: 6167214}
+  - 50: {fileID: 5055522}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1062,9 +1074,10 @@ GameObject:
   - 4: {fileID: 488276}
   - 212: {fileID: 21223650}
   - 61: {fileID: 6105840}
+  - 50: {fileID: 5034344}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1133,9 +1146,10 @@ GameObject:
   - 4: {fileID: 428542}
   - 212: {fileID: 21229912}
   - 61: {fileID: 6186114}
+  - 50: {fileID: 5034472}
   m_Layer: 0
   m_Name: Tentacle_Sprite
-  m_TagString: Untagged
+  m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2083,6 +2097,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5005876
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186358}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5006578
 Rigidbody2D:
   serializedVersion: 2
@@ -2211,6 +2241,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5026822
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112732}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5027056
 Rigidbody2D:
   serializedVersion: 2
@@ -2275,6 +2321,54 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5034344
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196304}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5034472
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199824}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5036740
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184706}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5037276
 Rigidbody2D:
   serializedVersion: 2
@@ -2287,6 +2381,22 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5044130
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181844}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2323,6 +2433,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5048034
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161220}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5051824
 Rigidbody2D:
   serializedVersion: 2
@@ -2351,6 +2477,22 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5055522
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189464}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2419,6 +2561,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5070582
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137704}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5071336
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130554}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5071786
 Rigidbody2D:
   serializedVersion: 2
@@ -2426,6 +2600,38 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182546}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5077190
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124260}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5078620
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180602}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
@@ -2499,6 +2705,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!50 &5091156
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165426}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5091878
 Rigidbody2D:
   serializedVersion: 2
@@ -2527,6 +2749,22 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5093616
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175832}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2597,7 +2835,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 165426}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 1.66893005e-06, y: -1.54972076e-06}
   serializedVersion: 2
@@ -2610,7 +2848,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 124260}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 5.96046448e-07, y: -1.43051147e-06}
   serializedVersion: 2
@@ -2636,7 +2874,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 137704}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 1.49011612e-08, y: -2.38418579e-07}
   serializedVersion: 2
@@ -2649,7 +2887,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 161220}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 8.94069672e-08, y: -5.96046448e-07}
   serializedVersion: 2
@@ -2675,7 +2913,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 112732}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: -2.38418579e-06, y: 1.54972076e-06}
   serializedVersion: 2
@@ -2688,7 +2926,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 189464}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 2.38418579e-07, y: -1.1920929e-06}
   serializedVersion: 2
@@ -2753,7 +2991,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 186358}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 2.38418579e-07, y: -5.96046448e-07}
   serializedVersion: 2
@@ -2776,8 +3014,8 @@ MonoBehaviour:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: 2
+        outSlope: 2
         tangentMode: 0
       - time: 1
         value: 1
@@ -2807,6 +3045,16 @@ MonoBehaviour:
   RightTentacle: {fileID: 11435872}
   ResetRotationSpeed: 180
   TargetBounds: {fileID: 5896236}
+  OnLand:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnHypeReleased:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &11435872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4457,7 +4705,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162304}
