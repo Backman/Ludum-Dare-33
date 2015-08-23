@@ -6,10 +6,15 @@ public class EnemyBoat : Enemy
 	protected override void Update ()
 	{
 		base.Update ();
-		if (IsHit && _rb.position.y <= 0.1f) {
+	}
+
+    void WaterSurfaceEnter(object obj)
+    {
+        WaterSurface surface = obj as WaterSurface;
+		if (IsHit) {
 			Explode ();
 		}
-	}
+    }
 
 	protected override void TentacleHit (Vector2 dir)
 	{

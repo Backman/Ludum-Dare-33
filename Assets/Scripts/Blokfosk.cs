@@ -365,13 +365,10 @@ public class Blokfosk : MonoBehaviour
     void WaterSurfaceEnter(object obj)
     {
         var velocity = _rb.velocity;
-        if(velocity.y > 0 && velocity.magnitude > 1f)
+        if(velocity.magnitude > 1f)
         {
-
-
             WaterSurface surface = obj as WaterSurface;
             surface.DoSplash(gameObject, transform.position);
-
         }
     }
 }
