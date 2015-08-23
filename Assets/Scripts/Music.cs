@@ -10,9 +10,12 @@ public class Music : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float Musicvolume = 0.33f;
 	public float fadespeed = 0.025f;
-
+	[Range(0.0f, 1.0f)]
+	public float sfxv = 1f;
+	public static Music instance;
 	// Use this for initialization
 	void Start () {
+		instance = this;
 		Player = FindObjectOfType<Blokfosk> ();
 		MusicPlayer = GameObject.Find ("MusicPlayer");
 		Songs = GetComponents<AudioSource> ();

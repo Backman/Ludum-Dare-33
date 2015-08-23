@@ -21,7 +21,7 @@ public class Explodable : MonoBehaviour
 	public void Explode (Vector3 pos, Quaternion rotation)
 	{
 		if (ExplodeClip) {
-			AudioSource.PlayClipAtPoint (ExplodeClip, pos);
+			AudioSource.PlayClipAtPoint (ExplodeClip, pos, 0.5f * Music.instance.sfxv);
 		}
 
 		Instantiate (Explosion, pos, rotation);

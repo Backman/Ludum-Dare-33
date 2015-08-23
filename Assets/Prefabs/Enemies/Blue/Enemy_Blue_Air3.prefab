@@ -103,7 +103,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 188180, guid: 168bfa45ae2ea4c289ebfbae99b5b06e, type: 2}
   MovementSpeed: .800000012
   AttackIntervall: {x: 2, y: 3}
-  OnHitClip: {fileID: 0}
+  OnHitClip: {fileID: 8300000, guid: 424c6c48bc9d147abb68d374b68bb1ed, type: 3}
 --- !u!114 &11432910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 154060, guid: f0899f1f509fe426ebefa366f8c2d8ed, type: 2}
-  ExplodeClip: {fileID: 0}
+  ExplodeClip: {fileID: 8300000, guid: e0b2affcb58724c25b0c41704da9e52d, type: 3}
+  Spawner: {fileID: 0}
 --- !u!212 &21220364
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -162,6 +163,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9cce3ec1ab8bf47b4a17de28dc03c3d0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ExplodeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e0b2affcb58724c25b0c41704da9e52d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: OnHitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 424c6c48bc9d147abb68d374b68bb1ed, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168226}
