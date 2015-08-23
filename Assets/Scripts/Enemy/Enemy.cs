@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
 	public GameObject FromPrefab;
 	public GameObject ProjectilePrefab;
 	public float MovementSpeed = 2f;
+	public int Score = 5;
 
 	public Vector2 AttackIntervall;
 
@@ -75,6 +76,12 @@ public abstract class Enemy : MonoBehaviour
 			if (OnHitClip) {
 				AudioSource.PlayClipAtPoint (OnHitClip, transform.position);
 			}
+
+			if (!IsHit) {
+				GameLogic.Instance.AddScore (Score);
+
+			}
+
 			IsHit = true;
 			var tentaclePos = new Vector2 (collider.transform.position.x, collider.transform.position.y);
 			TentacleHit (_rb.position - tentaclePos);
