@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class WaterSurface : MonoBehaviour
 {
     public float Height;
+	public AudioClip SplashSound;
 
     public GameObject SplashParticle;
     List<GameObject> _toRemove = new List<GameObject>();
@@ -54,5 +55,6 @@ public class WaterSurface : MonoBehaviour
         position.y = 0f;
         position.z = transform.position.z;
         _ActiveSplashes[source] = Instantiate(SplashParticle, position, Quaternion.identity) as GameObject;
+		Music.PlayClipAtPoint (SplashSound, position, Music.instance.sfxv);
     }
 }

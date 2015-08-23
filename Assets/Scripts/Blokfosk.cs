@@ -187,7 +187,7 @@ public class Blokfosk : MonoBehaviour
 
 		Health = Mathf.Clamp (Health, 0, MaxHealth);
 
-		_followCamera.SetTarget (_rb.position, _rb.velocity);
+		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 25f - _rb.velocity.magnitude / 3F , 0);
 
 		HypeInput ();
 		Hype.Update ();

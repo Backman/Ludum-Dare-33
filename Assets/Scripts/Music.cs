@@ -21,6 +21,21 @@ public class Music : MonoBehaviour {
 		Songs = GetComponents<AudioSource> ();
 
 	}
+
+	public static AudioSource PlayClipAtPoint(AudioClip clip, Vector3 pos, float volume) {
+		var tempGO = new GameObject("TempAudio"); // create the temp object
+		tempGO.transform.position = pos; // set its position
+		var aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
+		aSource.clip = clip; // define the clip
+		aSource.volume = volume;
+		aSource.spatialBlend = 1.0f;
+		aSource.minDistance = 100f;
+		aSource.maxDistance = 200f;
+		// set other aSource properties here, if desired
+		aSource.Play(); // start the sound
+		Destroy(tempGO, clip.length); // destroy object after clip duration
+		return aSource; // return the AudioSource reference
+	}
 	
 	// Update is called once per frame
 	void Update () {
