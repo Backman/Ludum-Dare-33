@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class Explodable : MonoBehaviour
 {
 	public GameObject Explosion;
+	public AudioClip ExplodeClip;
 
 	public void Explode (Transform t)
 	{
@@ -17,6 +19,10 @@ public class Explodable : MonoBehaviour
 
 	public void Explode (Vector3 pos, Quaternion rotation)
 	{
+		if (ExplodeClip) {
+			AudioSource.PlayClipAtPoint (ExplodeClip, pos);
+		}
+
 		Instantiate (Explosion, pos, rotation);
 		Destroy (gameObject);
 	}

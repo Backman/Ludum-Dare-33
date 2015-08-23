@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f5983cbbcd6c4cb4a90fe5026faf7b5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   TimeAlive: 2
   MovementSpeed: 5
   ExplosionRadius: 1
@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76917eb6e429f48ed8edd8d49f67721f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   Explosion: {fileID: 154060, guid: f0899f1f509fe426ebefa366f8c2d8ed, type: 2}
+  ExplodeClip: {fileID: 0}
 --- !u!212 &21249914
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -125,8 +126,8 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices:
+  - {fileID: 2100000, guid: 9cce3ec1ab8bf47b4a17de28dc03c3d0, type: 2}
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
@@ -150,7 +151,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: Explosion
-      value:
+      value: 
       objectReference: {fileID: 154060, guid: f0899f1f509fe426ebefa366f8c2d8ed, type: 2}
     - target: {fileID: 0}
       propertyPath: m_GravityScale
@@ -168,6 +169,10 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9cce3ec1ab8bf47b4a17de28dc03c3d0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188180}

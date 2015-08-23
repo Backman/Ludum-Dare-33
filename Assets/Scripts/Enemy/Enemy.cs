@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public abstract class Enemy : MonoBehaviour
@@ -7,6 +8,8 @@ public abstract class Enemy : MonoBehaviour
 	public float MovementSpeed = 2f;
 
 	public Vector2 AttackIntervall;
+
+	public AudioClip OnHitClip;
 
 	public Blokfosk Blokfosk { get; set; }
 
@@ -48,6 +51,9 @@ public abstract class Enemy : MonoBehaviour
 	private void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.tag == "Blokfosk_Tentacle") {
+			if (OnHitClip) {
+				AudioSource.PlayClipAtPoint (OnHitClip, transform.position);
+			}
 			IsHit = true;
 			var tentaclePos = new Vector2 (collider.transform.position.x, collider.transform.position.y);
 			TentacleHit (_rb.position - tentaclePos);
