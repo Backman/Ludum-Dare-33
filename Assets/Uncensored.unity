@@ -170,47 +170,47 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422918, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.999528229
+      value: -.999517679
       objectReference: {fileID: 0}
     - target: {fileID: 422918, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.0307133943
+      value: -.0310542993
       objectReference: {fileID: 0}
     - target: {fileID: 486322, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0629113019
+      value: .0624528974
       objectReference: {fileID: 0}
     - target: {fileID: 486322, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .998019159
+      value: .998047888
       objectReference: {fileID: 0}
     - target: {fileID: 475464, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.0181042608
+      value: -.0187488571
       objectReference: {fileID: 0}
     - target: {fileID: 475464, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .999836147
+      value: .999824226
       objectReference: {fileID: 0}
     - target: {fileID: 472438, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.0707113221
+      value: -.0712723359
       objectReference: {fileID: 0}
     - target: {fileID: 472438, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .997496843
+      value: .997456968
       objectReference: {fileID: 0}
     - target: {fileID: 439762, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.00135908602
+      value: .0011279647
       objectReference: {fileID: 0}
     - target: {fileID: 410468, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .00105766067
+      value: .00011051097
       objectReference: {fileID: 0}
     - target: {fileID: 401128, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.000391105888
+      value: .00019096813
       objectReference: {fileID: 0}
     - target: {fileID: 401128, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
@@ -218,27 +218,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439762, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .999999166
+      value: .999999404
       objectReference: {fileID: 0}
     - target: {fileID: 410468, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .999999523
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 429902, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .999764085
+      value: .999766588
       objectReference: {fileID: 0}
     - target: {fileID: 429902, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.0217200723
+      value: -.021605622
       objectReference: {fileID: 0}
     - target: {fileID: 402950, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .00245450158
+      value: .00262715039
       objectReference: {fileID: 0}
     - target: {fileID: 402950, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .99999702
+      value: .999996543
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e65725783944469397cea1568eb53fc, type: 2}
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766933ae7b209432a88b04ccd724440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RekDuration: .0799999982
+  RekDuration: .0500000007
   BlinkColor: {r: 1, g: 1, b: 1, a: .515999973}
   BlinkDuration: .200000003
 --- !u!4 &918045588
@@ -1259,6 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Height: .5
+  SplashSound: {fileID: 8300000, guid: bb20e8ea40c004978b6d3bde07ff5cb2, type: 3}
   SplashParticle: {fileID: 116016, guid: 48a60b348fadf8b4e8500223b2a0da00, type: 2}
 --- !u!4 &2037473535
 Transform:
