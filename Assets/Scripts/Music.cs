@@ -3,14 +3,14 @@ using System.Collections;
 
 public enum SoundSourceType
 {
-    Unknown ,
-    Projectile ,
-    WaterSplash,
-    Bomb,
-    Sub,
-    Boat,
-    Air,
-    InkBoost,
+	Unknown,
+	Projectile,
+	WaterSplash,
+	Bomb,
+	Sub,
+	Boat,
+	Air,
+	InkBoost,
 }
 
 public class Music : MonoBehaviour
@@ -26,14 +26,6 @@ public class Music : MonoBehaviour
 	[Range (0.0f, 1.0f)]
 	public float sfxv = 1f;
 	public static Music instance;
-	public float PlayClipCooldown = 0.2f;
-
-	private float _currentCooldownCount;
-
-	private static bool CanPlayClipAtPoint
-	{
-		get { return instance._currentCooldownCount < instance.PlayClipCooldown; }
-	}
 
 	// Use this for initialization
 	void Start ()
@@ -47,12 +39,6 @@ public class Music : MonoBehaviour
 
 	public static AudioSource PlayClipAtPoint (AudioClip clip, Vector3 pos, float volume, float pitch, SoundSourceType source)
 	{
-		if (!CanPlayClipAtPoint)
-		{
-			return null;
-		}
-
-		instance._currentCooldownCount = 0f;
 		var tempGO = new GameObject ("TempAudio"); // create the temp object
 		tempGO.transform.position = pos; // set its position
 		var aSource = tempGO.AddComponent<AudioSource> (); // add an audio source
@@ -71,8 +57,6 @@ public class Music : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		_currentCooldownCount -= Time.deltaTime;
-
 		Songs [1].volume = transition * Musicvolume;
 		Songs [0].volume = (1 - transition) * Musicvolume;
 		Songs [2].volume = transition * Musicvolume;
