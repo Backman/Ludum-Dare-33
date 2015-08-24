@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76917eb6e429f48ed8edd8d49f67721f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Explosions: []
+  Explosions:
+  - {fileID: 147612, guid: f88d683cb20952c46854fe7134d28743, type: 2}
+  - {fileID: 146608, guid: 632ce2c3fa1a9ea4780cba864b026d57, type: 2}
   SoundSource: 5
   ExplodeClip: {fileID: 8300000, guid: 1d1e1e8f08d1f4d899a97ea847fc7b26, type: 3}
   Spawner: {fileID: 0}
@@ -115,14 +117,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbc3083080254fa08c81feb204ba6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 188180, guid: 168bfa45ae2ea4c289ebfbae99b5b06e, type: 2}
+  ProjectilePrefab: {fileID: 188180, guid: 8bc610137fb7241949ee5ff4165d0ed5, type: 2}
   MovementSpeed: .800000012
   Score: 5
   SoundSource: 5
   Explosion: {fileID: 0}
   AttackIntervall: {x: 1, y: 2}
   OnHitClip: {fileID: 8300000, guid: 31a4d0df470bf474496f1b5f1275bd60, type: 3}
-  MinePrefab: {fileID: 0}
+  MinePrefab: {fileID: 188180, guid: 6119af43b8cce40f1a2af7e103fc2e26, type: 2}
+  MineFireInterval: {x: 0, y: 0}
 --- !u!212 &21231378
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -157,6 +160,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: Explosions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7757565fbf0a6449c8f6f04a228f8174,
@@ -185,6 +192,22 @@ Prefab:
       propertyPath: SoundSource
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ProjectilePrefab
+      value:
+      objectReference: {fileID: 188180, guid: 8bc610137fb7241949ee5ff4165d0ed5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: MinePrefab
+      value:
+      objectReference: {fileID: 188180, guid: 6119af43b8cce40f1a2af7e103fc2e26, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Explosions.Array.data[0]
+      value:
+      objectReference: {fileID: 147612, guid: f88d683cb20952c46854fe7134d28743, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Explosions.Array.data[1]
+      value:
+      objectReference: {fileID: 146608, guid: 632ce2c3fa1a9ea4780cba864b026d57, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137212}

@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76917eb6e429f48ed8edd8d49f67721f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Explosions: []
+  Explosions:
+  - {fileID: 103954, guid: 782115fbf7b62734ea35534bfd820986, type: 2}
+  - {fileID: 140456, guid: 4f14e5b016cf6794f933706f1085b81c, type: 2}
   SoundSource: 6
   ExplodeClip: {fileID: 8300000, guid: e0b2affcb58724c25b0c41704da9e52d, type: 3}
   Spawner: {fileID: 0}
@@ -115,13 +117,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b473de2420949fcb0b39bf32db5ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 188180, guid: 168bfa45ae2ea4c289ebfbae99b5b06e, type: 2}
+  ProjectilePrefab: {fileID: 188180, guid: 174e47aadd1b041b691bd77ae2b12f3d, type: 2}
   MovementSpeed: .800000012
   Score: 5
   SoundSource: 6
   Explosion: {fileID: 0}
   AttackIntervall: {x: 2, y: 3}
   OnHitClip: {fileID: 8300000, guid: 424c6c48bc9d147abb68d374b68bb1ed, type: 3}
+  MaxYValue: 3
+  MinYValue: .5
+  PlanaUtSpeed: 60
 --- !u!212 &21269528
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -156,6 +161,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: Explosions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -179,6 +188,18 @@ Prefab:
       propertyPath: SoundSource
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ProjectilePrefab
+      value:
+      objectReference: {fileID: 188180, guid: 174e47aadd1b041b691bd77ae2b12f3d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Explosions.Array.data[0]
+      value:
+      objectReference: {fileID: 103954, guid: 782115fbf7b62734ea35534bfd820986, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Explosions.Array.data[1]
+      value:
+      objectReference: {fileID: 140456, guid: 4f14e5b016cf6794f933706f1085b81c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176140}

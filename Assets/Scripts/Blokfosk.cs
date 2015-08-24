@@ -282,12 +282,12 @@ public class Blokfosk : MonoBehaviour
 	public void TakeDamage (int amount)
 	{
 		StartCoroutine (PlayDamageAnimation ());
-		Debug.Log ("Damage");
+
 		Health -= amount;
 
 		if (Health <= 0) {
-			Debug.Log ("DEAD");
 			_isDead = true;
+			GameLogic.Instance.OnBlokfoskRIP.Invoke ();
 		}
 
 		var onDamage = GameLogic.Instance.OnBlokDamage;
