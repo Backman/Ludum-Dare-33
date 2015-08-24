@@ -70,6 +70,5 @@ public class BlinkManager : MonoBehaviour
         state.EndTime = Time.unscaledTime + duration;
         state.Renderers = source.GetComponentsInChildren<Renderer>();
         _Blinks[source] = state;
-
     }
 }

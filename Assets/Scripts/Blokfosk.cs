@@ -116,7 +116,7 @@ public static class InputManager
 	private const string RightStickVertical = "RightStickY_WIN";
 
 	private const string LeftStickHorizontal = "LeftStickX_WIN";
-	private const string LeftStickVertical = "LeftStickX_WIN";
+	private const string LeftStickVertical = "LeftStickY_WIN";
 
 	private const string HypeButton = "Hype_WIN";
 

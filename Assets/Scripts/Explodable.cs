@@ -19,19 +19,25 @@ public class Explodable : MonoBehaviour
 		Explode (pos, Quaternion.identity);
 	}
 
-	public void Explode (Vector3 pos, Quaternion rotation)
+	public void Explode(Vector3 pos, Quaternion rotation)
 	{
-		if (ExplodeClip) {
-			Music.PlayClipAtPoint (ExplodeClip, pos, Music.instance.sfxv);
+		if (ExplodeClip)
+		{
+			Music.PlayClipAtPoint(ExplodeClip, pos, Music.instance.sfxv);
 		}
 
-		for (int i = 0; i < Explosions.Length; i++) {
-			Instantiate (Explosions [i], pos, rotation);
+		for (int i = 0; i < Explosions.Length; i++)
+		{
+			TrashMan.spawn(Explosions[i], pos, rotation);
 		}
 
 		if (Spawner != null)
-			Spawner.Despawn (gameObject);
+		{
+			Spawner.Despawn(gameObject);
+		}
 		else
-			Destroy (gameObject);
+		{
+			TrashMan.despawn(gameObject);
+		}
 	}
 }

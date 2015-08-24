@@ -63,7 +63,7 @@ public abstract class Enemy : MonoBehaviour
 			_LastVisibleTime = Time.time;
 		} else {
 			float distance = Vector2.Distance (transform.position, Blokfosk.Instance.transform.position);
-			if (_LastVisibleTime + 5f < Time.time || distance > 30f) {
+			if (_LastVisibleTime + 5f < Time.time || distance > 60f) {
 				var explode = GetComponent<Explodable> ();
 				if (explode) {
 					explode.Spawner.ReturnSpawnValue (gameObject);
@@ -119,7 +119,7 @@ public abstract class Enemy : MonoBehaviour
 		var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 		var rot = Quaternion.AngleAxis (angle, Vector3.forward);
 
-		var go = (GameObject)Instantiate (ProjectilePrefab, transform.position, rot);
+		var go = TrashMan.spawn (ProjectilePrefab, transform.position, rot);
 		var projectile = go.GetComponent<Projectile> ();
 
 
