@@ -150,7 +150,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 188180, guid: 168bfa45ae2ea4c289ebfbae99b5b06e, type: 2}
   MovementSpeed: .800000012
   Score: 5
-  SoundSource: 0
+  SoundSource: 4
   Explosion: {fileID: 0}
   AttackIntervall: {x: 1, y: 2}
   OnHitClip: {fileID: 8300000, guid: a296a778723e24102aea6bf483a4ef6e, type: 3}
