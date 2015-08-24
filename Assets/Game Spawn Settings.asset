@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c416c074cab24622a5757e694303d1b, type: 3}
-  m_Name: GameSpawns
-  m_EditorClassIdentifier: Assembly-CSharp::GameSpawnSettings
+  m_Name: Game Spawn Settings
+  m_EditorClassIdentifier: 
   Periods:
-  - Name: Start
-    SpawnSettings: {fileID: 11400000, guid: 0a87a8dfa9fde4bf29339207e6b3882c, type: 2}
-    PeriodDuration: 30
+  - Name: 
+    SpawnSettings: {fileID: 11400000, guid: dc43b8d3f4ca7477e85cfaac3548f235, type: 2}
+    PeriodDuration: 0
