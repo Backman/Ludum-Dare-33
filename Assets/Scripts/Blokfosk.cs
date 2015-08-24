@@ -197,6 +197,7 @@ public class Blokfosk : MonoBehaviour
 	private bool _inAir;
 	private bool _prevInAir;
 	private bool _usedInkBoost;
+	private bool _isDead;
 
 	private void Awake ()
 	{
@@ -213,6 +214,13 @@ public class Blokfosk : MonoBehaviour
 
 	private void Update ()
 	{
+		if (_isDead) {
+			DeathUpdate ();
+			return;
+		}
+
+		Health = Mathf.Clamp (Health, 0, MaxHealth);
+
 		var rightStick = InputManager.GetRightJoystick ();
 		var leftStick = InputManager.GetLeftJoystick ();
 
@@ -222,9 +230,8 @@ public class Blokfosk : MonoBehaviour
 		ApplyTentacleConstraint (LeftTentacle);
 		ApplyTentacleConstraint (RightTentacle);
 
-		Health = Mathf.Clamp (Health, 0, MaxHealth);
-
 		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 15f - _rb.velocity.magnitude / 3f, 0);
+
 
 		HypeInput ();
 		Hype.Update ();
@@ -236,9 +243,29 @@ public class Blokfosk : MonoBehaviour
 		ApplyRotation ();
 	}
 
+	private void DeathUpdate ()
+	{
+		TentacleInput (LeftTentacle, Vector2.zero);
+		TentacleInput (RightTentacle, Vector2.zero);
+
+		ApplyTentacleConstraint (LeftTentacle);
+		ApplyTentacleConstraint (RightTentacle);
+
+		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 15f - _rb.velocity.magnitude / 3f, 0);
+	
+		_animator.SetBool ("TakeDamage", true);
+	}
+
 	private void FixedUpdate ()
 	{
 		InAir = _rb.position.y > 0.5f;
+	
+		if (_isDead && !InAir) {
+			_rb.rotation = Mathf.MoveTowardsAngle (_rb.rotation, 180f, 360 * Time.deltaTime);
+			_rb.gravityScale = 0.6f;
+			return;
+		}
+
 		UnderThresholdLevel = _rb.position.y < VelocitySettings.BobThreshold;
 
 		if (Hype.IsHyping) {
@@ -259,9 +286,13 @@ public class Blokfosk : MonoBehaviour
 
 		Health -= amount;
 		Health = Mathf.Min (0, MaxHealth);
+		if (Health <= 0) {
+			_isDead = true;
+		}
+
 		var onDamage = GameLogic.Instance.OnBlokDamage;
 		if (onDamage != null) {
-			onDamage.Invoke ();
+			onDamage.Invoke (Health);
 		}
 	}
 
@@ -337,7 +368,7 @@ public class Blokfosk : MonoBehaviour
 		var boost = InputManager.GetTriggers ();
 
 		if (boost) {
-			Music.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
+			Music.PlayClipAtPoint (GetComponent<AudioSource> ().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
 			var forward = transform.up;
 			var rot = new Vector2 (forward.x, forward.y);
 			_rb.velocity += rot.normalized * InkBoost;
