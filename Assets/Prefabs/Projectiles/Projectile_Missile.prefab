@@ -103,7 +103,7 @@ MonoBehaviour:
   TimeAlive: 2
   MovementSpeed: 5
   ExplosionRadius: .5
-  Damage: 5
+  Damage: 1
   ExplodeOnSurfaceHit: 1
 --- !u!114 &11496334
 MonoBehaviour:
@@ -208,6 +208,10 @@ Prefab:
       objectReference: {fileID: 8300000, guid: ba5e6cb81f7244237aa86394575390bd, type: 3}
     - target: {fileID: 0}
       propertyPath: SoundSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Damage
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

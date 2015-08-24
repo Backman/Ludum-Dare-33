@@ -26,7 +26,11 @@ public class HealthBar : MonoBehaviour
 	{
 		var healthPercentage = currentHealth / _maxHealth;
 
-		_originWidth *= healthPercentage;
+		var width = healthPercentage * _originWidth;
+		var height = Bar.rectTransform.rect.height;
+
+		Bar.rectTransform.sizeDelta = new Vector2 (width, height);
+
 		StartCoroutine (DoBlink ());
 	}
 
