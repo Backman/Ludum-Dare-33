@@ -569,6 +569,14 @@ Prefab:
       propertyPath: PlayClipCooldown
       value: .400000006
       objectReference: {fileID: 0}
+    - target: {fileID: 11469864, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
+      propertyPath: LowPassFilter
+      value: 
+      objectReference: {fileID: 801771200}
+    - target: {fileID: 8216280, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
+      propertyPath: BypassListenerEffects
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 16492818, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
@@ -635,15 +643,15 @@ AudioLowPassFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 801771197}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_CutoffFrequency: 5000.00049
+  m_CutoffFrequency: 22000
   m_LowpassResonanceQ: 1
   lowpassLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: .772727251
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
