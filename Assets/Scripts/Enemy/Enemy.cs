@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 
@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
     public float MovementSpeed = 2f;
     public int Score = 5;
 
-    public SoundSourceType SoundSource;
+	public SoundSourceType SoundSource;
 
     public GameObject Explosion;
 
@@ -73,7 +73,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         _rb.position += Direction * MovementSpeed * Time.deltaTime;
         var renderer = GetComponentInChildren<Renderer>();
@@ -162,5 +162,11 @@ public abstract class Enemy : MonoBehaviour
     private void RandomizeAttackTimer()
     {
         _attackTimer = Random.Range(AttackIntervall.x, AttackIntervall.y);
+    }
+
+    public virtual void Reset()
+    {
+        IsHit = false;
+        
     }
 }

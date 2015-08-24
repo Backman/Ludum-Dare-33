@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,17 +16,14 @@ public class WrekFaceHandler : MonoBehaviour
     public float ZoomLerpModifier = 20f;
 	bool _HasFreezeTime = false;
 
-
-	public float ComboTime = 0.5f;
-	private float _currentComboTime;
-
-	public int ComboCounter { get; set; }
+	public RekCombo RekCombo;
 
 	void Awake ()
 	{
 		GameLogic.Instance.OnRekFace += OnRekFace;
         GameLogic.Instance.OnBlokDamage += OnBlokDamage;
 
+		RekCombo.Init ();
 	}
     void OnBlokDamage()
     {
@@ -45,16 +42,7 @@ public class WrekFaceHandler : MonoBehaviour
 		freezeValue *= 1 - distanceMod;
 		rekDuration *= 1 + distanceMod;
 
-		if (_currentComboTime <= ComboTime) {
-			_currentComboTime = 0f;
-			ComboCounter += 1;
-		} else {
-			ComboCounter = 0;
-		}
-
-		if (ComboCounter >= 3) {
-			rekDuration = ComboCounter * 0.3f * rekDuration;
-		}
+		RekCombo.IncreaseRekComboCount (obj);
 
 		BlinkManager.Instance.AddBlink (obj, BlinkColor, BlinkDuration, BlinkCurve);
 		if (_HasFreezeTime == false) {
@@ -77,8 +65,8 @@ public class WrekFaceHandler : MonoBehaviour
 		_HasFreezeTime = false;
 	}
 
-	void Update ()
+	public void Update ()
 	{
-		_currentComboTime += Time.deltaTime;
+		RekCombo.Update ();
 	}
 }
