@@ -54,6 +54,12 @@ public class Music : MonoBehaviour
 		aSource.Play (); // start the sound
 		Destroy (tempGO, clip.length); // destroy object after clip duration
 		return aSource; // return the AudioSource reference
+
+		if (source == SoundSourceType.Sub) {
+			aSource.bypassListenerEffects=true;
+			aSource.volume = volume + 0.2f;
+		}
+
 	}
 	
 	// Update is called once per frame

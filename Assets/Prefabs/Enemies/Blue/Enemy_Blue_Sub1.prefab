@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e50c7f7fa1074eb5b64bb310777c36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 188180, guid: 168bfa45ae2ea4c289ebfbae99b5b06e, type: 2}
+  ProjectilePrefab: {fileID: 188180, guid: 68533040765fe4536857068573aa77be, type: 2}
   MovementSpeed: .800000012
   Score: 5
   SoundSource: 4
@@ -1307,6 +1307,10 @@ Prefab:
       propertyPath: SoundSource
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ProjectilePrefab
+      value:
+      objectReference: {fileID: 188180, guid: 68533040765fe4536857068573aa77be, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137212}

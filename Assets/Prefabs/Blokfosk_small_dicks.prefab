@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21277626}
   - 50: {fileID: 5017458}
   - 233: {fileID: 23301456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 478146}
   - 50: {fileID: 5010294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background_Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 212: {fileID: 21299610}
   - 50: {fileID: 5091878}
   - 233: {fileID: 23336104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (3)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 212: {fileID: 21237428}
   - 50: {fileID: 5099686}
   - 233: {fileID: 23333306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (1)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -111,7 +111,7 @@ GameObject:
   - 212: {fileID: 21235696}
   - 61: {fileID: 6165230}
   - 50: {fileID: 5026822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421302}
   - 50: {fileID: 5027390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background_Tentacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (2)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (5)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -172,7 +172,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496062}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IK
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Target
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
@@ -205,7 +205,7 @@ GameObject:
   - 212: {fileID: 21296630}
   - 50: {fileID: 5024524}
   - 233: {fileID: 23301502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 453838}
   - 50: {fileID: 5000010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background_Tentacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - 212: {fileID: 21258270}
   - 61: {fileID: 6111740}
   - 50: {fileID: 5077190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - 212: {fileID: 21225430}
   - 50: {fileID: 5092032}
   - 233: {fileID: 23306978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - 212: {fileID: 21289000}
   - 50: {fileID: 5027784}
   - 233: {fileID: 23314124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - 4: {fileID: 483586}
   - 95: {fileID: 9569102}
   - 212: {fileID: 21292464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - 212: {fileID: 21285882}
   - 50: {fileID: 5027056}
   - 233: {fileID: 23385680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IK
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -343,7 +343,7 @@ GameObject:
   - 212: {fileID: 21208700}
   - 61: {fileID: 6163048}
   - 50: {fileID: 5071336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 441548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (6)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -375,7 +375,7 @@ GameObject:
   - 4: {fileID: 407724}
   - 58: {fileID: 5896236}
   - 50: {fileID: 5009090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target_Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (2)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -408,7 +408,7 @@ GameObject:
   - 212: {fileID: 21213002}
   - 61: {fileID: 6136042}
   - 50: {fileID: 5070582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - 212: {fileID: 21247304}
   - 50: {fileID: 5028144}
   - 233: {fileID: 23340818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (6)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -459,7 +459,7 @@ GameObject:
   - 212: {fileID: 21283350}
   - 50: {fileID: 5096002}
   - 233: {fileID: 23318262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - 212: {fileID: 21216092}
   - 50: {fileID: 5037276}
   - 233: {fileID: 23305454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - 212: {fileID: 21275042}
   - 50: {fileID: 5089648}
   - 233: {fileID: 23337496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (1)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -527,7 +527,7 @@ GameObject:
   - 4: {fileID: 454598}
   - 114: {fileID: 11443406}
   - 114: {fileID: 11435872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right_Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - 212: {fileID: 21285326}
   - 50: {fileID: 5007478}
   - 233: {fileID: 23329730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - 212: {fileID: 21290836}
   - 50: {fileID: 5056268}
   - 233: {fileID: 23354922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +581,7 @@ GameObject:
   - 212: {fileID: 21275338}
   - 50: {fileID: 5005602}
   - 233: {fileID: 23389290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   - 212: {fileID: 21283250}
   - 50: {fileID: 5088548}
   - 233: {fileID: 23352196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Backgorund_Tentacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (5)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -644,7 +644,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416288}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Target
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
@@ -662,7 +662,7 @@ GameObject:
   - 212: {fileID: 21260854}
   - 61: {fileID: 6149796}
   - 50: {fileID: 5048034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   - 212: {fileID: 21203406}
   - 61: {fileID: 6107786}
   - 50: {fileID: 5091156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   - 212: {fileID: 21237598}
   - 50: {fileID: 5046456}
   - 233: {fileID: 23342332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -749,7 +749,7 @@ GameObject:
   - 4: {fileID: 402950}
   - 114: {fileID: 11440626}
   - 114: {fileID: 11473830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left_Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   - 212: {fileID: 21290008}
   - 61: {fileID: 6198266}
   - 50: {fileID: 5093616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - 212: {fileID: 21216712}
   - 50: {fileID: 5051824}
   - 233: {fileID: 23385214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 497746}
   - 212: {fileID: 21250286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +819,7 @@ GameObject:
   - 212: {fileID: 21208200}
   - 61: {fileID: 6175188}
   - 50: {fileID: 5078620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ GameObject:
   - 212: {fileID: 21292068}
   - 61: {fileID: 6134516}
   - 50: {fileID: 5044130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   - 212: {fileID: 21281416}
   - 50: {fileID: 5081926}
   - 233: {fileID: 23382656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -871,7 +871,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413686}
   - 50: {fileID: 5071786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background_Tentacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -904,7 +904,7 @@ GameObject:
   - 212: {fileID: 21223318}
   - 50: {fileID: 5056422}
   - 233: {fileID: 23397842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ GameObject:
   - 212: {fileID: 21249506}
   - 50: {fileID: 5017394}
   - 233: {fileID: 23334638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +940,7 @@ GameObject:
   - 212: {fileID: 21241262}
   - 61: {fileID: 6185526}
   - 50: {fileID: 5036740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (3)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -973,7 +973,7 @@ GameObject:
   - 212: {fileID: 21216300}
   - 61: {fileID: 6198816}
   - 50: {fileID: 5005876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -991,7 +991,7 @@ GameObject:
   - 212: {fileID: 21238188}
   - 50: {fileID: 5084328}
   - 233: {fileID: 23348060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   - 212: {fileID: 21249144}
   - 50: {fileID: 5045746}
   - 233: {fileID: 23387250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,7 +1027,7 @@ GameObject:
   - 212: {fileID: 21233174}
   - 61: {fileID: 6167214}
   - 50: {fileID: 5055522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -1042,7 +1042,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (4)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -1060,7 +1060,7 @@ GameObject:
   - 212: {fileID: 21264756}
   - 50: {fileID: 5052532}
   - 233: {fileID: 23319666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,7 +1078,7 @@ GameObject:
   - 212: {fileID: 21223650}
   - 61: {fileID: 6105840}
   - 50: {fileID: 5034344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -1096,7 +1096,7 @@ GameObject:
   - 212: {fileID: 21245194}
   - 50: {fileID: 5070418}
   - 233: {fileID: 23346278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1114,7 +1114,7 @@ GameObject:
   - 212: {fileID: 21294950}
   - 50: {fileID: 5011798}
   - 233: {fileID: 23318760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,7 @@ GameObject:
   - 212: {fileID: 21263462}
   - 50: {fileID: 5064150}
   - 233: {fileID: 23315436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1150,7 @@ GameObject:
   - 212: {fileID: 21229912}
   - 61: {fileID: 6186114}
   - 50: {fileID: 5034472}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Sprite
   m_TagString: Blokfosk_Tentacle
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tentacle_Segment (4)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
@@ -1961,7 +1961,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.600000024, z: 30}
+  m_LocalPosition: {x: 0, y: -25, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483586}
@@ -2082,7 +2082,7 @@ Rigidbody2D:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5005602
 Rigidbody2D:
@@ -2098,7 +2098,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5005876
 Rigidbody2D:
@@ -2146,7 +2146,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5009090
 Rigidbody2D:
@@ -2178,7 +2178,7 @@ Rigidbody2D:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5011798
 Rigidbody2D:
@@ -2194,7 +2194,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5017394
 Rigidbody2D:
@@ -2210,7 +2210,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5017458
 Rigidbody2D:
@@ -2226,7 +2226,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5024524
 Rigidbody2D:
@@ -2242,7 +2242,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5026822
 Rigidbody2D:
@@ -2274,7 +2274,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5027390
 Rigidbody2D:
@@ -2290,7 +2290,7 @@ Rigidbody2D:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5027784
 Rigidbody2D:
@@ -2306,7 +2306,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5028144
 Rigidbody2D:
@@ -2322,7 +2322,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5034344
 Rigidbody2D:
@@ -2386,7 +2386,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5044130
 Rigidbody2D:
@@ -2418,7 +2418,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5046456
 Rigidbody2D:
@@ -2434,7 +2434,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5048034
 Rigidbody2D:
@@ -2466,7 +2466,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5052532
 Rigidbody2D:
@@ -2482,7 +2482,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5055522
 Rigidbody2D:
@@ -2514,7 +2514,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5056422
 Rigidbody2D:
@@ -2530,7 +2530,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5064150
 Rigidbody2D:
@@ -2546,7 +2546,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5070418
 Rigidbody2D:
@@ -2562,7 +2562,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5070582
 Rigidbody2D:
@@ -2610,7 +2610,7 @@ Rigidbody2D:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5077190
 Rigidbody2D:
@@ -2658,7 +2658,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5084328
 Rigidbody2D:
@@ -2674,7 +2674,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5088548
 Rigidbody2D:
@@ -2690,7 +2690,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5089648
 Rigidbody2D:
@@ -2706,7 +2706,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5091156
 Rigidbody2D:
@@ -2738,7 +2738,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5092032
 Rigidbody2D:
@@ -2754,7 +2754,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5093616
 Rigidbody2D:
@@ -2786,7 +2786,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5099686
 Rigidbody2D:
@@ -2802,7 +2802,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &5872900
 CircleCollider2D:

@@ -36,6 +36,7 @@ public class GameLogic : MonoBehaviour
 	public System.Action<GameObject, int> OnRekComboIncreased;
 	public System.Action<int> OnRekComboReset;
 	public System.Action<GameObject> OnRekFace;
+	public System.Action OnBlokfoskRIP;
 
 	private int _score;
 	private Blokfosk _player;

@@ -74,11 +74,12 @@ public class Fader : MonoBehaviour
 		var duration = settings.Duration;
 		var type = settings.Type;
 		float t;
+
+		var color = _image.color;
+
 		if (type == FadingType.FadeIn) {
 			t = 0f;
 			while (t < duration) {
-				var color = _image.color;
-
 				color.a = t / duration;
 
 				_image.color = color;
@@ -86,10 +87,12 @@ public class Fader : MonoBehaviour
 				t += Time.deltaTime;
 				yield return null;
 			}
+			color.a = 1f;
+			_image.color = color;
+
 		} else if (type == FadingType.FadeOut) {
 			t = duration;
 			while (t > 0f) {
-				var color = _image.color;
 
 				color.a = t / duration;
 
@@ -98,6 +101,8 @@ public class Fader : MonoBehaviour
 				t -= Time.deltaTime;
 				yield return null;
 			}
+			color.a = 0f;
+			_image.color = color;
 		}
 
 		settings.DoneFading = true;

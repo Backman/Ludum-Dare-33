@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe3cdf1a813b4b2fb78b997cde476e7, type: 3}
+  m_Name: WaveEndless
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnSettings
+  Spawns:
+  - Name: BlueBoats
+    SpawnChance: 1
+    SpawnValue: 1
+    Variations:
+    - {fileID: 137212, guid: 05320d3612c054533a954e04aa30ce4f, type: 2}
+    - {fileID: 137212, guid: 210e8af1238a14ad9bbd9ba885dab0a3, type: 2}
+    - {fileID: 137212, guid: 7901e946ce57943bc8961be3483e3902, type: 2}
+    - {fileID: 137212, guid: b5865d312f1f442a58aac7a93a94839f, type: 2}
+    - {fileID: 137212, guid: cb8e9ad12fca941bf8a6d19c9fa1552d, type: 2}
+    MaxY: 0
+    HasMaxY: 1
+    MinY: 0
+    HasMinY: 1
+    MovementSpeedRange: {x: .800000012, y: 1.5}
+    ScaleRange: {x: 2, y: 2}
+  - Name: 
+    SpawnChance: 2
+    SpawnValue: .699999988
+    Variations:
+    - {fileID: 164296, guid: 94fea59312f4a4a5dace2400d2847df5, type: 2}
+    - {fileID: 168226, guid: 99276c0eed54741df839bda00cfc7007, type: 2}
+    - {fileID: 146268, guid: d0ea69c5ae0084208a08cb0b8ed1e35f, type: 2}
+    MaxY: 0
+    HasMaxY: 0
+    MinY: 6
+    HasMinY: 1
+    MovementSpeedRange: {x: 2, y: 5}
+    ScaleRange: {x: 2, y: 2}
+  - Name: 
+    SpawnChance: .5
+    SpawnValue: 4
+    Variations:
+    - {fileID: 137212, guid: 2e619a3d977564862ad2c937a7ca141d, type: 2}
+    - {fileID: 137212, guid: 5b8124d00e9de4b4cb56f6caeb0e17f4, type: 2}
+    MaxY: -6
+    HasMaxY: 1
+    MinY: 0
+    HasMinY: 0
+    MovementSpeedRange: {x: .5, y: 1.20000005}
+    ScaleRange: {x: 2, y: 2}
+  - Name: 
+    SpawnChance: 1
+    SpawnValue: .25
+    Variations:
+    - {fileID: 132500, guid: a129fe1d276e143869ccf4a226cc6f07, type: 2}
+    - {fileID: 195900, guid: be607d66aa23b42ad9d72ee3e9063280, type: 2}
+    MaxY: 0
+    HasMaxY: 0
+    MinY: 6
+    HasMinY: 1
+    MovementSpeedRange: {x: 3, y: 5}
+    ScaleRange: {x: 2, y: 2}
+  - Name: 
+    SpawnChance: .5
+    SpawnValue: 1
+    Variations:
+    - {fileID: 176140, guid: 5b7d06fd6f60b4b409a045f639a71b6a, type: 2}
+    - {fileID: 190758, guid: 6dd93f47b009949d585b1662b187f72e, type: 2}
+    MaxY: 0
+    HasMaxY: 0
+    MinY: 8
+    HasMinY: 1
+    MovementSpeedRange: {x: .5, y: 1.20000005}
+    ScaleRange: {x: 4, y: 4}
+  SpawnSpeed: 10
+  IntensityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
