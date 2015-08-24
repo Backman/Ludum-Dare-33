@@ -22,6 +22,7 @@ public class FollowCamera : MonoBehaviour
     {
         public Vector2 Pos;
         public Vector2 Velocity;
+        public float LerpModifier;
         public float Z;
         public int Priority;
     }
@@ -55,21 +56,25 @@ public class FollowCamera : MonoBehaviour
 			shakeAdd.x += settings.X.Evaluate (normalizedT) * shake.Strength;
 			shakeAdd.y += settings.Y.Evaluate (normalizedT) * shake.Strength;
 		}
-		_CurrentPos = Vector2.Lerp (_CurrentPos, targetLookpos, LerpModifier * Time.unscaledDeltaTime);
-        _CurrentZ = Mathf.Lerp(_CurrentZ, target.Z, LerpModifier * Time.unscaledDeltaTime);
+
+		_CurrentPos = Vector2.Lerp (_CurrentPos, targetLookpos, target.LerpModifier * Time.unscaledDeltaTime);
+        _CurrentZ = Mathf.Lerp(_CurrentZ, target.Z, target.LerpModifier * Time.unscaledDeltaTime);
 
         var finalPos = _CurrentPos + shakeAdd;
 		transform.position = new Vector3(finalPos.x, finalPos.y, _CurrentZ);
 	}
 
-	public void SetTarget (Vector2 position, Vector2 velocity, float z, int priority)
+	public void SetTarget (Vector2 position, Vector2 velocity, float z, int priority, float lerpModifier = 0f)
 	{
+        if (lerpModifier == 0f)
+            lerpModifier = LerpModifier;
         _Targets.Add(new TargetData()
                      {
                          Pos = position,
                              Velocity = velocity,
                              Priority = priority,
                              Z = z,
+                             LerpModifier = lerpModifier,
                              });
 	}
 

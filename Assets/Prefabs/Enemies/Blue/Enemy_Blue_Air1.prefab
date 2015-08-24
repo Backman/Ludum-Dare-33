@@ -59,8 +59,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75504684, y: .786338568, z: 30}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 40.1937485, y: 20.1625443, z: 30}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 444736}
   - {fileID: 496772}
@@ -331,7 +331,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .100000001
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -346,7 +346,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .099999994
+          value: .199999988
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -386,15 +386,15 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
       minMaxState: 0
-    gravityModifier: -.5
-    inheritVelocity: 0
+    gravityModifier: -.699999988
+    inheritVelocity: -.100000001
     maxNumParticles: 1000
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 0
+    type: 4
     radius: .00999999978
-    angle: 25
+    angle: 15
     length: 5
     boxX: 1
     boxY: 1
@@ -405,9 +405,9 @@ ParticleSystem:
     randomDirection: 0
   EmissionModule:
     enabled: 1
-    m_Type: 1
+    m_Type: 0
     rate:
-      scalar: 5
+      scalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1353,6 +1353,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SoundSource
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.rate.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

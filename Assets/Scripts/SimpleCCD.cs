@@ -42,7 +42,7 @@ public class SimpleCCD : MonoBehaviour
 				nodeCache.Add (node.Transform, node);
 	}
 
-	void LateUpdate ()
+	void FixedUpdate ()
 	{
 		if (!Application.isPlaying)
 			Start ();

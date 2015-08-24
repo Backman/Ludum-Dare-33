@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-	public EnemySpawnSettings Settings;
+	public GameSpawnSettings GameSettings;
 	public float LayerDepth = 30;
 	public float GridSize = 1;
 
@@ -13,16 +13,43 @@ public class EnemySpawner : MonoBehaviour
 
 	Dictionary<GameObject, Queue<GameObject>> _EnemyPool = new Dictionary<GameObject, Queue<GameObject>> ();
 
+
+    EnemySpawnSettings GetCurrentSpawnSettings(float time, out float periodT)
+    {
+        float t = 0f;
+        EnemySpawnSettings settings = null;
+        periodT = 0f;
+        for (int i = 0; i < GameSettings.Periods.Length; i++)
+        {
+            var period = GameSettings.Periods[i];
+            if (time + period.PeriodDuration >= time)
+            {
+                settings = period.SpawnSettings;
+                periodT = Mathf.Repeat((time - t) / period.PeriodDuration, 1);
+                break;
+            }
+            t += period.PeriodDuration;
+        }
+        if (settings == null)
+        {
+            settings = GameSettings.Periods[0].SpawnSettings;
+            periodT = Mathf.Repeat((time - t) / GameSettings.Periods[0].PeriodDuration, 1);
+        }
+        return settings;
+    }
+
 	void Update ()
 	{
 		IntRect currentRect = CloudSpawner.GetCurrentRect (LayerDepth, GridSize);
 
+        float periodT;
+        var spawnSettings = GetCurrentSpawnSettings(Time.timeSinceLevelLoad, out periodT);
 
-		_SpawnAccumulator += Settings.SpawnSpeed * Settings.IntensityCurve.Evaluate (Time.time / Settings.IntensityPeriod) * Time.deltaTime;
+		_SpawnAccumulator += spawnSettings.SpawnSpeed * spawnSettings.IntensityCurve.Evaluate (periodT) * Time.deltaTime;
 		if (_SpawnAccumulator > 0) {
 			float totalSpawnChance = 0;
-			for (int i = 0; i < Settings.Spawns.Length; i++) {
-				var spawn = Settings.Spawns [i];
+			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
+				var spawn = spawnSettings.Spawns [i];
 				if (IsValidSpawn (currentRect, spawn)) {
 					totalSpawnChance += spawn.SpawnChance;
 				}
@@ -30,8 +57,8 @@ public class EnemySpawner : MonoBehaviour
 
 			float randomVal = Random.Range (0, totalSpawnChance);
 
-			for (int i = 0; i < Settings.Spawns.Length; i++) {
-				var spawn = Settings.Spawns [i];
+			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
+				var spawn = spawnSettings.Spawns [i];
 				if (IsValidSpawn (currentRect, spawn)) {
 					if (spawn.SpawnChance > randomVal) {
 						AttemptSpawn (currentRect, spawn);
@@ -70,9 +97,9 @@ public class EnemySpawner : MonoBehaviour
 		for (int x = rect.MinX; x < rect.MaxX; x++) {
 			for (int y = minY; y < maxY; y++) {
 				if (x != rect.MinX
-				                && x != rect.MaxX - 1
-				                && y != rect.MinY
-				                && y != rect.MaxY - 1)
+				    && x != rect.MaxX - 1
+				    && y != rect.MinY
+				    && y != rect.MaxY - 1)
 					continue;
 				if (IsSpawnValid (spawn, x, y) == false)
 					continue;
@@ -123,7 +150,10 @@ public class EnemySpawner : MonoBehaviour
 		var dir = (foskPos - position);
 		dir.z = 0f;
 		dir.y = 0f;
-		enemy.Direction = dir.normalized;
+
+		dir.x = dir.x < 0f ? -1f : 1f;
+		enemy.Direction = dir;
+
 		var scale = enemy.transform.localScale;
 		scale = Vector3.one * Random.Range (spawn.ScaleRange.x, spawn.ScaleRange.y);
 		if (dir.x > 0) {
@@ -134,7 +164,7 @@ public class EnemySpawner : MonoBehaviour
 		enemy.transform.localScale = scale;
 
 		enemy.MovementSpeed = Random.Range (spawn.MovementSpeedRange.x, spawn.MovementSpeedRange.y);
-		enemy.IsHit = false;
+		enemy.Reset ();
 
 		_SpawnedEnemies.Add (enemy);
 		_SpawnAccumulator -= spawn.SpawnValue;
@@ -142,8 +172,10 @@ public class EnemySpawner : MonoBehaviour
 
 	public void ReturnSpawnValue (GameObject obj)
 	{
-		for (int i = 0; i < Settings.Spawns.Length; i++) {
-			var spawn = Settings.Spawns [i];
+        float t;
+        var spawnSettings = GetCurrentSpawnSettings(Time.timeSinceLevelLoad, out t);
+		for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
+			var spawn = spawnSettings.Spawns [i];
 			for (int j = 0; j < spawn.Variations.Length; j++) {
 				var variation = spawn.Variations [j];
 				if (variation == obj) {

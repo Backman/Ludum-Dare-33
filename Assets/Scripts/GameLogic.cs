@@ -32,7 +32,9 @@ public class GameLogic : MonoBehaviour
 	}
 
 	public System.Action OnScoreChanged;
-	public System.Action OnBlokDamage;
+	public System.Action<int> OnBlokDamage;
+	public System.Action<GameObject, int> OnRekComboIncreased;
+	public System.Action<int> OnRekComboReset;
 	public System.Action<GameObject> OnRekFace;
 
 	private int _score;
@@ -57,8 +59,7 @@ public class GameLogic : MonoBehaviour
 		if (_score == newScore) {
 			return;
 		}
-		
-		Debug.LogFormat("Score: {0}", _score);
+
 		_score = newScore;
 		if (OnScoreChanged != null) {
 			OnScoreChanged.Invoke ();
