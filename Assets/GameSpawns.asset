@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: GameSpawns
   m_EditorClassIdentifier: Assembly-CSharp::GameSpawnSettings
   Periods:
-  - SpawnSettings: {fileID: 11400000, guid: 0a87a8dfa9fde4bf29339207e6b3882c, type: 2}
+  - Name: Start
+    SpawnSettings: {fileID: 11400000, guid: 0a87a8dfa9fde4bf29339207e6b3882c, type: 2}
     PeriodDuration: 30

@@ -7,6 +7,7 @@ public class GameSpawnSettings : ScriptableObject
     [System.Serializable]
     public struct SpawnPeriod
     {
+        public string Name;
         public EnemySpawnSettings SpawnSettings;
         public float PeriodDuration;
     }

@@ -7,6 +7,7 @@ public class EnemySpawnSettings : ScriptableObject
     [System.Serializable]
     public struct EnemySpawn
     {
+        public string Name;
         public float SpawnChance;
         public float SpawnValue;
         public GameObject[] Variations;
