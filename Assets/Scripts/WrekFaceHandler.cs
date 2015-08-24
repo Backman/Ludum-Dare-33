@@ -9,6 +9,7 @@ public class WrekFaceHandler : MonoBehaviour
 	public float FreezeValue = 0.0f;
 	public Color BlinkColor;
 	public float BlinkDuration;
+    public AnimationCurve BlinkCurve;
 	public float MaxDistance = 10f;
 	public float MinDistance = 5f;
 	bool _HasFreezeTime = false;
@@ -47,7 +48,7 @@ public class WrekFaceHandler : MonoBehaviour
 			rekDuration = ComboCounter * 0.3f * rekDuration;
 		}
 
-		BlinkManager.Instance.AddBlink (obj, BlinkColor, BlinkDuration);
+		BlinkManager.Instance.AddBlink (obj, BlinkColor, BlinkDuration, BlinkCurve);
 		if (_HasFreezeTime == false) {
 			StartCoroutine (FreezeTime (obj, rekDuration, freezeValue));
 			_HasFreezeTime = true;

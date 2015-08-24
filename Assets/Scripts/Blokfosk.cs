@@ -337,7 +337,7 @@ public class Blokfosk : MonoBehaviour
 		var boost = InputManager.GetTriggers ();
 
 		if (boost) {
-			Music.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position, Music.instance.sfxv, 1f);
+			Music.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
 			var forward = transform.up;
 			var rot = new Vector2 (forward.x, forward.y);
 			_rb.velocity += rot.normalized * InkBoost;

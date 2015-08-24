@@ -8,6 +8,7 @@ public class BlinkManager : MonoBehaviour
         public Color Color;
         public float EndTime;
         public float StartTime;
+        public AnimationCurve Curve;
         public Renderer[] Renderers;
     }
     Dictionary<GameObject, BlinkState> _Blinks = new Dictionary<GameObject, BlinkState>();
@@ -37,7 +38,10 @@ public class BlinkManager : MonoBehaviour
 
             float t = (state.EndTime - Time.unscaledTime) / duration;
             var color = state.Color;
-            color.a *= t;
+            if (state.Curve != null)
+                color.a *= state.Curve.Evaluate(t);
+            else
+                color.a *= t;
             for (int i = 0; i < state.Renderers.Length; i++)
             {
                 var renderer = state.Renderers[i];
@@ -65,12 +69,13 @@ public class BlinkManager : MonoBehaviour
 
     }
 
-    public void AddBlink(GameObject source, Color color, float duration)
+    public void AddBlink(GameObject source, Color color, float duration, AnimationCurve curve = null)
     {
         BlinkState state;
         state.Color = color;
         state.StartTime = Time.unscaledTime;
         state.EndTime = Time.unscaledTime + duration;
+        state.Curve = curve;
         state.Renderers = source.GetComponentsInChildren<Renderer>();
         _Blinks[source] = state;
     }

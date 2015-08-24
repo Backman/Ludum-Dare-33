@@ -17,6 +17,8 @@ public abstract class Enemy : MonoBehaviour
 	public float MovementSpeed = 2f;
 	public int Score = 5;
 
+    public SoundSourceType SoundSource;
+
 	public GameObject Explosion;
 
 	public Vector2 AttackIntervall;
@@ -113,7 +115,7 @@ public abstract class Enemy : MonoBehaviour
 		if (collider.tag == "Blokfosk_Tentacle") {
 			if (!IsHit) {
 				if (OnHitClip) {
-					Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv, 1f);
+					Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv, 1f, SoundSource);
 				}
 				GameLogic.Instance.AddScore (Score);
 			}

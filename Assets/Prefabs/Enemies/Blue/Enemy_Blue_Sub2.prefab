@@ -133,6 +133,7 @@ MonoBehaviour:
   Explosions:
   - {fileID: 166840, guid: eb0760856dfdc40458784e1777bb6334, type: 2}
   - {fileID: 159424, guid: 57aa2a541df3ed844a1d2321fb827c9f, type: 2}
+  SoundSource: 4
   ExplodeClip: {fileID: 8300000, guid: 20e9e768387924961b36e8a953f94cd7, type: 3}
   Spawner: {fileID: 0}
 --- !u!114 &11464516
@@ -149,6 +150,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 188180, guid: 168bfa45ae2ea4c289ebfbae99b5b06e, type: 2}
   MovementSpeed: .800000012
   Score: 5
+  SoundSource: 0
   Explosion: {fileID: 0}
   AttackIntervall: {x: 1, y: 2}
   OnHitClip: {fileID: 8300000, guid: a296a778723e24102aea6bf483a4ef6e, type: 3}
@@ -1206,7 +1208,7 @@ ParticleSystemRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 4a8193bc664ebee48976e9806a61571e, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
@@ -1295,12 +1297,16 @@ Prefab:
       objectReference: {fileID: 8300000, guid: a296a778723e24102aea6bf483a4ef6e, type: 3}
     - target: {fileID: 0}
       propertyPath: Explosions.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 166840, guid: eb0760856dfdc40458784e1777bb6334, type: 2}
     - target: {fileID: 0}
       propertyPath: Explosions.Array.data[1]
-      value:
+      value: 
       objectReference: {fileID: 159424, guid: 57aa2a541df3ed844a1d2321fb827c9f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: SoundSource
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137212}

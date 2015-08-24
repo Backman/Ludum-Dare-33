@@ -558,6 +558,10 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1908712753}
+    - target: {fileID: 11469864, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
+      propertyPath: PlayClipCooldown
+      value: .400000006
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 16492818, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}

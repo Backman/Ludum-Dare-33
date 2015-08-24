@@ -171,14 +171,14 @@ public class EnemySpawner : MonoBehaviour
 		if ((spawn.HasMinY && spawn.MinY > y) || (spawn.HasMaxY && spawn.MaxY < y)) {
 			return false;
 		}
-		for (int i = 0; i < _SpawnedEnemies.Count; i++) {
+		/*for (int i = 0; i < _SpawnedEnemies.Count; i++) {
 			var enemy = _SpawnedEnemies [i];
 			Vector3 pos = enemy.transform.position;
 			int enemyX = Mathf.RoundToInt (pos.x * GridSize);
 			int enemyY = Mathf.RoundToInt (pos.x * GridSize);
 			if (enemyX == x && enemyY == y)
 				return false;
-		}
+		}*/
 		return true;
 	}
 }

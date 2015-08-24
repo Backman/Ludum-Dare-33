@@ -54,7 +54,27 @@ MonoBehaviour:
   RekDuration: .150000006
   FreezeValue: .5
   BlinkColor: {r: 1, g: 1, b: 1, a: 1}
-  BlinkDuration: .200000003
+  BlinkDuration: .5
+  BlinkCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: -.0217162669
+      outSlope: -.0217162669
+      tangentMode: 0
+    - time: .579655528
+      value: .995226145
+      inSlope: -.310964078
+      outSlope: -.310964078
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: -2.36764407
+      outSlope: -2.36764407
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
   MaxDistance: 15
   MinDistance: 5
   ComboTime: .5
@@ -64,7 +84,67 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[2].inSlope
+      value: -2.36764407
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[2].outSlope
+      value: -2.36764407
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[1].time
+      value: .579655528
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[1].value
+      value: .995226145
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[1].inSlope
+      value: -.310964078
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[1].outSlope
+      value: -.310964078
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[2].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[2].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[0].inSlope
+      value: -.0217162669
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkCurve.m_Curve.Array.data[0].outSlope
+      value: -.0217162669
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BlinkDuration
+      value: .5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 181498}

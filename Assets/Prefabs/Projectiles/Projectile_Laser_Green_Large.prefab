@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosions: []
+  SoundSource: 1
   ExplodeClip: {fileID: 8300000, guid: ba5e6cb81f7244237aa86394575390bd, type: 3}
   Spawner: {fileID: 0}
 --- !u!212 &21249914
@@ -195,6 +196,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SoundSource
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

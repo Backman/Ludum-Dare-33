@@ -5,9 +5,12 @@ using System.Collections;
 public class Explodable : MonoBehaviour
 {
 	public GameObject[] Explosions;
+    public SoundSourceType SoundSource;
 
 	public AudioClip ExplodeClip;
 	public EnemySpawner Spawner;
+
+    float _LastAudioPlay;
 
 	public void Explode (Transform t, bool shouldDestroy)
 	{
@@ -21,9 +24,10 @@ public class Explodable : MonoBehaviour
 
 	public void Explode(Vector3 pos, Quaternion rotation, bool shouldDestroy)
 	{
-		if (ExplodeClip)
+		if (ExplodeClip && _LastAudioPlay + 0.4f < Time.unscaledTime)
 		{
-			Music.PlayClipAtPoint(ExplodeClip, pos, Music.instance.sfxv, Random.Range(0.50f, 1.50f));
+            _LastAudioPlay = Time.unscaledTime;
+			Music.PlayClipAtPoint(ExplodeClip, pos, Music.instance.sfxv, Random.Range(0.50f, 1.50f), SoundSource);
 		}
 
 		for (int i = 0; i < Explosions.Length; i++)

@@ -1,6 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum SoundSourceType
+{
+    Unknown ,
+    Projectile ,
+    WaterSplash,
+    Bomb,
+    Sub,
+    Boat,
+    Air,
+    InkBoost,
+}
+
 public class Music : MonoBehaviour
 {
 
@@ -33,7 +45,7 @@ public class Music : MonoBehaviour
 
 	}
 
-	public static AudioSource PlayClipAtPoint (AudioClip clip, Vector3 pos, float volume, float pitch)
+	public static AudioSource PlayClipAtPoint (AudioClip clip, Vector3 pos, float volume, float pitch, SoundSourceType source)
 	{
 		if (!CanPlayClipAtPoint)
 		{
