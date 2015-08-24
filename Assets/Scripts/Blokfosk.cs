@@ -201,6 +201,7 @@ public class Blokfosk : MonoBehaviour
 
 	private void Awake ()
 	{
+		Health = MaxHealth;
 		_rb = GetComponent<Rigidbody2D> ();
 		Instance = this;
 		_animator = GetComponentInChildren<Animator> ();
@@ -218,8 +219,6 @@ public class Blokfosk : MonoBehaviour
 			DeathUpdate ();
 			return;
 		}
-
-		Health = Mathf.Clamp (Health, 0, MaxHealth);
 
 		var rightStick = InputManager.GetRightJoystick ();
 		var leftStick = InputManager.GetLeftJoystick ();
@@ -262,7 +261,7 @@ public class Blokfosk : MonoBehaviour
 	
 		if (_isDead && !InAir) {
 			_rb.rotation = Mathf.MoveTowardsAngle (_rb.rotation, 180f, 360 * Time.deltaTime);
-			_rb.gravityScale = 0.6f;
+			_rb.gravityScale = 0.1f;
 			return;
 		}
 
@@ -283,10 +282,11 @@ public class Blokfosk : MonoBehaviour
 	public void TakeDamage (int amount)
 	{
 		StartCoroutine (PlayDamageAnimation ());
-
+		Debug.Log ("Damage");
 		Health -= amount;
-		Health = Mathf.Min (0, MaxHealth);
+
 		if (Health <= 0) {
+			Debug.Log ("DEAD");
 			_isDead = true;
 		}
 
