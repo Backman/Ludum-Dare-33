@@ -56,7 +56,7 @@ public class Projectile : MonoBehaviour
 	{
 		var explode = GetComponent<Explodable> ();
 		if (explode) {
-			explode.Explode (transform.position);
+			explode.Explode (transform.position, true);
 		}
 	}
 

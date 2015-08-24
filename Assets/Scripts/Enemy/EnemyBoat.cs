@@ -7,7 +7,7 @@ public class EnemyBoat : Enemy
 	{
 		base.Update ();
 		if (IsHit && transform.position.y < -0.1f) {
-			Explode ();
+			Explode (true);
 		}
 	}
 
@@ -20,6 +20,7 @@ public class EnemyBoat : Enemy
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			var dir = flying.transform.position - transform.position;
 			Hit (dir);
+			Explode(false);
 		}
 	}
 
@@ -27,7 +28,7 @@ public class EnemyBoat : Enemy
 	{
 		WaterSurface surface = obj as WaterSurface;
 		if (IsHit) {
-			Explode ();
+			Explode (true);
 			surface.DoSplash (gameObject, transform.position);
 		}
 	}
@@ -35,6 +36,7 @@ public class EnemyBoat : Enemy
 	protected override void TentacleHit (Vector2 dir)
 	{
 		Hit (dir);
+		Explode(false);
 	}
 
 	public override void FireAlternative ()
