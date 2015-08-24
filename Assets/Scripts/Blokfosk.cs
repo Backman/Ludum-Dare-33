@@ -116,7 +116,7 @@ public static class InputManager
 	private const string RightStickVertical = "RightStickY_WIN";
 
 	private const string LeftStickHorizontal = "LeftStickX_WIN";
-	private const string LeftStickVertical = "LeftStickX_WIN";
+	private const string LeftStickVertical = "LeftStickY_WIN";
 
 	private const string HypeButton = "Hype_WIN";
 
@@ -337,6 +337,7 @@ public class Blokfosk : MonoBehaviour
 		var boost = InputManager.GetTriggers ();
 
 		if (boost) {
+			Music.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
 			var forward = transform.up;
 			var rot = new Vector2 (forward.x, forward.y);
 			_rb.velocity += rot.normalized * InkBoost;

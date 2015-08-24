@@ -1,11 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum SoundSourceType
+{
+	Unknown,
+	Projectile,
+	WaterSplash,
+	Bomb,
+	Sub,
+	Boat,
+	Air,
+	InkBoost,
+}
+
 public class Music : MonoBehaviour
 {
 
 	public Blokfosk Player;
-	private GameObject MusicPlayer;
+	//private GameObject MusicPlayer;
 	private AudioSource[] Songs;
 	public float transition = 0;
 	[Range (0.0f, 1.0f)]
@@ -14,17 +26,18 @@ public class Music : MonoBehaviour
 	[Range (0.0f, 1.0f)]
 	public float sfxv = 1f;
 	public static Music instance;
+
 	// Use this for initialization
 	void Start ()
 	{
 		instance = this;
 		Player = FindObjectOfType<Blokfosk> ();
-		MusicPlayer = GameObject.Find ("MusicPlayer");
+		//MusicPlayer = GameObject.Find ("MusicPlayer");
 		Songs = GetComponents<AudioSource> ();
 
 	}
 
-	public static AudioSource PlayClipAtPoint (AudioClip clip, Vector3 pos, float volume)
+	public static AudioSource PlayClipAtPoint (AudioClip clip, Vector3 pos, float volume, float pitch, SoundSourceType source)
 	{
 		var tempGO = new GameObject ("TempAudio"); // create the temp object
 		tempGO.transform.position = pos; // set its position
@@ -34,6 +47,7 @@ public class Music : MonoBehaviour
 		aSource.spatialBlend = 1.0f;
 		aSource.minDistance = 5f;
 		aSource.maxDistance = 100f;
+		aSource.pitch = pitch;
 		// set other aSource properties here, if desired
 		aSource.Play (); // start the sound
 		Destroy (tempGO, clip.length); // destroy object after clip duration

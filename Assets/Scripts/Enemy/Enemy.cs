@@ -4,11 +4,20 @@ using System.Collections;
 
 public abstract class Enemy : MonoBehaviour
 {
+	public enum EnemyType
+	{
+		Flying,
+		Boat,
+		Submarine
+	}
+
 	[System.NonSerialized]
 	public GameObject FromPrefab;
 	public GameObject ProjectilePrefab;
 	public float MovementSpeed = 2f;
 	public int Score = 5;
+
+    public SoundSourceType SoundSource;
 
 	public GameObject Explosion;
 
@@ -22,10 +31,14 @@ public abstract class Enemy : MonoBehaviour
 
 	public bool IsHit { get; set; }
 
+	public abstract EnemyType Type { get; }
+
 	protected float _attackTimer;
 	protected float _counter;
 
 	protected Rigidbody2D _rb;
+
+	private float _LastVisibleTime = 0f;
 
 	protected virtual void Awake ()
 	{
@@ -41,6 +54,8 @@ public abstract class Enemy : MonoBehaviour
 			return;
 		}
 
+		TryToFireProjectile();
+
 		_counter += Time.deltaTime;
 		if (_counter >= _attackTimer) {
 			FireProjectile ();
@@ -48,11 +63,33 @@ public abstract class Enemy : MonoBehaviour
 		}
 	}
 
-	float _LastVisibleTime = 0f;
 
 	void OnEnable ()
 	{
 		_LastVisibleTime = Time.time;
+	}
+
+	private void TryToFireProjectile()
+	{
+		if (AlternativeFireCondition())
+		{
+			AlternativeFire();
+		}
+		else
+		{
+			_counter += Time.deltaTime;
+			if (_counter >= _attackTimer)
+			{
+				BasicFire();
+				_counter = 0f;
+				RandomizeAttackTimer ();
+			}
+		}
+	}
+
+	protected virtual bool AlternativeFireCondition()
+	{
+		return false;
 	}
 
 	private void FixedUpdate ()
@@ -63,7 +100,7 @@ public abstract class Enemy : MonoBehaviour
 			_LastVisibleTime = Time.time;
 		} else {
 			float distance = Vector2.Distance (transform.position, Blokfosk.Instance.transform.position);
-			if (_LastVisibleTime + 5f < Time.time || distance > 30f) {
+			if (_LastVisibleTime + 5f < Time.time || distance > 60f) {
 				var explode = GetComponent<Explodable> ();
 				if (explode) {
 					explode.Spawner.ReturnSpawnValue (FromPrefab);
@@ -73,14 +110,13 @@ public abstract class Enemy : MonoBehaviour
 		}
 	}
 
-	protected virtual void OnTriggerEnter2D (Collider2D collider)
+	protected void OnTriggerEnter2D (Collider2D collider)
 	{
 		if (collider.tag == "Blokfosk_Tentacle") {
-			if (OnHitClip) {
-				Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv);
-			}
-
 			if (!IsHit) {
+				if (OnHitClip) {
+					Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv, 1f, SoundSource);
+				}
 				GameLogic.Instance.AddScore (Score);
 			}
 
@@ -90,6 +126,8 @@ public abstract class Enemy : MonoBehaviour
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			IsHit = true;
 		}
+
+		CheckOtherCollisions(collider);
 	}
 
 	protected virtual void Hit (Vector2 dir)
@@ -102,39 +140,48 @@ public abstract class Enemy : MonoBehaviour
 
 	protected virtual void TentacleHit (Vector2 dir)
 	{
-		Explode ();
+		Explode(true);
 	}
 
-	public void Explode ()
+	protected virtual void CheckOtherCollisions(Collider2D collider)
+	{
+
+	}
+
+	public void Explode (bool shouldDestroy)
 	{
 		var explode = GetComponent<Explodable> ();
 		if (explode) {
-			explode.Explode (transform.position);
+			explode.Explode(transform.position, shouldDestroy);
 		}
 	}
 
-	public void FireProjectile ()
+	protected virtual void FireProjectile ()
+	{
+		BasicFire();
+	}
+
+	protected virtual void AlternativeFire()
+	{
+
+	}
+
+	protected void BasicFire()
 	{
 		var dir = Blokfosk == null ? transform.right : Blokfosk.transform.position - transform.position;
 		var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 		var rot = Quaternion.AngleAxis (angle, Vector3.forward);
 
-		var go = (GameObject)Instantiate (ProjectilePrefab, transform.position, rot);
+		var go = TrashMan.spawn (ProjectilePrefab, transform.position, rot);
 		var projectile = go.GetComponent<Projectile> ();
 
 
 		projectile.Direction = dir.normalized;
 	}
 
-	public virtual void FireAlternative ()
-	{
-
-	}
-
 	private void ResetAttackTimer ()
 	{
 		_counter = 0f;
-		RandomizeAttackTimer ();
 	}
 
 	private void RandomizeAttackTimer ()

@@ -9,15 +9,12 @@ public class WrekFaceHandler : MonoBehaviour
 	public float FreezeValue = 0.0f;
 	public Color BlinkColor;
 	public float BlinkDuration;
+    public AnimationCurve BlinkCurve;
 	public float MaxDistance = 10f;
 	public float MinDistance = 5f;
 	bool _HasFreezeTime = false;
 
-
-	public float ComboTime = 0.5f;
-	private float _currentComboTime;
-
-	public int ComboCounter { get; set; }
+	public RekCombo RekCombo;
 
 	void Awake ()
 	{
@@ -35,18 +32,9 @@ public class WrekFaceHandler : MonoBehaviour
 		freezeValue *= 1 - distanceMod;
 		rekDuration *= 1 + distanceMod;
 
-		if (_currentComboTime <= ComboTime) {
-			_currentComboTime = 0f;
-			ComboCounter += 1;
-		} else {
-			ComboCounter = 0;
-		}
+		RekCombo.IncreaseRekComboCount (obj);
 
-		if (ComboCounter >= 3) {
-			rekDuration = ComboCounter * 0.3f * rekDuration;
-		}
-
-		BlinkManager.Instance.AddBlink (obj, BlinkColor, BlinkDuration);
+		BlinkManager.Instance.AddBlink (obj, BlinkColor, BlinkDuration, BlinkCurve);
 		if (_HasFreezeTime == false) {
 			StartCoroutine (FreezeTime (obj, rekDuration, freezeValue));
 			_HasFreezeTime = true;
@@ -67,8 +55,8 @@ public class WrekFaceHandler : MonoBehaviour
 		_HasFreezeTime = false;
 	}
 
-	void Update ()
+	public void Update ()
 	{
-		_currentComboTime += Time.deltaTime;
+		RekCombo.Update ();
 	}
 }

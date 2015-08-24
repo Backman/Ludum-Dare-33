@@ -3,23 +3,24 @@ using System.Collections;
 
 public class EnemyFlying : Enemy
 {
+	public override EnemyType Type { get { return EnemyType.Flying; } }
+
 	protected override void Update ()
 	{
 		base.Update ();
 		if (IsHit && transform.position.y < -0.1f) {
-			Explode ();
+			Explode (true);
 		}
 	}
 
-	protected override void OnTriggerEnter2D (Collider2D collider)
+	protected override void CheckOtherCollisions (Collider2D collider)
 	{
-		base.OnTriggerEnter2D (collider);
-
 		var boat = collider.GetComponent<EnemyBoat> ();
 		if (boat && boat.IsHit) {
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			var dir = boat.transform.position - transform.position;
 			Hit (dir);
+			Explode(true);
 		}
 
 		var flying = collider.GetComponent<EnemyFlying> ();
@@ -27,6 +28,7 @@ public class EnemyFlying : Enemy
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			var dir = flying.transform.position - transform.position;
 			Hit (dir);
+			Explode(true);
 		}
 	}
 
@@ -34,18 +36,18 @@ public class EnemyFlying : Enemy
 	{
 		WaterSurface surface = obj as WaterSurface;
 		if (IsHit) {
-			Explode ();
+			Explode (true);
 			surface.DoSplash (gameObject, transform.position);
 		}
 	}
 
 	protected override void TentacleHit (Vector2 dir)
 	{
-		Hit (dir);
-	}
+		if (!IsHit)
+		{
+			Explode(false);
+		}
 
-	public override void FireAlternative ()
-	{
-
+		Hit(dir);
 	}
 }

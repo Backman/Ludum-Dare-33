@@ -24,7 +24,7 @@ public class WaterSurface : MonoBehaviour
 		foreach (var item in _ActiveSplashes) {
 			if (!item.Value)
 				_toRemove.Add (item.Key);
-            
+			
 		}
 		foreach (var item in _toRemove) {
 			_ActiveSplashes.Remove (item);
@@ -55,6 +55,6 @@ public class WaterSurface : MonoBehaviour
 		position.y = 0f;
 		position.z = transform.position.z;
 		_ActiveSplashes [source] = Instantiate (SplashParticle, position, Quaternion.identity) as GameObject;
-		Music.PlayClipAtPoint (SplashSound, position, Music.instance.sfxv);
+		Music.PlayClipAtPoint (SplashSound, position, Music.instance.sfxv, 1f, SoundSourceType.WaterSplash);
 	}
 }
