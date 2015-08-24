@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
 			float totalSpawnChance = 0;
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 				var spawn = spawnSettings.Spawns [i];
-				if (IsValidSpawn (currentRect, spawn)) {
+				if (IsValidSpawn (currentRect, spawn, periodT)) {
 					totalSpawnChance += spawn.SpawnChance;
 				}
 			}
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
 
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 				var spawn = spawnSettings.Spawns [i];
-				if (IsValidSpawn (currentRect, spawn)) {
+				if (IsValidSpawn (currentRect, spawn, periodT)) {
 					if (spawn.SpawnChance > randomVal) {
 						AttemptSpawn (currentRect, spawn);
 						break;
@@ -71,10 +71,11 @@ public class EnemySpawner : MonoBehaviour
 		}
 	}
 
-	bool IsValidSpawn (IntRect rect, EnemySpawnSettings.EnemySpawn spawn)
+	bool IsValidSpawn (IntRect rect, EnemySpawnSettings.EnemySpawn spawn, float time)
 	{
-
 		//if(spawn.MinLevel >= _CurrentLevel && spawn.MaxLevel <= _CurrentLevel)
+		if ((spawn.HasMinTime && spawn.MinTime > time) || (spawn.HasMaxTime && spawn.MaxTime < time))
+            return false;
 
 		return (spawn.HasMinY == false || spawn.MinY <= rect.MaxY) && (spawn.HasMaxY == false || spawn.MaxY > rect.MinY);
 	}
