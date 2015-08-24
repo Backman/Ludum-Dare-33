@@ -9,11 +9,13 @@ public class HealthBar : MonoBehaviour
 	public float BlinkDuration = 0.5f;
 
 	private float _originWidth;
+	private float _originHeight;
 	private int _maxHealth;
 
 	private void Awake ()
 	{
-		_originWidth = Bar.rectTransform.rect.width;
+		_originWidth = Bar.rectTransform.sizeDelta.x;
+		_originHeight = Bar.rectTransform.sizeDelta.y;
 	}
 
 	private void Start ()
@@ -24,13 +26,13 @@ public class HealthBar : MonoBehaviour
 
 	private void OnBlokDamage (int currentHealth)
 	{
-		var healthPercentage = currentHealth / _maxHealth;
-
+		var healthPercentage = (float)currentHealth / (float)_maxHealth;
+		Debug.LogFormat ("Health perc: {0}", healthPercentage);
 		var width = healthPercentage * _originWidth;
-		var height = Bar.rectTransform.rect.height;
 
-		Bar.rectTransform.sizeDelta = new Vector2 (width, height);
+		Bar.rectTransform.sizeDelta = new Vector2 (width, _originHeight);
 
+		StopCoroutine (DoBlink ());
 		StartCoroutine (DoBlink ());
 	}
 
