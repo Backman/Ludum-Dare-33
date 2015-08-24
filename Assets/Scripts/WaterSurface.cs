@@ -24,7 +24,7 @@ public class WaterSurface : MonoBehaviour
 		foreach (var item in _ActiveSplashes) {
 			if (!item.Value)
 				_toRemove.Add (item.Key);
-            
+			
 		}
 		foreach (var item in _toRemove) {
 			_ActiveSplashes.Remove (item);
