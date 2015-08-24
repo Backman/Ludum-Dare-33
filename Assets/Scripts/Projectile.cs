@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 	public float MovementSpeed = 1f;
 	public float ExplosionRadius = 1f;
 	public int Damage = 5;
+	public bool ExplodeOnSurfaceHit = true;
 
 	public Vector2 Direction { get; set; }
 
@@ -22,9 +23,9 @@ public class Projectile : MonoBehaviour
 	{
 		_timer += Time.deltaTime;
 		if (_timer >= TimeAlive) {
-			var radii = ExplosionRadius * ExplosionRadius;
-			var blokCollider = Physics2D.OverlapCircle (_rb.position, ExplosionRadius, 1 << 8);
-			TryDoDamage (blokCollider);
+			//var radii = ExplosionRadius * ExplosionRadius;
+			//var blokCollider = Physics2D.OverlapCircle (_rb.position, ExplosionRadius, 1 << 8);
+			//TryDoDamage (blokCollider);
 			DoExplode ();
 		}
 	}
@@ -41,10 +42,6 @@ public class Projectile : MonoBehaviour
 
 	private void TryDoDamage (Collider2D collider)
 	{
-		if (collider == null) {
-			return;
-		}
-
 		var blok = collider.GetComponent<Blokfosk> ();
 		if (blok) {
 			blok.TakeDamage (Damage);
@@ -54,6 +51,7 @@ public class Projectile : MonoBehaviour
 
 	private void DoExplode ()
 	{
+		_timer = 0f;
 		var explode = GetComponent<Explodable> ();
 		if (explode) {
 			explode.Explode (transform.position, true);
@@ -62,6 +60,9 @@ public class Projectile : MonoBehaviour
 
 	void WaterSurfaceEnter ()
 	{
-		DoExplode ();
+		if (ExplodeOnSurfaceHit)
+		{
+			DoExplode();
+		}
 	}
 }

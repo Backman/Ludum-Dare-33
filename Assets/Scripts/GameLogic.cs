@@ -57,7 +57,8 @@ public class GameLogic : MonoBehaviour
 		if (_score == newScore) {
 			return;
 		}
-
+		
+		Debug.LogFormat("Score: {0}", _score);
 		_score = newScore;
 		if (OnScoreChanged != null) {
 			OnScoreChanged.Invoke ();

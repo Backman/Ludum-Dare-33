@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyFlying : Enemy
 {
+	public override EnemyType Type { get { return EnemyType.Flying; } }
+
 	protected override void Update ()
 	{
 		base.Update ();
@@ -11,16 +13,14 @@ public class EnemyFlying : Enemy
 		}
 	}
 
-	protected override void OnTriggerEnter2D (Collider2D collider)
+	protected override void CheckOtherCollisions (Collider2D collider)
 	{
-		base.OnTriggerEnter2D (collider);
-
 		var boat = collider.GetComponent<EnemyBoat> ();
 		if (boat && boat.IsHit) {
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			var dir = boat.transform.position - transform.position;
 			Hit (dir);
-			Explode(false);
+			Explode(true);
 		}
 
 		var flying = collider.GetComponent<EnemyFlying> ();
@@ -28,7 +28,7 @@ public class EnemyFlying : Enemy
 			GameLogic.Instance.OnRekFace.Invoke (gameObject);
 			var dir = flying.transform.position - transform.position;
 			Hit (dir);
-			Explode(false);
+			Explode(true);
 		}
 	}
 
@@ -43,12 +43,11 @@ public class EnemyFlying : Enemy
 
 	protected override void TentacleHit (Vector2 dir)
 	{
-		Hit (dir);
-		Explode(false);
-	}
+		if (!IsHit)
+		{
+			Explode(false);
+		}
 
-	public override void FireAlternative ()
-	{
-
+		Hit(dir);
 	}
 }
