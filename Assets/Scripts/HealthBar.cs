@@ -27,7 +27,7 @@ public class HealthBar : MonoBehaviour
 	private void OnBlokDamage (int currentHealth)
 	{
 		var healthPercentage = (float)currentHealth / (float)_maxHealth;
-		Debug.LogFormat ("Health perc: {0}", healthPercentage);
+
 		var width = healthPercentage * _originWidth;
 
 		Bar.rectTransform.sizeDelta = new Vector2 (width, _originHeight);
