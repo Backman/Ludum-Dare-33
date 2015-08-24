@@ -10,8 +10,10 @@ public class HealthManager : MonoBehaviour
 		GameLogic.Instance.OnBlokDamage += HandleDamage;
 	}
 
-	private void HandleDamage ()
+	private void HandleDamage (int currentHealth)
 	{
-
+		if (currentHealth <= 0) {
+			
+		}
 	}
 }

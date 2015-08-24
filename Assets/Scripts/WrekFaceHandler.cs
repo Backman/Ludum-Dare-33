@@ -10,10 +10,10 @@ public class WrekFaceHandler : MonoBehaviour
 	public Color BlinkColor;
 	public float BlinkDuration;
 	public float BlokfoskBlinkDuration;
-    public AnimationCurve BlinkCurve;
+	public AnimationCurve BlinkCurve;
 	public float MaxDistance = 10f;
 	public float MinDistance = 5f;
-    public float ZoomLerpModifier = 20f;
+	public float ZoomLerpModifier = 20f;
 	bool _HasFreezeTime = false;
 
 	public RekCombo RekCombo;
@@ -21,15 +21,15 @@ public class WrekFaceHandler : MonoBehaviour
 	void Awake ()
 	{
 		GameLogic.Instance.OnRekFace += OnRekFace;
-        GameLogic.Instance.OnBlokDamage += OnBlokDamage;
+		GameLogic.Instance.OnBlokDamage += OnBlokDamage;
 
 		RekCombo.Init ();
 	}
-    void OnBlokDamage()
-    {
+
+	void OnBlokDamage (int currentHealth)
+	{
 		BlinkManager.Instance.AddBlink (Blokfosk.Instance.gameObject, BlinkColor, BlokfoskBlinkDuration);
-        
-    }
+	}
 
 	void OnRekFace (GameObject obj)
 	{

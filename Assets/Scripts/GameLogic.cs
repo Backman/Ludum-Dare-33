@@ -32,7 +32,7 @@ public class GameLogic : MonoBehaviour
 	}
 
 	public System.Action OnScoreChanged;
-	public System.Action OnBlokDamage;
+	public System.Action<int> OnBlokDamage;
 	public System.Action<GameObject, int> OnRekComboIncreased;
 	public System.Action<int> OnRekComboReset;
 	public System.Action<GameObject> OnRekFace;
