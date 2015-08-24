@@ -125,6 +125,7 @@ MonoBehaviour:
   AttackIntervall: {x: 1, y: 2}
   OnHitClip: {fileID: 8300000, guid: 31a4d0df470bf474496f1b5f1275bd60, type: 3}
   MinePrefab: {fileID: 188180, guid: 5d4876e64ccc446cfbd60b0881518154, type: 2}
+  MineFireInterval: {x: 5, y: 15}
 --- !u!212 &21231378
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -202,6 +203,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SoundSource
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MineFireInterval.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MineFireInterval.y
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

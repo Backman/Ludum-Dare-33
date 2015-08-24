@@ -624,7 +624,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &801771197 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 187744, guid: 0775d5a553e754657a923c33c73f09b7, type: 2}
@@ -700,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1001 &924101413
 Prefab:
   m_ObjectHideFlags: 0
@@ -739,6 +739,10 @@ Prefab:
     - target: {fileID: 463906, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
       propertyPath: m_RootOrder
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445838, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
+      propertyPath: BlokfoskBlinkDuration
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
