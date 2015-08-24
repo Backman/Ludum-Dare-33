@@ -23,7 +23,7 @@ public class Explodable : MonoBehaviour
 	{
 		if (ExplodeClip)
 		{
-			Music.PlayClipAtPoint(ExplodeClip, pos, Music.instance.sfxv);
+			Music.PlayClipAtPoint(ExplodeClip, pos, Music.instance.sfxv, Random.Range(0.90f, 1.10f));
 		}
 
 		for (int i = 0; i < Explosions.Length; i++)
