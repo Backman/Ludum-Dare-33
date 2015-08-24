@@ -19,7 +19,7 @@ public class RekCombo
 
 	private GameLogic _gameLogic;
 
-	public RekCombo ()
+	public void Init ()
 	{
 		_startTime = Time.unscaledTime;
 		_gameLogic = GameLogic.Instance;
