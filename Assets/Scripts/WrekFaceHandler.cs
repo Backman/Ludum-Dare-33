@@ -9,7 +9,7 @@ public class WrekFaceHandler : MonoBehaviour
 	public float FreezeValue = 0.0f;
 	public Color BlinkColor;
 	public float BlinkDuration;
-    public AnimationCurve BlinkCurve;
+	public AnimationCurve BlinkCurve;
 	public float MaxDistance = 10f;
 	public float MinDistance = 5f;
 	bool _HasFreezeTime = false;
@@ -19,6 +19,7 @@ public class WrekFaceHandler : MonoBehaviour
 	void Awake ()
 	{
 		GameLogic.Instance.OnRekFace += OnRekFace;
+		RekCombo.Init ();
 	}
 
 	void OnRekFace (GameObject obj)

@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
 	public float MovementSpeed = 2f;
 	public int Score = 5;
 
-    public SoundSourceType SoundSource;
+	public SoundSourceType SoundSource;
 
 	public GameObject Explosion;
 
@@ -54,7 +54,7 @@ public abstract class Enemy : MonoBehaviour
 			return;
 		}
 
-		TryToFireProjectile();
+		TryToFireProjectile ();
 
 		_counter += Time.deltaTime;
 		if (_counter >= _attackTimer) {
@@ -69,30 +69,26 @@ public abstract class Enemy : MonoBehaviour
 		_LastVisibleTime = Time.time;
 	}
 
-	private void TryToFireProjectile()
+	private void TryToFireProjectile ()
 	{
-		if (AlternativeFireCondition())
-		{
-			AlternativeFire();
-		}
-		else
-		{
+		if (AlternativeFireCondition ()) {
+			AlternativeFire ();
+		} else {
 			_counter += Time.deltaTime;
-			if (_counter >= _attackTimer)
-			{
-				BasicFire();
+			if (_counter >= _attackTimer) {
+				BasicFire ();
 				_counter = 0f;
 				RandomizeAttackTimer ();
 			}
 		}
 	}
 
-	protected virtual bool AlternativeFireCondition()
+	protected virtual bool AlternativeFireCondition ()
 	{
 		return false;
 	}
 
-	private void FixedUpdate ()
+	protected virtual void FixedUpdate ()
 	{
 		_rb.position += Direction * MovementSpeed * Time.deltaTime;
 		var renderer = GetComponentInChildren<Renderer> ();
@@ -127,7 +123,7 @@ public abstract class Enemy : MonoBehaviour
 			IsHit = true;
 		}
 
-		CheckOtherCollisions(collider);
+		CheckOtherCollisions (collider);
 	}
 
 	protected virtual void Hit (Vector2 dir)
@@ -140,10 +136,10 @@ public abstract class Enemy : MonoBehaviour
 
 	protected virtual void TentacleHit (Vector2 dir)
 	{
-		Explode(true);
+		Explode (true);
 	}
 
-	protected virtual void CheckOtherCollisions(Collider2D collider)
+	protected virtual void CheckOtherCollisions (Collider2D collider)
 	{
 
 	}
@@ -152,21 +148,21 @@ public abstract class Enemy : MonoBehaviour
 	{
 		var explode = GetComponent<Explodable> ();
 		if (explode) {
-			explode.Explode(transform.position, shouldDestroy);
+			explode.Explode (transform.position, shouldDestroy);
 		}
 	}
 
 	protected virtual void FireProjectile ()
 	{
-		BasicFire();
+		BasicFire ();
 	}
 
-	protected virtual void AlternativeFire()
+	protected virtual void AlternativeFire ()
 	{
 
 	}
 
-	protected void BasicFire()
+	protected void BasicFire ()
 	{
 		var dir = Blokfosk == null ? transform.right : Blokfosk.transform.position - transform.position;
 		var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
@@ -187,5 +183,10 @@ public abstract class Enemy : MonoBehaviour
 	private void RandomizeAttackTimer ()
 	{
 		_attackTimer = Random.Range (AttackIntervall.x, AttackIntervall.y);
+	}
+
+	public virtual void Reset ()
+	{
+		IsHit = false;
 	}
 }

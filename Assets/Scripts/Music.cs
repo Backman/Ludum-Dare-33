@@ -15,7 +15,9 @@ public enum SoundSourceType
 
 public class Music : MonoBehaviour
 {
-
+	public float MinLowPassValue = 3000f;
+	public float MaxLowPassValue = 22000f;
+	public AudioLowPassFilter LowPassFilter;
 	public Blokfosk Player;
 	//private GameObject MusicPlayer;
 	private AudioSource[] Songs;
@@ -61,6 +63,8 @@ public class Music : MonoBehaviour
 		Songs [0].volume = (1 - transition) * Musicvolume;
 		Songs [2].volume = transition * Musicvolume;
 
+		var lowPassValue = Mathf.Lerp (MinLowPassValue, MaxLowPassValue, 1 - transition);
+		LowPassFilter.cutoffFrequency = lowPassValue;
 
 		float threshold = Player.VelocitySettings.BobThreshold;
 
