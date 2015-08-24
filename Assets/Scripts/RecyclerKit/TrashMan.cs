@@ -140,11 +140,11 @@ public partial class TrashMan : MonoBehaviour
 				var newTransform = newGo.transform;
 
 #if UNITY_4_6 || UNITY_5_0
-                if (newTransform as RectTransform)
-                    newTransform.SetParent(null, false);
-                else
+				if (newTransform as RectTransform)
+					newTransform.SetParent(null, false);
+				else
 #endif
-				    newTransform.parent = null;
+					newTransform.parent = null;
 
 				newTransform.position = position;
 				newTransform.rotation = rotation;
@@ -232,11 +232,11 @@ public partial class TrashMan : MonoBehaviour
 			var newGo = GameObject.Instantiate( go, position, rotation ) as GameObject;
 
 #if UNITY_4_6 || UNITY_5_0
-            if (newGo.transform as RectTransform != null)
-                newGo.transform.SetParent(null, false);
-            else
+			if (newGo.transform as RectTransform != null)
+				newGo.transform.SetParent(null, false);
+			else
 #endif
-			    newGo.transform.parent = null;
+				newGo.transform.parent = null;
 
 			return newGo;
 		}
@@ -280,11 +280,11 @@ public partial class TrashMan : MonoBehaviour
 			instance._instanceIdToRecycleBin[instance._poolNameToInstanceId[goName]].despawn( go );
 
 #if UNITY_4_6 || UNITY_5_0
-            if (go.transform as RectTransform != null)
-                go.transform.SetParent(instance.transform, false);
-            else
+			if (go.transform as RectTransform != null)
+				go.transform.SetParent(instance.transform, false);
+			else
 #endif
-                go.transform.parent = instance.transform;
+				go.transform.parent = instance.transform;
 		}
 	}
 
