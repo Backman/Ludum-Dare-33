@@ -45,9 +45,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 458320}
   - 81: {fileID: 8194792}
-  - 164: {fileID: 16492818}
+  - 169: {fileID: 16903864}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Listener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,29 +366,26 @@ MonoBehaviour:
   Musicvolume: .600000024
   fadespeed: 2
   sfxv: .850000024
---- !u!164 &16492818
-AudioReverbFilter:
+--- !u!169 &16903864
+AudioLowPassFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187744}
   m_Enabled: 0
-  m_DryLevel: 0
-  m_Room: -1000
-  m_RoomHF: -4000
-  m_RoomRolloff: 0
-  m_DecayTime: 1.49000001
-  m_DecayHFRatio: .100000001
-  m_ReflectionsLevel: -449
-  m_ReverbLevel: 1700
-  m_ReverbDelay: .0109999999
-  m_Diffusion: 100
-  m_Density: 100
-  m_HFReference: 5000
-  m_RoomLF: 0
-  m_LFReference: 250
-  m_ReflectionsDelay: 0
-  m_ReverbPreset: 23
+  serializedVersion: 3
+  m_CutoffFrequency: 5000.00049
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .772727251
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
