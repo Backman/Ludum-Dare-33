@@ -9,17 +9,17 @@ public class Explodable : MonoBehaviour
 	public AudioClip ExplodeClip;
 	public EnemySpawner Spawner;
 
-	public void Explode (Transform t)
+	public void Explode (Transform t, bool shouldDestroy)
 	{
-		Explode (t.position, t.rotation);
+		Explode (t.position, t.rotation, shouldDestroy);
 	}
 
-	public void Explode (Vector3 pos)
+	public void Explode (Vector3 pos, bool shouldDestroy)
 	{
-		Explode (pos, Quaternion.identity);
+		Explode (pos, Quaternion.identity, shouldDestroy);
 	}
 
-	public void Explode(Vector3 pos, Quaternion rotation)
+	public void Explode(Vector3 pos, Quaternion rotation, bool shouldDestroy)
 	{
 		if (ExplodeClip)
 		{
@@ -29,6 +29,11 @@ public class Explodable : MonoBehaviour
 		for (int i = 0; i < Explosions.Length; i++)
 		{
 			TrashMan.spawn(Explosions[i], pos, rotation);
+		}
+
+		if (!shouldDestroy)
+		{
+			return;
 		}
 
 		if (Spawner != null)

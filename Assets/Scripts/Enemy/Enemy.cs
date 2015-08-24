@@ -102,14 +102,14 @@ public abstract class Enemy : MonoBehaviour
 
 	protected virtual void TentacleHit (Vector2 dir)
 	{
-		Explode ();
+		Explode(true);
 	}
 
-	public void Explode ()
+	public void Explode (bool shouldDestroy)
 	{
 		var explode = GetComponent<Explodable> ();
 		if (explode) {
-			explode.Explode (transform.position);
+			explode.Explode(transform.position, shouldDestroy);
 		}
 	}
 
