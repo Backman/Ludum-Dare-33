@@ -77,7 +77,7 @@ public abstract class Enemy : MonoBehaviour
 	{
 		if (collider.tag == "Blokfosk_Tentacle") {
 			if (OnHitClip) {
-				Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv);
+				Music.PlayClipAtPoint (OnHitClip, transform.position, Music.instance.sfxv, 1f);
 			}
 
 			if (!IsHit) {

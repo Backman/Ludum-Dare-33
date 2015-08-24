@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosions:
   - {fileID: 154060, guid: f0899f1f509fe426ebefa366f8c2d8ed, type: 2}
-  ExplodeClip: {fileID: 0}
+  ExplodeClip: {fileID: 8300000, guid: ba5e6cb81f7244237aa86394575390bd, type: 3}
   Spawner: {fileID: 0}
 --- !u!212 &21249914
 SpriteRenderer:
@@ -260,8 +260,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Explosions.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 154060, guid: f0899f1f509fe426ebefa366f8c2d8ed, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ExplodeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ba5e6cb81f7244237aa86394575390bd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188180}
