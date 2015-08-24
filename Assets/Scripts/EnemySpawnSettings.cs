@@ -9,8 +9,6 @@ public class EnemySpawnSettings : ScriptableObject
     {
         public float SpawnChance;
         public float SpawnValue;
-        public int MinLevel;
-        public int MaxLevel;
         public GameObject[] Variations;
 
         public int MaxY; 
@@ -25,5 +23,5 @@ public class EnemySpawnSettings : ScriptableObject
     public EnemySpawn[] Spawns;
     public float SpawnSpeed;
     public AnimationCurve IntensityCurve;
-    public float IntensityPeriod;
 }
+

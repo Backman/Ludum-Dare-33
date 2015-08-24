@@ -64,7 +64,7 @@ public class WrekFaceHandler : MonoBehaviour
             _LastComboText = Time.unscaledTime;
         }
     }
-    void OnBlokDamage()
+    void OnBlokDamage(int dmg)
     {
         BlinkManager.Instance.AddBlink(Blokfosk.Instance.gameObject, BlinkColor, BlokfoskBlinkDuration);
     }

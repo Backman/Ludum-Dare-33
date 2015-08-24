@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1960669124348ccbc33e398d23cffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: 0a87a8dfa9fde4bf29339207e6b3882c, type: 2}
+  GameSettings: {fileID: 11400000, guid: fdb8d47fd5b4b4f2c85c46787feb9376, type: 2}
   LayerDepth: 30
   GridSize: 4
 --- !u!4 &101355366
@@ -439,6 +439,10 @@ Prefab:
     - target: {fileID: 125686, guid: 4e65725783944469397cea1568eb53fc, type: 2}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403280, guid: 4e65725783944469397cea1568eb53fc, type: 2}
+      propertyPath: MaxHealth
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e65725783944469397cea1568eb53fc, type: 2}
