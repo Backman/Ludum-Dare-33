@@ -67,7 +67,7 @@ MonoBehaviour:
     ScaleRange: {x: 2, y: 2}
   - Name: 
     SpawnChance: .400000006
-    SpawnValue: .25
+    SpawnValue: 1
     Variations:
     - {fileID: 137212, guid: 2e619a3d977564862ad2c937a7ca141d, type: 2}
     - {fileID: 137212, guid: 5b8124d00e9de4b4cb56f6caeb0e17f4, type: 2}

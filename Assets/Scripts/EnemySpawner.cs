@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 			float totalSpawnChance = 0;
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 				var spawn = spawnSettings.Spawns [i];
-				if (IsValidSpawn (currentRect, spawn, Time.time)) {
+				if (IsValidSpawn (currentRect, spawn, Time.timeSinceLevelLoad)) {
 					totalSpawnChance += spawn.SpawnChance;
 				}
 			}
@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
 
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 				var spawn = spawnSettings.Spawns [i];
-				if (IsValidSpawn (currentRect, spawn, Time.time)) {
+				if (IsValidSpawn (currentRect, spawn, Time.timeSinceLevelLoad)) {
 					if (spawn.SpawnChance > randomVal) {
 						AttemptSpawn (currentRect, spawn);
 						break;

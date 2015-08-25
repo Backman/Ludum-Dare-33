@@ -13,6 +13,7 @@ public class WrekFaceHandler : MonoBehaviour
     public AnimationCurve BlinkCurve;
     public float MaxDistance = 10f;
     public float MinDistance = 5f;
+    public float ZoomMinDistance = 12f;
     public float ZoomLerpModifier = 20f;
 
     [System.Serializable]
@@ -77,28 +78,31 @@ public class WrekFaceHandler : MonoBehaviour
         var freezeValue = FreezeValue;
 
         float distanceMod = Mathf.Clamp01((distance - MinDistance) / MaxDistance);
-        freezeValue *= 1 - distanceMod;
-        rekDuration *= 1 + distanceMod;
+        freezeValue *= 1 - distanceMod * 0.7f;
+        rekDuration *= 1 + distanceMod * 0.4f;
 
         RekCombo.IncreaseRekComboCount(obj);
 
         BlinkManager.Instance.AddBlink(obj, BlinkColor, BlinkDuration, BlinkCurve);
         if (_HasFreezeTime == false)
         {
-            StartCoroutine(FreezeTime(obj, rekDuration, freezeValue));
+            StartCoroutine(FreezeTime(obj, rekDuration, freezeValue, distance));
             _HasFreezeTime = true;
         }
     }
 
-    IEnumerator FreezeTime(GameObject obj, float rekDuration, float freezeValue)
+    IEnumerator FreezeTime(GameObject obj, float rekDuration, float freezeValue, float distance)
     {
         float startTime = Time.unscaledTime;
         Time.timeScale = freezeValue;
         while (startTime + rekDuration > Time.unscaledTime)
         {
-            var followCam = Camera.main.GetComponent<FollowCamera>();
-            Vector3 pos = obj.transform.position;
-            followCam.SetTarget(pos, Vector2.zero, 0, 1, ZoomLerpModifier);
+            if (distance > ZoomMinDistance)
+            {
+                var followCam = Camera.main.GetComponent<FollowCamera>();
+                Vector3 pos = obj.transform.position;
+                followCam.SetTarget(pos, Vector2.zero, 0, 1, ZoomLerpModifier);
+            }
             yield return null;
         }
         Time.timeScale = 1f;

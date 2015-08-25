@@ -1712,6 +1712,22 @@ Prefab:
       propertyPath: ComboTextCircleSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11445838, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
+      propertyPath: RekDuration
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445838, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
+      propertyPath: MinDistance
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445838, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
+      propertyPath: MaxDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445838, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
+      propertyPath: ZoomMinDistance
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c5dd4c37cbdf664f94973952f3d299e, type: 2}
   m_IsPrefabParent: 0
