@@ -10,13 +10,6 @@ public class DeathManager : MonoBehaviour
 		GameLogic.Instance.OnBlokfoskRIP += OnRIP;
 	}
 
-	public void Update ()
-	{
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			OnRIP ();
-		}
-	}
-
 	private void OnRIP ()
 	{
 		StartCoroutine (DoRIP ());

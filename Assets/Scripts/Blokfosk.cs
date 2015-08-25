@@ -200,6 +200,10 @@ public class Blokfosk : MonoBehaviour
 	private bool _prevInAir;
 	private bool _usedInkBoost;
 	private bool _isDead;
+	private bool _mlgHype;
+
+	private bool _leftRot;
+	private bool _rightRot;
 
 	private void Awake ()
 	{
@@ -259,6 +263,15 @@ public class Blokfosk : MonoBehaviour
 
 	private void FixedUpdate ()
 	{
+		if (_mlgHype) {
+			_mlgHype = false;
+			// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
+			var hype = Hype.BaseVelocity + (Hype.NormalizedHype * Hype.HypeBoost);
+
+			_rb.velocity = transform.up * hype;
+			Hype.ResetHype ();
+		}
+
 		InAir = _rb.position.y > 0.5f;
 	
 		if (_isDead && !InAir) {
@@ -280,10 +293,32 @@ public class Blokfosk : MonoBehaviour
 		}
 
 		HolyShitballs ();
+		Rotate ();
 
 		_rb.velocity = Vector2.ClampMagnitude (_rb.velocity, VelocitySettings.MaxVelocity);
 
 		_prevInAir = InAir;
+	}
+
+	private void Rotate ()
+	{
+		var air = TentacleSettings.InAir;
+		var water = TentacleSettings.UnderWater;
+
+		var rot = InAir ? air.RotationSpeed : water.RotationSpeed;
+		rot *= Time.deltaTime;
+
+		if (_leftRot) {
+			_rb.rotation += rot;
+		} else if (_rightRot) {
+			_rb.rotation -= rot;
+		} else if (!InAir && !Hype.IsHyping && !Hype.InHypeMode) {
+			_rb.rotation = Mathf.MoveTowardsAngle (_rb.rotation, 0f, ResetRotationSpeed * Time.deltaTime);
+		}
+
+		if (!InAir && (_leftRot || _rightRot)) {
+			_rb.rotation = Mathf.Clamp (_rb.rotation, RotationThreshold.x, RotationThreshold.y);
+		}
 	}
 
 	public void TakeDamage (int amount)
@@ -423,35 +458,13 @@ public class Blokfosk : MonoBehaviour
 			return;
 		}
 
-		var leftRot = InputManager.LeftRotation ();
-		var rightRot = InputManager.RightRotation ();
-
-		var air = TentacleSettings.InAir;
-		var water = TentacleSettings.UnderWater;
-
-		var rot = InAir ? air.RotationSpeed : water.RotationSpeed;
-		rot *= Time.deltaTime;
-
-		if (leftRot) {
-			_rb.rotation += rot;
-		} else if (rightRot) {
-			_rb.rotation -= rot;
-		} else if (!InAir && !Hype.IsHyping && !Hype.InHypeMode) {
-			_rb.rotation = Mathf.MoveTowardsAngle (_rb.rotation, 0f, ResetRotationSpeed * Time.deltaTime);
-		}
-
-		if (!InAir && (leftRot || rightRot)) {
-			_rb.rotation = Mathf.Clamp (_rb.rotation, RotationThreshold.x, RotationThreshold.y);
-		}
+		_leftRot = InputManager.LeftRotation ();
+		_rightRot = InputManager.RightRotation ();
 	}
 
 	private void MLGHype ()
 	{
-		// SHOOT THE FAKKING BLOKFOSK INTO THE AIR!
-		var hype = Hype.BaseVelocity + (Hype.NormalizedHype * Hype.HypeBoost);
-
-		_rb.velocity = transform.up * hype;
-		Hype.ResetHype ();
+		_mlgHype = true;
 		Hype.InHypeMode = true;
 		_animator.SetBool ("HypeMode", Hype.InHypeMode);
 		Instantiate (InkParticle, transform.position, transform.rotation);

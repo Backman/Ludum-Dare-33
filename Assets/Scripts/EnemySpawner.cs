@@ -14,43 +14,40 @@ public class EnemySpawner : MonoBehaviour
 	Dictionary<GameObject, Queue<GameObject>> _EnemyPool = new Dictionary<GameObject, Queue<GameObject>> ();
 
 
-    EnemySpawnSettings GetCurrentSpawnSettings(float time, out float periodT)
-    {
-        float t = 0f;
-        EnemySpawnSettings settings = null;
-        periodT = 0f;
-        for (int i = 0; i < GameSettings.Periods.Length; i++)
-        {
-            var period = GameSettings.Periods[i];
-            if (time + period.PeriodDuration >= time)
-            {
-                settings = period.SpawnSettings;
-                periodT = Mathf.Repeat((time - t) / period.PeriodDuration, 1);
-                break;
-            }
-            t += period.PeriodDuration;
-        }
-        if (settings == null)
-        {
-            settings = GameSettings.Periods[0].SpawnSettings;
-            periodT = Mathf.Repeat((time - t) / GameSettings.Periods[0].PeriodDuration, 1);
-        }
-        return settings;
-    }
+	EnemySpawnSettings GetCurrentSpawnSettings (float time, out float periodT)
+	{
+		float t = 0f;
+		EnemySpawnSettings settings = null;
+		periodT = 0f;
+		for (int i = 0; i < GameSettings.Periods.Length; i++) {
+			var period = GameSettings.Periods [i];
+			if (time + period.PeriodDuration >= time) {
+				settings = period.SpawnSettings;
+				periodT = Mathf.Repeat ((time - t) / period.PeriodDuration, 1);
+				break;
+			}
+			t += period.PeriodDuration;
+		}
+		if (settings == null) {
+			settings = GameSettings.Periods [0].SpawnSettings;
+			periodT = Mathf.Repeat ((time - t) / GameSettings.Periods [0].PeriodDuration, 1);
+		}
+		return settings;
+	}
 
 	void Update ()
 	{
 		IntRect currentRect = CloudSpawner.GetCurrentRect (LayerDepth, GridSize);
 
-        float periodT;
-        var spawnSettings = GetCurrentSpawnSettings(Time.timeSinceLevelLoad, out periodT);
+		float periodT;
+		var spawnSettings = GetCurrentSpawnSettings (Time.timeSinceLevelLoad, out periodT);
 
 		_SpawnAccumulator += spawnSettings.SpawnSpeed * spawnSettings.IntensityCurve.Evaluate (periodT) * Time.deltaTime;
 		if (_SpawnAccumulator > 0) {
 			float totalSpawnChance = 0;
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 				var spawn = spawnSettings.Spawns [i];
-				if (IsValidSpawn (currentRect, spawn, periodT)) {
+				if (IsValidSpawn (currentRect, spawn, Time.time)) {
 					totalSpawnChance += spawn.SpawnChance;
 				}
 			}
@@ -59,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
 
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 				var spawn = spawnSettings.Spawns [i];
-				if (IsValidSpawn (currentRect, spawn, periodT)) {
+				if (IsValidSpawn (currentRect, spawn, Time.time)) {
 					if (spawn.SpawnChance > randomVal) {
 						AttemptSpawn (currentRect, spawn);
 						break;
@@ -75,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
 	{
 		//if(spawn.MinLevel >= _CurrentLevel && spawn.MaxLevel <= _CurrentLevel)
 		if ((spawn.HasMinTime && spawn.MinTime > time) || (spawn.HasMaxTime && spawn.MaxTime < time))
-            return false;
+			return false;
 
 		return (spawn.HasMinY == false || spawn.MinY <= rect.MaxY) && (spawn.HasMaxY == false || spawn.MaxY > rect.MinY);
 	}
@@ -173,8 +170,8 @@ public class EnemySpawner : MonoBehaviour
 
 	public void ReturnSpawnValue (GameObject obj)
 	{
-        float t;
-        var spawnSettings = GetCurrentSpawnSettings(Time.timeSinceLevelLoad, out t);
+		float t;
+		var spawnSettings = GetCurrentSpawnSettings (Time.timeSinceLevelLoad, out t);
 		for (int i = 0; i < spawnSettings.Spawns.Length; i++) {
 			var spawn = spawnSettings.Spawns [i];
 			for (int j = 0; j < spawn.Variations.Length; j++) {

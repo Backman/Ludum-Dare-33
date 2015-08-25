@@ -38,8 +38,8 @@ MonoBehaviour:
     - {fileID: 137212, guid: 6fbfc0ae235fe493c911fd6053dce1ad, type: 2}
     - {fileID: 137212, guid: 50d31f57603064f37b0f473e816b83d9, type: 2}
     - {fileID: 137212, guid: d899c3f42a0f64244b343307e9c86d68, type: 2}
-    MinTime: 0
-    HasMinTime: 0
+    MinTime: 90
+    HasMinTime: 1
     MaxTime: 0
     HasMaxTime: 0
     MaxY: 0
@@ -55,8 +55,8 @@ MonoBehaviour:
     - {fileID: 164296, guid: 94fea59312f4a4a5dace2400d2847df5, type: 2}
     - {fileID: 168226, guid: 99276c0eed54741df839bda00cfc7007, type: 2}
     - {fileID: 146268, guid: d0ea69c5ae0084208a08cb0b8ed1e35f, type: 2}
-    MinTime: 0
-    HasMinTime: 0
+    MinTime: 60
+    HasMinTime: 1
     MaxTime: 0
     HasMaxTime: 0
     MaxY: 0
@@ -66,16 +66,16 @@ MonoBehaviour:
     MovementSpeedRange: {x: 2, y: 5}
     ScaleRange: {x: 2, y: 2}
   - Name: 
-    SpawnChance: .200000003
+    SpawnChance: .400000006
     SpawnValue: .25
     Variations:
     - {fileID: 137212, guid: 2e619a3d977564862ad2c937a7ca141d, type: 2}
     - {fileID: 137212, guid: 5b8124d00e9de4b4cb56f6caeb0e17f4, type: 2}
-    MinTime: 0
-    HasMinTime: 0
+    MinTime: 30
+    HasMinTime: 1
     MaxTime: 0
     HasMaxTime: 0
-    MaxY: -3
+    MaxY: -1
     HasMaxY: 1
     MinY: -5
     HasMinY: 0
@@ -87,8 +87,8 @@ MonoBehaviour:
     Variations:
     - {fileID: 132500, guid: a129fe1d276e143869ccf4a226cc6f07, type: 2}
     - {fileID: 195900, guid: be607d66aa23b42ad9d72ee3e9063280, type: 2}
-    MinTime: 0
-    HasMinTime: 0
+    MinTime: 90
+    HasMinTime: 1
     MaxTime: 0
     HasMaxTime: 0
     MaxY: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
     Variations:
     - {fileID: 176140, guid: 5b7d06fd6f60b4b409a045f639a71b6a, type: 2}
     - {fileID: 190758, guid: 6dd93f47b009949d585b1662b187f72e, type: 2}
-    MinTime: 0
-    HasMinTime: 0
+    MinTime: 120
+    HasMinTime: 1
     MaxTime: 0
     HasMaxTime: 0
     MaxY: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
     HasMinY: 1
     MovementSpeedRange: {x: .5, y: 1.20000005}
     ScaleRange: {x: 4, y: 4}
-  SpawnSpeed: 20
+  SpawnSpeed: 10
   IntensityCurve:
     serializedVersion: 2
     m_Curve:
