@@ -72,6 +72,8 @@ public class WrekFaceHandler : MonoBehaviour
 
     void OnRekFace(GameObject obj)
     {
+        if (obj.activeInHierarchy == false)
+            return;
         var distance = Vector2.Distance(obj.transform.position, Blokfosk.Instance.transform.position);
 
         var rekDuration = RekDuration;
@@ -97,6 +99,8 @@ public class WrekFaceHandler : MonoBehaviour
         Time.timeScale = freezeValue;
         while (startTime + rekDuration > Time.unscaledTime)
         {
+            if (obj.activeInHierarchy == false)
+                break;
             if (distance > ZoomMinDistance)
             {
                 var followCam = Camera.main.GetComponent<FollowCamera>();

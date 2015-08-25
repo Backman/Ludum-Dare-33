@@ -51,10 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766933ae7b209432a88b04ccd724440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RekDuration: .150000006
+  RekDuration: .400000006
   FreezeValue: .5
   BlinkColor: {r: 1, g: 1, b: 1, a: 1}
   BlinkDuration: .5
+  BlokfoskBlinkDuration: .100000001
   BlinkCurve:
     serializedVersion: 2
     m_Curve:
@@ -75,9 +76,30 @@ MonoBehaviour:
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
-  MaxDistance: 15
-  MinDistance: 5
-  ComboTime: .5
+  MaxDistance: 12
+  MinDistance: 9
+  ZoomMinDistance: 9
+  ZoomLerpModifier: 20
+  ComboData:
+  - MinCombo: 4
+    MaxCombo: 4
+    Prefab: {fileID: 125916, guid: 836fce3afc3534bbe86070a3ae1eb3d5, type: 2}
+  - MinCombo: 4
+    MaxCombo: 5
+    Prefab: {fileID: 125916, guid: 3af3e78ced1c74f0696b4263b3a77e78, type: 2}
+  - MinCombo: 5
+    MaxCombo: 200
+    Prefab: {fileID: 110956, guid: efd97bb4aa8aa4510827e8d6f8f080ab, type: 2}
+  - MinCombo: 5
+    MaxCombo: 200
+    Prefab: {fileID: 125916, guid: b2fcc37b451fe4993ba03e9d51f1a69d, type: 2}
+  - MinCombo: 4
+    MaxCombo: 200
+    Prefab: {fileID: 125916, guid: 6d5f058c05d4945679e6b938d548599e, type: 2}
+  ComboTextYOffset: 3
+  ComboTextCircleSize: 2
+  RekCombo:
+    ComboCooldown: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
