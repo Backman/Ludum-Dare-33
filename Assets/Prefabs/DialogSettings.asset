@@ -24,7 +24,7 @@ MonoBehaviour:
       Text: 'Commander!
 
         We have encountered the legendary Blackfesk'
-      StartTime: 4
+      StartTime: 6
       ScrollForwardTime: 2
       LingerTime: 3
     - Person: 0
@@ -32,3 +32,31 @@ MonoBehaviour:
       StartTime: 9
       ScrollForwardTime: 3
       LingerTime: 4
+  - Name: Sub
+    TriggerTime: 14
+    Entries:
+    - Person: 1
+      Text: Maybe we should try and strike him from below?
+      StartTime: 0
+      ScrollForwardTime: 3
+      LingerTime: 3
+    - Person: 0
+      Text: "From below\u2026 Yes!\nThat\u2019s it!\nThe submarines, double time!"
+      StartTime: 4
+      ScrollForwardTime: 2
+      LingerTime: 3
+    - Person: 1
+      Text: In a jiffy, Commander!
+      StartTime: 8
+      ScrollForwardTime: 1.5
+      LingerTime: 2
+    - Person: 0
+      Text: "Don\u2019t say that, Private."
+      StartTime: 12
+      ScrollForwardTime: 2
+      LingerTime: 2
+    - Person: 1
+      Text: "Sorry\u2026 Commander!"
+      StartTime: 16
+      ScrollForwardTime: 1.39999998
+      LingerTime: 2

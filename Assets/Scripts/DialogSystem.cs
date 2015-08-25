@@ -9,6 +9,7 @@ public class DialogSystem : MonoBehaviour
     {
         public float StartTime;
         public DialogSettings.Dialog Dialog;
+        public string[] LastDialogStrings;
     }
     Queue<DialogState> _DialogsQueued = new Queue<DialogState>();
     DialogState _CurrentDialog;
@@ -24,6 +25,9 @@ public class DialogSystem : MonoBehaviour
             DialogState state = new DialogState();
             state.StartTime = dialog.TriggerTime;
             state.Dialog = dialog;
+            state.LastDialogStrings = new string[dialog.Entries.Length];
+            for (int j = 0; j < state.LastDialogStrings.Length; j++)
+                state.LastDialogStrings[j] = string.Empty;
             _DialogsQueued.Enqueue(state);
         }
     }
@@ -64,6 +68,7 @@ public class DialogSystem : MonoBehaviour
         if (peek.StartTime < time)
         {
             _CurrentDialog = peek;
+            _DialogsQueued.Dequeue();
         }
         SetPortraitState(Person.Blokfosk, string.Empty, 0f);
         SetPortraitState(Person.General, string.Empty, 0f);
@@ -81,7 +86,15 @@ public class DialogSystem : MonoBehaviour
                     float entryTime = dialogTime - entry.StartTime;
                     float scrollTime = Mathf.Clamp01(entryTime / entry.ScrollForwardTime);
                     int length = Mathf.RoundToInt(entry.Text.Length * scrollTime);
-                    string text = entry.Text.Substring(0, length);
+                    string text;
+                    if (_CurrentDialog.LastDialogStrings[i].Length != length)
+                    {
+                        text = _CurrentDialog.LastDialogStrings[i]  = entry.Text.Substring(0, length);
+                    }
+                    else
+                    {
+                        text = _CurrentDialog.LastDialogStrings[i];
+                    }
 
                     float timeSinceLinger = (entry.LingerTime + entry.ScrollForwardTime)  - entryTime;
                     float a = Mathf.Clamp01(timeSinceLinger);
