@@ -272,12 +272,11 @@ public class Blokfosk : MonoBehaviour
 		if (Hype.IsHyping) {
 			_rb.velocity = Vector2.zero;
 			_rb.position += Vector2.down * Hype.PushDown * Time.deltaTime;
-		}
-
-		if (_rb.position.y <= Crab.position.y + 5f) {
-			var newPos = _rb.position;
-			newPos.y += Crab.position.y + 5f;
-			_rb.position = newPos;
+			if (Crab != null) {
+				var newPos = _rb.position;
+				newPos.y = Mathf.Clamp (newPos.y, Crab.position.y, newPos.y + 1f);
+				_rb.position = newPos;
+			}
 		}
 
 		HolyShitballs ();

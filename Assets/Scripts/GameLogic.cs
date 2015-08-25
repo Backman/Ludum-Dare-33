@@ -36,10 +36,12 @@ public class GameLogic : MonoBehaviour
 	public System.Action<GameObject, int> OnRekComboIncreased;
 	public System.Action<int> OnRekComboReset;
 	public System.Action<GameObject> OnRekFace;
+	public System.Action OnEnemyKilled;
 	public System.Action OnBlokfoskRIP;
 
 	private int _score;
 	private Blokfosk _player;
+	private bool _firstEnemyKilled;
 
 	public int Score {
 		get { return _score; }
@@ -47,12 +49,25 @@ public class GameLogic : MonoBehaviour
 
 	private void Awake ()
 	{
-		DontDestroyOnLoad (gameObject);
+		OnEnemyKilled += EnemyKilled;
 	}
 
 	private void Update ()
 	{
 
+	}
+
+	private void OnLevelWasLoaded ()
+	{
+
+	}
+
+	private void EnemyKilled ()
+	{
+		if (!_firstEnemyKilled) {
+			Music.instance.PlayRegularMusic ();
+			_firstEnemyKilled = true;
+		}
 	}
 
 	public void SetScore (int newScore)

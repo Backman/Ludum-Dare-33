@@ -125,7 +125,7 @@ MonoBehaviour:
   AttackIntervall: {x: 1, y: 2}
   OnHitClip: {fileID: 8300000, guid: 31a4d0df470bf474496f1b5f1275bd60, type: 3}
   MinePrefab: {fileID: 188180, guid: 6119af43b8cce40f1a2af7e103fc2e26, type: 2}
-  MineFireInterval: {x: 0, y: 0}
+  MineFireInterval: {x: 5, y: 8}
 --- !u!212 &21231378
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -194,20 +194,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ProjectilePrefab
-      value:
+      value: 
       objectReference: {fileID: 188180, guid: f37b324089b4c47eab43a80fc6bf8711, type: 2}
     - target: {fileID: 0}
       propertyPath: MinePrefab
-      value:
+      value: 
       objectReference: {fileID: 188180, guid: 6119af43b8cce40f1a2af7e103fc2e26, type: 2}
     - target: {fileID: 0}
       propertyPath: Explosions.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 147612, guid: f88d683cb20952c46854fe7134d28743, type: 2}
     - target: {fileID: 0}
       propertyPath: Explosions.Array.data[1]
-      value:
+      value: 
       objectReference: {fileID: 159424, guid: 57aa2a541df3ed844a1d2321fb827c9f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: MineFireInterval.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MineFireInterval.y
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137212}

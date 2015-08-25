@@ -63,15 +63,22 @@ public class Music : MonoBehaviour
 			aSource.bypassListenerEffects = true;
 			aSource.volume = volume + 0.2f;
 		}
+	}
 
+	public void PlayRegularMusic ()
+	{
+		Songs [3].Stop ();
+		Songs [0].Play ();
+		Songs [1].Play ();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		Songs [1].volume = transition * Musicvolume;
 		Songs [0].volume = (1 - transition) * Musicvolume;
+		Songs [1].volume = transition * Musicvolume;
 		Songs [2].volume = transition * Musicvolume;
+		Songs [3].volume = Musicvolume;
 
 
 		var lowPassValue = Mathf.Lerp (MinLowPassValue, MaxLowPassValue, 1 - transition);

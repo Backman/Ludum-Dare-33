@@ -274,7 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToLoad: IntroScreen
   AudioSource: {fileID: 0}
-  DestroyAudioSource: 0
+  DestroyMenuMusic: 0
   FadeSettings:
     Type: 0
     Duration: .600000024
