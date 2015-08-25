@@ -33,7 +33,7 @@ MonoBehaviour:
       ScrollForwardTime: 3
       LingerTime: 4
   - Name: Sub
-    TriggerTime: 14
+    TriggerTime: 30
     Entries:
     - Person: 1
       Text: Maybe we should try and strike him from below?

@@ -61,14 +61,15 @@ public class DialogSystem : MonoBehaviour
 
     void Update()
     {
-        if (_DialogsQueued.Count == 0)
-            return;
         float time = Time.timeSinceLevelLoad;
-        var peek = _DialogsQueued.Peek();
-        if (peek.StartTime < time)
+        if(_DialogsQueued.Count > 0)
         {
-            _CurrentDialog = peek;
-            _DialogsQueued.Dequeue();
+            var peek = _DialogsQueued.Peek();
+            if (peek.StartTime < time)
+            {
+                _CurrentDialog = peek;
+                _DialogsQueued.Dequeue();
+            }
         }
         SetPortraitState(Person.Blokfosk, string.Empty, 0f);
         SetPortraitState(Person.General, string.Empty, 0f);
