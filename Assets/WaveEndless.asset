@@ -56,7 +56,7 @@ MonoBehaviour:
     - {fileID: 168226, guid: 99276c0eed54741df839bda00cfc7007, type: 2}
     - {fileID: 146268, guid: d0ea69c5ae0084208a08cb0b8ed1e35f, type: 2}
     MinTime: 60
-    HasMinTime: 0
+    HasMinTime: 1
     MaxTime: 0
     HasMaxTime: 0
     MaxY: 0

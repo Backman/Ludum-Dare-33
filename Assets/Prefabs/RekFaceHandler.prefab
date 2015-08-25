@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766933ae7b209432a88b04ccd724440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RekDuration: .400000006
+  RekDuration: .5
   FreezeValue: .5
   BlinkColor: {r: 1, g: 1, b: 1, a: 1}
   BlinkDuration: .5
@@ -77,8 +77,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   MaxDistance: 12
-  MinDistance: 9
-  ZoomMinDistance: 9
+  MinDistance: 7
+  ZoomMinDistance: 7
   ZoomLerpModifier: 20
   ComboData:
   - MinCombo: 4
