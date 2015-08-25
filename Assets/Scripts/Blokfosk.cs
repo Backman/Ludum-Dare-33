@@ -194,6 +194,8 @@ public class Blokfosk : MonoBehaviour
 
 	private FollowCamera _followCamera;
 
+	public Transform Crab { get; set; }
+
 	private bool _inAir;
 	private bool _prevInAir;
 	private bool _usedInkBoost;
@@ -270,6 +272,12 @@ public class Blokfosk : MonoBehaviour
 		if (Hype.IsHyping) {
 			_rb.velocity = Vector2.zero;
 			_rb.position += Vector2.down * Hype.PushDown * Time.deltaTime;
+		}
+
+		if (_rb.position.y <= Crab.position.y + 5f) {
+			var newPos = _rb.position;
+			newPos.y += Crab.position.y + 5f;
+			_rb.position = newPos;
 		}
 
 		HolyShitballs ();

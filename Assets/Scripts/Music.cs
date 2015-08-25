@@ -37,6 +37,10 @@ public class Music : MonoBehaviour
 		//MusicPlayer = GameObject.Find ("MusicPlayer");
 		Songs = GetComponents<AudioSource> ();
 
+		var menuMusic = GameObject.Find ("MenuMusic");
+		if (menuMusic) {
+			Destroy (menuMusic);
+		}
 	}
 
 	public static AudioSource PlayClipAtPoint (AudioClip clip, Vector3 pos, float volume, float pitch, SoundSourceType source)
@@ -56,7 +60,7 @@ public class Music : MonoBehaviour
 		return aSource; // return the AudioSource reference
 
 		if (source == SoundSourceType.Sub) {
-			aSource.bypassListenerEffects=true;
+			aSource.bypassListenerEffects = true;
 			aSource.volume = volume + 0.2f;
 		}
 
@@ -68,6 +72,7 @@ public class Music : MonoBehaviour
 		Songs [1].volume = transition * Musicvolume;
 		Songs [0].volume = (1 - transition) * Musicvolume;
 		Songs [2].volume = transition * Musicvolume;
+
 
 		var lowPassValue = Mathf.Lerp (MinLowPassValue, MaxLowPassValue, 1 - transition);
 		LowPassFilter.cutoffFrequency = lowPassValue;
