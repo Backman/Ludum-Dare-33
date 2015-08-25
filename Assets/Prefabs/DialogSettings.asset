@@ -60,3 +60,86 @@ MonoBehaviour:
       StartTime: 16
       ScrollForwardTime: 1.39999998
       LingerTime: 2
+  - Name: air
+    TriggerTime: 60
+    Entries:
+    - Person: 1
+      Text: 'Commander!
+
+        We have lost several of our finest ships, we should retreat-'
+      StartTime: 0
+      ScrollForwardTime: 3
+      LingerTime: 2
+    - Person: 0
+      Text: 'Nonsense!
+
+        Call for air support, or i will send -YOU- in a scuba-diving suit!'
+      StartTime: 4
+      ScrollForwardTime: 4
+      LingerTime: 2
+    - Person: 1
+      Text: "I-\u2026Eh... Affirmative!"
+      StartTime: 8.5
+      ScrollForwardTime: 1.5
+      LingerTime: 2
+  - Name: final war
+    TriggerTime: 90
+    Entries:
+    - Person: 1
+      Text: We are running low on warships, Commander!
+      StartTime: 0
+      ScrollForwardTime: 4
+      LingerTime: 2
+    - Person: 0
+      Text: Keep on pressing! Send in every ship you can find!
+      StartTime: 5
+      ScrollForwardTime: 4
+      LingerTime: 2
+    - Person: 1
+      Text: Even the ships from the local town?
+      StartTime: 9
+      ScrollForwardTime: 3
+      LingerTime: 2
+    - Person: 0
+      Text: Every last ship from every last town with a harbor!
+      StartTime: 14
+      ScrollForwardTime: 3
+      LingerTime: 2
+    - Person: 1
+      Text: sigh
+      StartTime: 17.5
+      ScrollForwardTime: .800000012
+      LingerTime: 1.5
+  - Name: future
+    TriggerTime: 120
+    Entries:
+    - Person: 1
+      Text: Commander, what are you doing?!
+      StartTime: 0
+      ScrollForwardTime: 2.5
+      LingerTime: 2
+    - Person: 0
+      Text: "It's called an ace up the sleeve, boy!\_"
+      StartTime: 3
+      ScrollForwardTime: 3
+      LingerTime: 2
+    - Person: 0
+      Text: ' I have opened a portal through time to send MORE SHIPS!'
+      StartTime: 8
+      ScrollForwardTime: 5
+      LingerTime: 2
+    - Person: 1
+      Text: But why is there dinosaurs and giant mechanical battle suits?
+      StartTime: 14
+      ScrollForwardTime: 5
+      LingerTime: 2
+    - Person: 0
+      Text: You do not have the security clearance for that, Private!
+      StartTime: 20
+      ScrollForwardTime: 3
+      LingerTime: 1.5
+    - Person: 1
+      Text: "But-\u2026 Yes Commander!"
+      StartTime: 23
+      ScrollForwardTime: 1.5
+      LingerTime: 1.5
