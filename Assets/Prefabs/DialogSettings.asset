@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7868de35805443f930193d2785cdbf, type: 3}
+  m_Name: DialogSettings
+  m_EditorClassIdentifier: 
+  Dialogs:
+  - Name: Initial
+    TriggerTime: 1
+    Entries:
+    - Person: 2
+      Text: argalgglgargl
+      StartTime: 0
+      ScrollForwardTime: 2
+      LingerTime: 3
+    - Person: 1
+      Text: 'Commander!
+
+        We have encountered the legendary Blackfesk'
+      StartTime: 6
+      ScrollForwardTime: 2
+      LingerTime: 3
+    - Person: 0
+      Text: "BLACKFESK?!\u2026 Bring it down! Send in the warships!"
+      StartTime: 9
+      ScrollForwardTime: 3
+      LingerTime: 4
+  - Name: Sub
+    TriggerTime: 14
+    Entries:
+    - Person: 1
+      Text: Maybe we should try and strike him from below?
+      StartTime: 0
+      ScrollForwardTime: 3
+      LingerTime: 3
+    - Person: 0
+      Text: "From below\u2026 Yes!\nThat\u2019s it!\nThe submarines, double time!"
+      StartTime: 4
+      ScrollForwardTime: 2
+      LingerTime: 3
+    - Person: 1
+      Text: In a jiffy, Commander!
+      StartTime: 8
+      ScrollForwardTime: 1.5
+      LingerTime: 2
+    - Person: 0
+      Text: "Don\u2019t say that, Private."
+      StartTime: 12
+      ScrollForwardTime: 2
+      LingerTime: 2
+    - Person: 1
+      Text: "Sorry\u2026 Commander!"
+      StartTime: 16
+      ScrollForwardTime: 1.39999998
+      LingerTime: 2

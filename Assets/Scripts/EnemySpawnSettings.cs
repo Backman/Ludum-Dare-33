@@ -12,6 +12,11 @@ public class EnemySpawnSettings : ScriptableObject
         public float SpawnValue;
         public GameObject[] Variations;
 
+        public float MinTime;
+        public bool HasMinTime;
+        public float MaxTime;
+        public bool HasMaxTime;
+
         public int MaxY; 
         public bool HasMaxY;
         public int MinY;
