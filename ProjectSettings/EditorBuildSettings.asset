@@ -10,6 +10,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroScreen.unity
   - enabled: 1
-    path: Assets/Uncensored.unity
+    path: Assets/Scenes/Uncensored.unity
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
