@@ -16,5 +16,6 @@ public class Crab : MonoBehaviour
 	{
 		var pos = transform.position;
 		pos.x = _blokfosk.position.x;
+		transform.position = pos;
 	}
 }

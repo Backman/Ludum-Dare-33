@@ -204,6 +204,7 @@ public class Blokfosk : MonoBehaviour
 
 	private bool _leftRot;
 	private bool _rightRot;
+	private bool _inkBoost;
 
 	private void Awake ()
 	{
@@ -270,6 +271,18 @@ public class Blokfosk : MonoBehaviour
 
 			_rb.velocity = transform.up * hype;
 			Hype.ResetHype ();
+		}
+
+		if (_inkBoost) {
+			Music.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
+			var forward = transform.up;
+			var rot = new Vector2(forward.x, forward.y);
+			_rb.velocity += rot.normalized * InkBoost;
+			_usedInkBoost = true;
+			if (InkParticle)
+			{
+				Instantiate(InkParticle, transform.position, transform.rotation);
+			}
 		}
 
 		InAir = _rb.position.y > 0.5f;
@@ -403,21 +416,11 @@ public class Blokfosk : MonoBehaviour
 
 	private void InkBoostInput ()
 	{
-		if (_usedInkBoost) {
-			return;
-		}
+		_inkBoost = InputManager.GetTriggers ();
 
-		var boost = InputManager.GetTriggers ();
-
-		if (boost) {
-			Music.PlayClipAtPoint (GetComponent<AudioSource> ().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
-			var forward = transform.up;
-			var rot = new Vector2 (forward.x, forward.y);
-			_rb.velocity += rot.normalized * InkBoost;
-			_usedInkBoost = true;
-			if (InkParticle) {
-				Instantiate (InkParticle, transform.position, transform.rotation);
-			}
+		if (_usedInkBoost)
+		{
+			_inkBoost = false;
 		}
 	}
 
