@@ -37,7 +37,8 @@ public class GameLogic : MonoBehaviour
 	public System.Action<GameObject, int> OnRekComboIncreased;
 	public System.Action<int> OnRekComboReset;
 	public System.Action<GameObject> OnRekFace;
-	public System.Action OnEnemyKilled;
+	public System.Action<GameObject> FirstEnemyRekt;
+	public System.Action<GameObject> OnEnemyRekt;
 	public System.Action OnBlokfoskRIP;
 
 	public Text ScoreCount;
@@ -52,7 +53,7 @@ public class GameLogic : MonoBehaviour
 
 	private void Awake ()
 	{
-		OnEnemyKilled += EnemyKilled;
+		OnEnemyRekt += EnemyRekt;
 	}
 
 	private void Update ()
@@ -65,11 +66,16 @@ public class GameLogic : MonoBehaviour
 
 	}
 
-	private void EnemyKilled ()
+	private void EnemyRekt (GameObject rektObjekt)
 	{
-		if (!_firstEnemyKilled) {
-			Music.instance.PlayRegularMusic ();
+		if (!_firstEnemyKilled)
+		{
+			Music.instance.PlayRegularMusic();
 			_firstEnemyKilled = true;
+			if (FirstEnemyRekt != null)
+			{
+				FirstEnemyRekt.Invoke(rektObjekt);
+			}
 		}
 	}
 
