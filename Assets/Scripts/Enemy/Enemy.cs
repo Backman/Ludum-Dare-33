@@ -158,7 +158,7 @@ public abstract class Enemy : MonoBehaviour
         var explode = GetComponent<Explodable>();
         if (explode)
         {
-            GameLogic.Instance.OnEnemyKilled.Invoke();
+            GameLogic.Instance.OnEnemyRekt.Invoke(gameObject);
             explode.Explode(transform.position, shouldDestroy);
         }
     }
