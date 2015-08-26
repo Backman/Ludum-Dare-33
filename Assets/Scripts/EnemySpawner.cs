@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
 	public float LayerDepth = 30;
 	public float GridSize = 1;
 
+    public Vector2 MaxSpawnRectModifier = new Vector2(0.8f, 0.8f);
+
 
 	float _SpawnAccumulator;
 	List<Enemy> _SpawnedEnemies = new List<Enemy> ();
@@ -37,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
 	void Update ()
 	{
-		IntRect currentRect = CloudSpawner.GetCurrentRect (LayerDepth, GridSize);
+		IntRect currentRect = CloudSpawner.GetCurrentRect (LayerDepth, GridSize, MaxSpawnRectModifier);
 
 		float periodT;
 		var spawnSettings = GetCurrentSpawnSettings (Time.timeSinceLevelLoad, out periodT);
@@ -86,6 +88,8 @@ public class EnemySpawner : MonoBehaviour
 	void AttemptSpawn (IntRect rect, EnemySpawnSettings.EnemySpawn spawn)
 	{
 		List<SpawnCoords> validCoords = new List<SpawnCoords> ();
+        IntRect windowRect = CloudSpawner.GetCurrentRect(LayerDepth, GridSize, new Vector2(0.6f, 0.6f));
+        
 		int minY = rect.MinY;
 		if (spawn.HasMinY)
 			minY = Mathf.Max (minY, spawn.MinY);
@@ -94,10 +98,10 @@ public class EnemySpawner : MonoBehaviour
 			maxY = Mathf.Min (maxY, spawn.MaxY + 1);
 		for (int x = rect.MinX; x < rect.MaxX; x++) {
 			for (int y = minY; y < maxY; y++) {
-				if (x != rect.MinX
-				    && x != rect.MaxX - 1
-				    && y != rect.MinY
-				    && y != rect.MaxY - 1)
+				if (x > windowRect.MinX
+				    && x < windowRect.MaxX - 1
+				    && y > windowRect.MinY
+				    && y < windowRect.MaxY - 1)
 					continue;
 				if (IsSpawnValid (spawn, x, y) == false)
 					continue;

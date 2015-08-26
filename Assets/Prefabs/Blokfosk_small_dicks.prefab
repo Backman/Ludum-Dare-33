@@ -3117,8 +3117,13 @@ MonoBehaviour:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: -.0526833385
-        outSlope: -.0526833385
+        inSlope: .247650743
+        outSlope: .247650743
+        tangentMode: 0
+      - time: .433607757
+        value: .0895924866
+        inSlope: .362321734
+        outSlope: .362321734
         tangentMode: 0
       - time: .99624306
         value: .290026546
@@ -3127,11 +3132,11 @@ MonoBehaviour:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    BaseVelocity: 10
+    BaseVelocity: 12
     MaxHype: 100
-    HypeBuildUpSpeed: 25
+    HypeBuildUpSpeed: 10
     HypeBoost: 80
-    PushDown: 6
+    PushDown: 8
   InkParticle: {fileID: 120698, guid: 001ac5a7e1d176141963c63bc0bb8028, type: 2}
   TentacleSettings:
     UnderWater:
@@ -3143,7 +3148,7 @@ MonoBehaviour:
       TentacleFallSpeed: 30
       RotationSpeed: 270
   VelocitySettings:
-    MaxVelocity: 40
+    MaxVelocity: 150
     Tolerence: 10
     DecaySpeed: 2
     BobThreshold: -2
@@ -3152,7 +3157,7 @@ MonoBehaviour:
   LeftTentacle: {fileID: 11473830}
   RightTentacle: {fileID: 11435872}
   ResetRotationSpeed: 180
-  InkBoost: 20
+  InkBoost: 6
   TargetBounds: {fileID: 5896236}
   RotationThreshold: {x: -45, y: 45}
 --- !u!114 &11435872

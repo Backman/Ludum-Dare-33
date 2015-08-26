@@ -34,13 +34,14 @@ public class CloudSpawner : MonoBehaviour
 	public bool RandomizeX;
 	public bool RandomizeY;
 	public Vector2 ScaleRange;
+    public Vector2 FrustumSizeModifier = new Vector2(0.6f, 0.6f);
 	List<CloudState> _Clouds = new List<CloudState> ();
 	static Dictionary<GameObject, Stack<GameObject>> _Pool = new Dictionary<GameObject, Stack<GameObject>> ();
 
 
 	void Awake ()
 	{
-		_VisibleRect = GetCurrentRect (LayerDepth, GridSize);
+		_VisibleRect = GetCurrentRect (LayerDepth, GridSize, FrustumSizeModifier);
 		for (int x = _VisibleRect.MinX; x < _VisibleRect.MaxX; x++) {
 			for (int y = _VisibleRect.MinY; y < _VisibleRect.MaxY; y++) {
 				CoordVisible (x, y);
@@ -49,15 +50,15 @@ public class CloudSpawner : MonoBehaviour
 	}
 
 
-	public static IntRect GetCurrentRect (float layerDepth, float gridSize)
+	public static IntRect GetCurrentRect (float layerDepth, float gridSize, Vector2 frustumSizeModifier)
 	{
 		Vector3 centerPoint = Camera.main.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0)).GetPoint (layerDepth);
 		float frustumHeight = 2.0f * (layerDepth - Camera.main.transform.position.z) * Mathf.Tan ((float)(Camera.main.fieldOfView * 0.5 * Mathf.Deg2Rad));
 		float frustumWidth = frustumHeight * Camera.main.aspect;
-		float minX = centerPoint.x - frustumWidth * 0.6f;
-		float maxX = centerPoint.x + frustumWidth * 0.6f;
-		float minY = centerPoint.y - frustumHeight * 0.6f;
-		float maxY = centerPoint.y + frustumHeight * 0.6f;
+		float minX = centerPoint.x - frustumWidth * frustumSizeModifier.x;
+		float maxX = centerPoint.x + frustumWidth * frustumSizeModifier.x;
+		float minY = centerPoint.y - frustumHeight * frustumSizeModifier.y;
+		float maxY = centerPoint.y + frustumHeight * frustumSizeModifier.y;
 
 
 		IntRect newVisible;
@@ -71,7 +72,7 @@ public class CloudSpawner : MonoBehaviour
 
 	void Update ()
 	{
-		IntRect newVisible = GetCurrentRect (LayerDepth, GridSize);
+		IntRect newVisible = GetCurrentRect (LayerDepth, GridSize, FrustumSizeModifier);
 
 		int xDeltaSign = Mathf.Abs (newVisible.MinX - _VisibleRect.MinX);
 		if (xDeltaSign != 0) {

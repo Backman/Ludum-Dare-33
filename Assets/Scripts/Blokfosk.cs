@@ -257,7 +257,7 @@ public class Blokfosk : MonoBehaviour
 		ApplyTentacleConstraint (LeftTentacle);
 		ApplyTentacleConstraint (RightTentacle);
 
-		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 15f - _rb.velocity.magnitude / 3f, 0);
+		_followCamera.SetTarget (_rb.position, _rb.velocity, Hype.NormalizedHype * 15f - _rb.velocity.magnitude / 2.5f - 3f, 0);
 	
 		_animator.SetBool ("TakeDamage", true);
 	}
@@ -277,8 +277,11 @@ public class Blokfosk : MonoBehaviour
 			Music.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position, Music.instance.sfxv, 1f, SoundSourceType.InkBoost);
 			var forward = transform.up;
 			var rot = new Vector2(forward.x, forward.y);
-			_rb.velocity += rot.normalized * InkBoost;
+            var velocity = _rb.velocity;
+            velocity.y = Mathf.Max(0f, velocity.y);
+			_rb.velocity = rot.normalized * (InkBoost + velocity.magnitude);
 			_usedInkBoost = true;
+            _inkBoost = false;
 			if (InkParticle)
 			{
 				Instantiate(InkParticle, transform.position, transform.rotation);
