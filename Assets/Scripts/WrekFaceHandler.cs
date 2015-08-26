@@ -69,6 +69,7 @@ public class WrekFaceHandler : MonoBehaviour
 
             DialogSystem.Instance.AddDialog(ComboDialog, 0f, 0.15f);
 			TrashMan.spawn(comboData.Prefab, new Vector3(pos.x, pos.y, 30));
+			GameLogic.Instance.AddScore(RekCombo.ComboScore);
 			_LastComboText = Time.unscaledTime;
 		}
 	}

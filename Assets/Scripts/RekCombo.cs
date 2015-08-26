@@ -5,6 +5,7 @@ using System.Collections;
 public class RekCombo
 {
 	public float ComboCooldown = 0.5f;
+	public int ComboScore = 15;
 
 	private float _startTime;
 	private int _currentComboCount;

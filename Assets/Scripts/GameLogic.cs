@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
@@ -31,13 +32,15 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
-	public System.Action OnScoreChanged;
+	public System.Action<int, int> OnScoreChanged;
 	public System.Action<int> OnBlokDamage;
 	public System.Action<GameObject, int> OnRekComboIncreased;
 	public System.Action<int> OnRekComboReset;
 	public System.Action<GameObject> OnRekFace;
 	public System.Action OnEnemyKilled;
 	public System.Action OnBlokfoskRIP;
+
+	public Text ScoreCount;
 
 	private int _score;
 	private Blokfosk _player;
@@ -72,14 +75,11 @@ public class GameLogic : MonoBehaviour
 
 	public void SetScore (int newScore)
 	{
-		if (_score == newScore) {
-			return;
+		if (OnScoreChanged != null) {
+			OnScoreChanged.Invoke (_score, newScore);
 		}
 
 		_score = newScore;
-		if (OnScoreChanged != null) {
-			OnScoreChanged.Invoke ();
-		}
 	}
 
 	public void AddScore (int value)

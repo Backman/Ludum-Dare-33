@@ -12,6 +12,7 @@ public class DeathManager : MonoBehaviour
 
 	private void OnRIP ()
 	{
+		PlayerPrefs.SetInt("TOTAL_SCORE", GameLogic.Instance.Score);
 		StartCoroutine (DoRIP ());
 	}
 
