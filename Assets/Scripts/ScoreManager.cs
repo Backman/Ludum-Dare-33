@@ -5,12 +5,14 @@ using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour
 {
+	public Text ScoreCountText;
 	public Text ScoreText;
 	public float TimeUntilAddingScore = 0.8f;
 	public float ScoreTickSpeed = 0.05f;
 
 	public float BlinkSpeedIncrease = 1f;
 	public AnimationCurve BlinkSpeedCurve;
+	public bool BlinkWholeText = false;
 	public float ColorGradientSpeed = 1f;
 	public Gradient ColorGradient;
 
@@ -57,7 +59,7 @@ public class ScoreManager : MonoBehaviour
 			_blinkSpeed = BlinkSpeedCurve.Evaluate(t);
 			_currentScore += 1;
 			scoreToAdd -= 1;
-			ScoreText.text = _currentScore.ToString();
+			ScoreCountText.text = _currentScore.ToString();
 			yield return new WaitForSeconds(ScoreTickSpeed);
 		}
 		_addingScore = false;
@@ -65,16 +67,19 @@ public class ScoreManager : MonoBehaviour
 
 	private IEnumerator TextBlink(int scoreToAdd)
 	{
-		var originColor = ScoreText.color;
+		var scoreCountColor = ScoreCountText.color;
+		var scoreTextColor = ScoreText.color; 
 		var blink = true;
 
 		while (_addingScore)
 		{
-			ScoreText.color = blink ? _blinkColor : originColor;
+			ScoreCountText.color = blink ? _blinkColor : scoreCountColor;
+			ScoreText.color = blink ? _blinkColor : scoreTextColor;
 			blink = !blink;
 			yield return new WaitForSeconds(_blinkSpeed);
 		}
 
-		ScoreText.color = originColor;
+		ScoreCountText.color = scoreCountColor;
+		ScoreText.color = scoreTextColor;
 	}
 }
