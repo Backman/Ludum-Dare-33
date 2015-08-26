@@ -143,3 +143,116 @@ MonoBehaviour:
       StartTime: 23
       ScrollForwardTime: 1.5
       LingerTime: 1.5
+  - Name: future assassin and DJ
+    TriggerTime: 150
+    Entries:
+    - Person: 0
+      Text: 'I can''t believe this!
+
+        My Fleet,
+
+        smashed to pieces!'
+      StartTime: 0
+      ScrollForwardTime: 2.5
+      LingerTime: 3
+    - Person: 0
+      Text: 'Half-wits and scatterbrains
+
+        ALL OF THEM! CURSE YOU,
+
+        BLACKFESK!'
+      StartTime: 4
+      ScrollForwardTime: 3
+      LingerTime: 2
+    - Person: 1
+      Text: 'Commander, our superior
+
+        has arrived and wants to talk
+
+        with you!'
+      StartTime: 8
+      ScrollForwardTime: 5
+      LingerTime: 2
+    - Person: 0
+      Text: "Oh... Eh, she can't! \nQuickly, open the hatch!"
+      StartTime: 14
+      ScrollForwardTime: 5
+      LingerTime: 2
+    - Person: 1
+      Text: The Hatch? But she sai-
+      StartTime: 20
+      ScrollForwardTime: 3
+      LingerTime: 1.5
+    - Person: 0
+      Text: "I DON'T CARE! The scuba-suits, \nand the hatch, pronto! That's\nan order!"
+      StartTime: 23
+      ScrollForwardTime: 4
+      LingerTime: 2
+    - Person: 1
+      Text: 'S-Sure thing, Commander!
+
+        The hatch is open, and the
+
+        scuba suits are prepared!'
+      StartTime: 27
+      ScrollForwardTime: 3
+      LingerTime: 2
+    - Person: 0
+      Text: 'Well done private! Off we go!
+
+        TACTICAL RETREAT!
+
+
+'
+      StartTime: 31
+      ScrollForwardTime: 3
+      LingerTime: 1.5
+    - Person: 0
+      Text: "Phew!\nThat was about to turn \nugly...\n"
+      StartTime: 40
+      ScrollForwardTime: 1
+      LingerTime: 4
+    - Person: 1
+      Text: The water is cold down here!
+      StartTime: 45
+      ScrollForwardTime: 5
+      LingerTime: 3
+    - Person: 0
+      Text: 'Stop complaining, Private!
+
+        ...Let''s set up a recon base on
+
+        this rock here.'
+      StartTime: 50
+      ScrollForwardTime: 2
+      LingerTime: 3
+    - Person: 1
+      Text: 'Th-... That''s not a rock Commander!
+
+        That''s a Giant sea crab!'
+      StartTime: 54
+      ScrollForwardTime: 5
+      LingerTime: 4
+    - Person: 0
+      Text: "RETREAT! FALL BACK- \nARRRGGHHHHH!!!!\n..........."
+      StartTime: 59
+      ScrollForwardTime: 1
+      LingerTime: 3
+    - Person: 1
+      Text: 'NO, NO, NO... AAAAAH!!!!
+
+        ...........'
+      StartTime: 61
+      ScrollForwardTime: 1
+      LingerTime: 3
+    - Person: 2
+      Text: 'Well done!
+
+        Game Completed!
+
+        But how long can you survive,
+
+        ...BLACKFESK?!'
+      StartTime: 66
+      ScrollForwardTime: 3
+      LingerTime: 5
