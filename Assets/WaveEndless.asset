@@ -109,7 +109,7 @@ MonoBehaviour:
     HasMaxTime: 0
     MaxY: 0
     HasMaxY: 0
-    MinY: 8
+    MinY: 3
     HasMinY: 1
     MovementSpeedRange: {x: .5, y: 1.20000005}
     ScaleRange: {x: 4, y: 4}
