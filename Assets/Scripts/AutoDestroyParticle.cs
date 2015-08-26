@@ -16,7 +16,7 @@ public class AutoDestroyParticle : MonoBehaviour {
         bool alive = false;
         for (int i = 0; i < ps.Length; i++)
         {
-            if(ps[i].IsAlive())
+            if(ps[i].IsAlive(false))
             {
                 alive = true;
                 break;

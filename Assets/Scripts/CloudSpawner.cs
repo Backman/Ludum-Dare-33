@@ -50,15 +50,22 @@ public class CloudSpawner : MonoBehaviour
 	}
 
 
-	public static IntRect GetCurrentRect (float layerDepth, float gridSize, Vector2 frustumSizeModifier)
-	{
-		Vector3 centerPoint = Camera.main.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0)).GetPoint (layerDepth);
+    public static Vector2 GetFrustumSize(float layerDepth, out Vector2 centerPoint)
+    {
+		centerPoint = Camera.main.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0)).GetPoint (layerDepth);
 		float frustumHeight = 2.0f * (layerDepth - Camera.main.transform.position.z) * Mathf.Tan ((float)(Camera.main.fieldOfView * 0.5 * Mathf.Deg2Rad));
 		float frustumWidth = frustumHeight * Camera.main.aspect;
-		float minX = centerPoint.x - frustumWidth * frustumSizeModifier.x;
-		float maxX = centerPoint.x + frustumWidth * frustumSizeModifier.x;
-		float minY = centerPoint.y - frustumHeight * frustumSizeModifier.y;
-		float maxY = centerPoint.y + frustumHeight * frustumSizeModifier.y;
+        return new Vector2(frustumWidth, frustumHeight);
+    }
+
+	public static IntRect GetCurrentRect (float layerDepth, float gridSize, Vector2 frustumSizeModifier)
+	{
+        Vector2 centerPoint;
+        Vector2 frustumSize = GetFrustumSize(layerDepth, out centerPoint);
+		float minX = centerPoint.x - frustumSize.x * frustumSizeModifier.x;
+		float maxX = centerPoint.x + frustumSize.x * frustumSizeModifier.x;
+		float minY = centerPoint.y - frustumSize.y * frustumSizeModifier.y;
+		float maxY = centerPoint.y + frustumSize.y * frustumSizeModifier.y;
 
 
 		IntRect newVisible;
