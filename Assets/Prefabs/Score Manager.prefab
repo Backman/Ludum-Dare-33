@@ -39,9 +39,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd70fa12eb5431438d72b104ffae1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreCountText: {fileID: 0}
   ScoreText: {fileID: 0}
   TimeUntilAddingScore: .800000012
   ScoreTickSpeed: .00499999989
+  BlinkSpeedIncrease: 1
+  BlinkSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .100000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .996119022
+      value: .0180180166
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  BlinkWholeText: 1
+  ColorGradientSpeed: 1
+  ColorGradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4278251007
+    key1:
+      serializedVersion: 2
+      rgba: 4279032831
+    key2:
+      serializedVersion: 2
+      rgba: 3710975
+    key3:
+      serializedVersion: 2
+      rgba: 17663
+    key4:
+      serializedVersion: 2
+      rgba: 255
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 0
+    ctime1: 19661
+    ctime2: 42020
+    ctime3: 58982
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
