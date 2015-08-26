@@ -5,17 +5,24 @@ using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour
 {
-	private Queue<int> _scoreQueue = new Queue<int>();
-	
 	public Text ScoreText;
 	public float TimeUntilAddingScore = 0.8f;
 	public float ScoreTickSpeed = 0.05f;
+
+	public float BlinkSpeedIncrease = 1f;
+	public AnimationCurve BlinkSpeedCurve;
+	public float ColorGradientSpeed = 1f;
+	public Gradient ColorGradient;
 
 	private int _currentScore;
 	private bool _addingScore;
 
 	private float _timer;
 	private int _scoreToAdd;
+	private Color _blinkColor;
+	private float _blinkSpeed;
+
+	private float _blinkTime;
 
 	private void Start()
 	{
@@ -27,6 +34,7 @@ public class ScoreManager : MonoBehaviour
 		if (!_addingScore && _scoreToAdd > 0 && _timer + TimeUntilAddingScore < Time.unscaledTime)
 		{
 			StartCoroutine(AddScore(_scoreToAdd));
+			StartCoroutine(TextBlink(_scoreToAdd));
 			_scoreToAdd = 0;
 		}
 	}
@@ -39,17 +47,34 @@ public class ScoreManager : MonoBehaviour
 
 	private IEnumerator AddScore(int scoreToAdd)
 	{
+		var t = 0f;
 		_addingScore = true;
-
-
 
 		while (scoreToAdd > 0)
 		{
+			t += Time.deltaTime * ColorGradientSpeed;
+			_blinkColor = ColorGradient.Evaluate(t);
+			_blinkSpeed = BlinkSpeedCurve.Evaluate(t);
 			_currentScore += 1;
 			scoreToAdd -= 1;
 			ScoreText.text = _currentScore.ToString();
 			yield return new WaitForSeconds(ScoreTickSpeed);
 		}
 		_addingScore = false;
+	}
+
+	private IEnumerator TextBlink(int scoreToAdd)
+	{
+		var originColor = ScoreText.color;
+		var blink = true;
+
+		while (_addingScore)
+		{
+			ScoreText.color = blink ? _blinkColor : originColor;
+			blink = !blink;
+			yield return new WaitForSeconds(_blinkSpeed);
+		}
+
+		ScoreText.color = originColor;
 	}
 }
