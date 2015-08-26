@@ -59,7 +59,7 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  BlinkWholeText: 0
+  BlinkWholeText: 1
   ColorGradientSpeed: 1
   ColorGradient:
     key0:
