@@ -51,8 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766933ae7b209432a88b04ccd724440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RekDuration: .5
-  FreezeValue: .5
+  RekDuration: .400000006
+  RekZoomDuration: 1.79999995
+  RekFreezeValue: .386999995
+  RekZoomFreezeValue: .0340000018
   BlinkColor: {r: 1, g: 1, b: 1, a: 1}
   BlinkDuration: .5
   BlokfoskBlinkDuration: .100000001
@@ -76,10 +78,16 @@ MonoBehaviour:
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
-  MaxDistance: 12
+  MaxDistance: 14
   MinDistance: 7
   ZoomMinDistance: 7
-  ZoomLerpModifier: 20
+  ZoomLerpModifier: 6
+  ComboDialog:
+  - Person: 2
+    Text: arglagrgl
+    StartTime: 0
+    ScrollForwardTime: .5
+    LingerTime: 1.5
   ComboData:
   - MinCombo: 4
     MaxCombo: 4

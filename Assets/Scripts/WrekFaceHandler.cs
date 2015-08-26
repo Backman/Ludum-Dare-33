@@ -5,8 +5,11 @@ using System.Collections.Generic;
 public class WrekFaceHandler : MonoBehaviour
 {
 	public float RekDuration = 0.08f;
+	public float RekZoomDuration = 1.5f;
 	[Range(0.0f, 1.0f)]
-	public float FreezeValue = 0.0f;
+	public float RekFreezeValue = 0.0f;
+	[Range(0.0f, 1.0f)]
+	public float RekZoomFreezeValue = 0.0f;
 	public Color BlinkColor;
 	public float BlinkDuration;
 	public float BlokfoskBlinkDuration;
@@ -23,6 +26,8 @@ public class WrekFaceHandler : MonoBehaviour
 		public int MaxCombo;
 		public GameObject Prefab;
 	}
+
+    public DialogSettings.DialogEntry[] ComboDialog;
 	public ComboTextData[] ComboData;
 	public float ComboTextYOffset;
 	public float ComboTextCircleSize;
@@ -55,16 +60,19 @@ public class WrekFaceHandler : MonoBehaviour
 				valid.Add(ComboData[i]);
 			}
 		}
+        
 		if (valid.Count > 0)
 		{
 			ComboTextData comboData = valid[Random.Range(0, valid.Count)];
 			Vector2 unitCircle = Random.insideUnitCircle * ComboTextCircleSize;
 			Vector2 pos = (Vector2)obj.transform.position + unitCircle + new Vector2(0, ComboTextYOffset);
 
+            DialogSystem.Instance.AddDialog(ComboDialog, 0f, 0.15f);
 			TrashMan.spawn(comboData.Prefab, new Vector3(pos.x, pos.y, 30));
 			_LastComboText = Time.unscaledTime;
 		}
 	}
+
 	void OnBlokDamage(int dmg)
 	{
 		BlinkManager.Instance.AddBlink(Blokfosk.Instance.gameObject, BlinkColor, BlokfoskBlinkDuration);
@@ -76,12 +84,16 @@ public class WrekFaceHandler : MonoBehaviour
 			return;
 		var distance = Vector2.Distance(obj.transform.position, Blokfosk.Instance.transform.position);
 
+        bool zooming = distance > ZoomMinDistance;
 		var rekDuration = RekDuration;
-		var freezeValue = FreezeValue;
+		var freezeValue = zooming ? RekZoomFreezeValue : RekFreezeValue;
 
-		float distanceMod = Mathf.Clamp01((distance - MinDistance) / MaxDistance);
-		freezeValue *= 1 - distanceMod * 0.7f;
-		rekDuration *= 1 - distanceMod * 0.4f;
+        if(zooming)
+		{
+            float distanceMod = Mathf.Clamp01((distance - MinDistance) / MaxDistance);
+            freezeValue += distanceMod * 0.3f;
+            rekDuration *= 1 + distanceMod * 0.5f;
+        }
 
 		RekCombo.IncreaseRekComboCount(obj);
 

@@ -8,27 +8,27 @@ public class DialogSystem : MonoBehaviour
     class DialogState
     {
         public float StartTime;
-        public DialogSettings.Dialog Dialog;
+        public DialogSettings.DialogEntry[] DialogEntries;
         public string[] LastDialogStrings;
+        public float StartedTime;
+        public float Deadline;
     }
-    Queue<DialogState> _DialogsQueued = new Queue<DialogState>();
+
+    List<DialogState> _DialogsQueued = new List<DialogState>();
     DialogState _CurrentDialog;
     public DialogBox BlokfoskBox;
     public DialogBox GeneralBox;
     public DialogBox PrivateBox;
 
+    public static DialogSystem Instance;
+
     void Awake()
     {
+        Instance = this;
         for (int i = 0; i < Settings.Dialogs.Length; i++)
         {
             var dialog = Settings.Dialogs[i];
-            DialogState state = new DialogState();
-            state.StartTime = dialog.TriggerTime;
-            state.Dialog = dialog;
-            state.LastDialogStrings = new string[dialog.Entries.Length];
-            for (int j = 0; j < state.LastDialogStrings.Length; j++)
-                state.LastDialogStrings[j] = string.Empty;
-            _DialogsQueued.Enqueue(state);
+            AddDialog(dialog.Entries, dialog.TriggerTime, 0f);
         }
     }
 
@@ -58,17 +58,38 @@ public class DialogSystem : MonoBehaviour
         }
     }
 
+    public void AddDialog(DialogSettings.DialogEntry[] entries, float startTime, float deadlineDuration)
+    {
+        DialogState state = new DialogState();
+        state.StartTime = Mathf.Max(Time.timeSinceLevelLoad, startTime);
+        state.DialogEntries = entries;
+        state.Deadline = deadlineDuration == 0f ? 0f : state.StartTime + deadlineDuration;
+        state.LastDialogStrings = new string[entries.Length];
+        for (int j = 0; j < state.LastDialogStrings.Length; j++)
+            state.LastDialogStrings[j] = string.Empty;
+        int pos = 0;
+        while (_DialogsQueued.Count > pos && _DialogsQueued[pos].StartTime < startTime)
+            pos++;
+
+        _DialogsQueued.Insert(pos, state);
+    }
+
 
     void Update()
     {
         float time = Time.timeSinceLevelLoad;
-        if(_DialogsQueued.Count > 0)
+        if (_CurrentDialog == null && _DialogsQueued.Count > 0)
         {
-            var peek = _DialogsQueued.Peek();
-            if (peek.StartTime < time)
+            var peek = _DialogsQueued[0];
+            if (peek.Deadline != 0f && peek.Deadline < Time.timeSinceLevelLoad)
+            {
+                _DialogsQueued.RemoveAt(0);
+            }
+            else if (peek.StartTime < time)
             {
                 _CurrentDialog = peek;
-                _DialogsQueued.Dequeue();
+                _CurrentDialog.StartTime = Time.timeSinceLevelLoad;
+                _DialogsQueued.RemoveAt(0);
             }
         }
         SetPortraitState(Person.Blokfosk, string.Empty, 0f);
@@ -78,10 +99,12 @@ public class DialogSystem : MonoBehaviour
         if (_CurrentDialog != null)
         {
             float dialogTime = time - _CurrentDialog.StartTime;
-            for (int i = 0; i < _CurrentDialog.Dialog.Entries.Length; i++)
+            float dialogDuration = 0f;
+            for (int i = 0; i < _CurrentDialog.DialogEntries.Length; i++)
             {
-                var entry = _CurrentDialog.Dialog.Entries[i];
+                var entry = _CurrentDialog.DialogEntries[i];
                 float entryDuration = entry.ScrollForwardTime + entry.LingerTime;
+                dialogDuration = Mathf.Max(dialogDuration, entryDuration + entry.StartTime);
                 if (dialogTime > entry.StartTime && dialogTime <= entry.StartTime + entryDuration)
                 {
                     float entryTime = dialogTime - entry.StartTime;
@@ -90,17 +113,21 @@ public class DialogSystem : MonoBehaviour
                     string text;
                     if (_CurrentDialog.LastDialogStrings[i].Length != length)
                     {
-                        text = _CurrentDialog.LastDialogStrings[i]  = entry.Text.Substring(0, length);
+                        text = _CurrentDialog.LastDialogStrings[i] = entry.Text.Substring(0, length);
                     }
                     else
                     {
                         text = _CurrentDialog.LastDialogStrings[i];
                     }
 
-                    float timeSinceLinger = (entry.LingerTime + entry.ScrollForwardTime)  - entryTime;
-                    float a = Mathf.Clamp01(timeSinceLinger);
+                    float timeSinceLinger = (entry.LingerTime + entry.ScrollForwardTime) - entryTime;
+                    float a = Mathf.Clamp01(timeSinceLinger * 2.0f);
                     SetPortraitState(entry.Person, text, a);
                 }
+            }
+            if (dialogTime > dialogDuration)
+            {
+                _CurrentDialog = null;
             }
         }
     }

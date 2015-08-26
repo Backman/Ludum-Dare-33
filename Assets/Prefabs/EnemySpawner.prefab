@@ -42,7 +42,7 @@ MonoBehaviour:
   GameSettings: {fileID: 11400000, guid: 8ec57784807ca40a1a836054e58b1bac, type: 2}
   LayerDepth: 30
   GridSize: .5
-  MaxSpawnRectModifier: {x: .800000012, y: .600000024}
+  MaxSpawnRectModifier: {x: .75, y: .600000024}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
