@@ -54,10 +54,10 @@ public class CloudSpawner : MonoBehaviour
 		Vector3 centerPoint = Camera.main.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0)).GetPoint (layerDepth);
 		float frustumHeight = 2.0f * (layerDepth - Camera.main.transform.position.z) * Mathf.Tan ((float)(Camera.main.fieldOfView * 0.5 * Mathf.Deg2Rad));
 		float frustumWidth = frustumHeight * Camera.main.aspect;
-		float minX = centerPoint.x - frustumWidth;
-		float maxX = centerPoint.x + frustumWidth;
-		float minY = centerPoint.y - frustumHeight;
-		float maxY = centerPoint.y + frustumHeight;
+		float minX = centerPoint.x - frustumWidth * 0.6f;
+		float maxX = centerPoint.x + frustumWidth * 0.6f;
+		float minY = centerPoint.y - frustumHeight * 0.6f;
+		float maxY = centerPoint.y + frustumHeight * 0.6f;
 
 
 		IntRect newVisible;
