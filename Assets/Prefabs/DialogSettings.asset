@@ -96,7 +96,9 @@ MonoBehaviour:
       ScrollForwardTime: 4
       LingerTime: 2
     - Person: 1
-      Text: Even the ships from the local town?
+      Text: 'S-Should we really
+
+        send -every- ship, Commander?'
       StartTime: 9
       ScrollForwardTime: 3
       LingerTime: 2
@@ -156,11 +158,11 @@ MonoBehaviour:
       ScrollForwardTime: 2.5
       LingerTime: 3
     - Person: 0
-      Text: 'Half-wits and scatterbrains
+      Text: 'Half-wits and imbeciles,
 
         ALL OF THEM! CURSE YOU,
 
-        BLACKFESK!'
+        BLACKFEEEESK!'
       StartTime: 4
       ScrollForwardTime: 3
       LingerTime: 2

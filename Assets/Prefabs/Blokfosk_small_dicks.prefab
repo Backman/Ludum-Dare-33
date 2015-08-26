@@ -3092,7 +3092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9829f1ae2ae542f2b3bbeed6ba0f3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 10000
+  MaxHealth: 600
   Hype:
     HypeShake: {fileID: 11400000, guid: c583e3edc88a24966aa10eef23518069, type: 2}
     Curve:
