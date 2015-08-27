@@ -214,6 +214,11 @@ public class EnemySpawner : MonoBehaviour
 
 	public void ReturnSpawnValue(GameObject obj)
 	{
+        if (_firstEnemyKilled == false)
+        {
+            _SpawnAccumulator += 1.2f;
+            return;
+        }
 		float t;
 		var spawnSettings = GetCurrentSpawnSettings(_timer, out t);
 		for (int i = 0; i < spawnSettings.Spawns.Length; i++)
