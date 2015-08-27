@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Globalization;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -28,10 +29,14 @@ public class ScoreManager : MonoBehaviour
 
 
 	private float _blinkTime;
+	private NumberFormatInfo _numberFormat;
 
 	private void Start()
 	{
 		GameLogic.Instance.OnScoreChanged += OnScoreChanged;
+
+		_numberFormat = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+		_numberFormat.NumberGroupSeparator = " ";
 	}
 
 	private void Update()
@@ -61,6 +66,7 @@ public class ScoreManager : MonoBehaviour
 		var scoreTextOriginPos = scoreTextPos;
 		var dropShadowOriginPos = dropShadowPos;
 
+
 		while (scoreToAdd > 0)
 		{
 			t += Time.deltaTime * TextIntensityBuildUpSpeed;
@@ -78,9 +84,9 @@ public class ScoreManager : MonoBehaviour
 
 			_currentScore += 1;
 			scoreToAdd -= 1;
-			var text = _currentScore.ToString();
-			ScoreText.text = text;
-			ScoreTextDropShadow.text = text;
+			var score = _currentScore.ToString("#,#", _numberFormat);
+			ScoreText.text = score;
+			ScoreTextDropShadow.text = score;
 			yield return new WaitForSeconds(ScoreTickSpeed);
 
 			ScoreText.transform.position = scoreTextOriginPos;
