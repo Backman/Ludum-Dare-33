@@ -39,11 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd70fa12eb5431438d72b104ffae1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreCountText: {fileID: 0}
   ScoreText: {fileID: 0}
+  ScoreTextDropShadow: {fileID: 0}
   TimeUntilAddingScore: .800000012
   ScoreTickSpeed: .00499999989
-  BlinkSpeedIncrease: 1
   BlinkSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -59,8 +58,6 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  BlinkWholeText: 1
-  ColorGradientSpeed: 1
   ColorGradient:
     key0:
       serializedVersion: 2
@@ -104,6 +101,112 @@ MonoBehaviour:
     atime7: 0
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
+  TextIntensityBuildUpSpeed: 1
+  XShakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.00214357488
+      value: .00782567263
+      inSlope: 2.09156728
+      outSlope: 2.09156728
+      tangentMode: 10
+    - time: .104456306
+      value: .230786502
+      inSlope: -1.07532561
+      outSlope: -1.07532561
+      tangentMode: 10
+    - time: .285386592
+      value: -.536759317
+      inSlope: 1.7230134
+      outSlope: 1.7230134
+      tangentMode: 10
+    - time: .41684109
+      value: .473895162
+      inSlope: -.0377984047
+      outSlope: -.0377984047
+      tangentMode: 10
+    - time: .57782501
+      value: -.775958538
+      inSlope: 2.81594682
+      outSlope: 2.81594682
+      tangentMode: 10
+    - time: .692337275
+      value: .75801754
+      inSlope: -2.20546865
+      outSlope: -2.20546865
+      tangentMode: 10
+    - time: .786931872
+      value: -.926397562
+      inSlope: -.609882355
+      outSlope: -.609882355
+      tangentMode: 10
+    - time: .89979589
+      value: .945667624
+      inSlope: 3.57474756
+      outSlope: 3.57474756
+      tangentMode: 10
+    - time: 1
+      value: 0
+      inSlope: -9.43741322
+      outSlope: -9.43741322
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+  YShakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: -.00214357488
+      value: .00782567263
+      inSlope: -2.56584787
+      outSlope: -2.56584787
+      tangentMode: 10
+    - time: .0967049152
+      value: -.245804518
+      inSlope: 1.118402
+      outSlope: 1.118402
+      tangentMode: 10
+    - time: .217838794
+      value: .335959315
+      inSlope: .286272049
+      outSlope: .286272049
+      tangentMode: 10
+    - time: .379999995
+      value: -.349999994
+      inSlope: 2.18320632
+      outSlope: 2.18320632
+      tangentMode: 10
+    - time: .49086982
+      value: .603094757
+      inSlope: -8.93875313
+      outSlope: -8.93875313
+      tangentMode: 10
+    - time: .546440482
+      value: -.868084371
+      inSlope: -8.50073051
+      outSlope: -8.50073051
+      tangentMode: 10
+    - time: .730000019
+      value: .870695114
+      inSlope: -4.27604961
+      outSlope: -4.27604961
+      tangentMode: 10
+    - time: .832078934
+      value: -.96924293
+      inSlope: 2.42512798
+      outSlope: 2.42512798
+      tangentMode: 10
+    - time: .917052507
+      value: .974520862
+      inSlope: 5.5631361
+      outSlope: 5.5631361
+      tangentMode: 10
+    - time: 1
+      value: 0
+      inSlope: -11.7486477
+      outSlope: -11.7486477
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
