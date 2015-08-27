@@ -66,6 +66,7 @@ public class EnemySpawner : MonoBehaviour
 
 		if (_SpawnAccumulator >= 0)
 		{
+
 			float totalSpawnChance = 0;
 			for (int i = 0; i < spawnSettings.Spawns.Length; i++)
 			{
@@ -91,6 +92,8 @@ public class EnemySpawner : MonoBehaviour
 					randomVal -= spawn.SpawnChance;
 				}
 			}
+
+
 
 		}
 	}
@@ -214,6 +217,7 @@ public class EnemySpawner : MonoBehaviour
 
 	public void ReturnSpawnValue(GameObject obj)
 	{
+	
 		float t;
 		var spawnSettings = GetCurrentSpawnSettings(_timer, out t);
 		for (int i = 0; i < spawnSettings.Spawns.Length; i++)
@@ -221,10 +225,19 @@ public class EnemySpawner : MonoBehaviour
 			var spawn = spawnSettings.Spawns[i];
 			for (int j = 0; j < spawn.Variations.Length; j++)
 			{
+
+
 				var variation = spawn.Variations[j];
 				if (variation == obj)
 				{
+					if(_firstEnemyKilled){
 					_SpawnAccumulator += spawn.SpawnValue;
+					}
+					//Fulkod
+					if (!_firstEnemyKilled) {
+						_SpawnAccumulator = 1f;	
+					}
+					//End of Fulkod
 					break;
 				}
 			}
