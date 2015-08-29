@@ -41,10 +41,9 @@ public class GameLogic : MonoBehaviour
 	public System.Action<GameObject> OnEnemyRekt;
 	public System.Action OnBlokfoskRIP;
 
-	public Text ScoreCount;
-
+	public bool IsRekking { get; private set; }
+	
 	private int _score;
-	private Blokfosk _player;
 	private bool _firstEnemyKilled;
 
 	public int Score {
@@ -63,7 +62,10 @@ public class GameLogic : MonoBehaviour
 
 	private void OnLevelWasLoaded ()
 	{
-
+		if (Application.loadedLevelName == "Uncensored")
+		{
+			IsRekking = true;
+		}
 	}
 
 	private void EnemyRekt (GameObject rektObjekt)

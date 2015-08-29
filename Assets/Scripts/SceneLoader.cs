@@ -4,7 +4,7 @@ using System.Collections;
 public class SceneLoader : MonoBehaviour
 {
 	public string SceneToLoad;
-	public AudioSource AudioSource;
+	private AudioSource _audioSource;
 	public bool DestroyMenuMusic = false;
 
 	public FadeSettings FadeSettings;
@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
 	{
 		var menuMusic = GameObject.Find ("MenuMusic");
 		if (menuMusic) {
-			AudioSource = menuMusic.GetComponent<AudioSource> ();
+			_audioSource = menuMusic.GetComponent<AudioSource> ();
 			if (!DestroyMenuMusic) {
 				DontDestroyOnLoad (menuMusic);
 			}
@@ -24,6 +24,11 @@ public class SceneLoader : MonoBehaviour
 
 	private void Update ()
 	{
+		if (Input.GetKeyDown(KeyCode.Escape) || GameJoltPipe.Instance.SigningIn || GameJoltPipe.Instance.ShowingLeaderboard)
+		{
+			return;
+		}
+
 		if (Input.anyKeyDown) {
 			Fader.Instance.Fade (FadeSettings);
 
@@ -58,7 +63,7 @@ public class SceneLoader : MonoBehaviour
 	{
 		var t = duration;
 		while (t > 0f) {
-			AudioSource.volume = t / duration;
+			_audioSource.volume = t / duration;
 			t -= Time.deltaTime;
 			yield return null;
 		}
